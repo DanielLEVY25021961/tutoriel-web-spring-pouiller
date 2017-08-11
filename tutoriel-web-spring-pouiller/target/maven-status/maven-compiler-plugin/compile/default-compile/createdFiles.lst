@@ -1,0 +1,7 @@
+levy\daniel\application\vues\controllers\BonjourController.class
+levy\daniel\application\dao\impl\ListeCoursesDAO.class
+levy\daniel\application\services\impl\ListeCoursesService.class
+levy\daniel\application\dao\IListeCoursesDAO.class
+levy\daniel\application\vues\controllers\ListeCoursesController.class
+levy\daniel\application\metier\Course.class
+levy\daniel\application\services\IListeCoursesService.class
