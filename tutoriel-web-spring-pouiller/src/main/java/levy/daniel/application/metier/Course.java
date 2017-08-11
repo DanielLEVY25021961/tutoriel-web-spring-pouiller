@@ -59,6 +59,7 @@ public class Course {
 	 * libelle : String :<br/>
 	 * Libellé du produit acheté.<br/>
 	 */
+	@Column(name="LIBELLE")
 	private String libelle;
 	
 	
@@ -66,6 +67,7 @@ public class Course {
 	 * quantite : Integer :<br/>
 	 * Quantité de produit acheté.<br/>
 	 */
+	@Column(name="QUANTITE")
 	private Integer quantite;
 	
 

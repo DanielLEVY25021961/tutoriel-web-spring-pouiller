@@ -38,11 +38,11 @@
 	<!-- ================================================================== -->	
 	<!-- déclaration du bean « InternalResourceViewResolver »  -->
 	<!-- Indique où chercher les ressources (jsp, ...) sous le contexte webapp -->
-	<!-- ici dans le dossier « /vues/ avec l'extension « .jsp » -->
+	<!-- ici dans le dossier « /WEB-INF/vues/ avec l'extension « .jsp » -->
 	<bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
-            <value>/vues/</value>
+            <value>/WEB-INF/vues/</value>
         </property>
         <property name="suffix">
             <value>.jsp</value>
@@ -52,12 +52,18 @@
     
  	<!-- ================================================================== -->
 	<!--                 LIEN SPRING - ORM - BASE DONNEES                   -->
-	<!-- ================================================================== -->	    
+	<!-- ================================================================== -->	
+	<!-- JTA (Annotations transactionnelles) -->    
     <tx:annotation-driven transaction-manager="transactionManager" />
 
 	<!-- « JndiObjectFactoryBean » permet de déclarer l'utilisation de la ressource JDBC -->
-    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="jndiName" value="java:comp/env/jdbc/dsAppliTutoWebSpringPouiller" />
+<!--     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<!--         <property name="jndiName" value="java:comp/env/jdbc/dsAppliTutoWebSpringPouiller" /> -->
+       <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" />
+       <property name="url" value="jdbc:hsqldb:file:C:\Users\dan\git\tutoriel-web-spring-pouiller\.git\tutoriel-web-spring-pouiller\data\base-tutoriel-web-spring-pouiller" />
+       <property name="username" value="sa" />
+       <property name="password" value="" />
     </bean>
 
 	<!-- « LocalContainerEntityManagerFactoryBean » utilise la ressource JDBC --> 
@@ -67,6 +73,7 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
+	<!-- GESTION DES TRANSACTIONS (encapsulations des appels à la base dans une transaction).  -->
 	<!-- « JpaTransactionManager » permet d'instancier le gestionnaire -->
 	<!-- de transaction et lui associer la fabrique de « EntityManager ».  -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

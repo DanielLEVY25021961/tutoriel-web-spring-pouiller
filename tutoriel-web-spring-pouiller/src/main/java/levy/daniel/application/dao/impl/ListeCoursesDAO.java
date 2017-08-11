@@ -74,6 +74,7 @@ public class ListeCoursesDAO implements IListeCoursesDAO {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<Course> rechercherCourses() {
 
 		/* Récupération d'un CriteriaBuilder auprès de entityManager. */

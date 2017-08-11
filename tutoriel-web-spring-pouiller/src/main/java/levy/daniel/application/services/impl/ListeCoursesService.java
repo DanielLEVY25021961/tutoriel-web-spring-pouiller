@@ -70,6 +70,7 @@ public class ListeCoursesService implements IListeCoursesService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	@Transactional(readOnly=true)
 	public List<Course> rechercherCourses() {
 		return this.dao.rechercherCourses();

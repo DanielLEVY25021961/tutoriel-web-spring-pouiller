@@ -7,6 +7,10 @@
 
 	<persistence-unit name="unit">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+			<!--  <property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
+		</properties>
 	</persistence-unit>
-	
+
 </persistence>

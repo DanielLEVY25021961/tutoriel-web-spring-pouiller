@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  */
 @Controller
-@RequestMapping("/bonjour")
+@RequestMapping(value="/bonjour")
 public class BonjourController {
 
 	// ************************ATTRIBUTS************************************/
@@ -75,7 +75,7 @@ public class BonjourController {
 	 * 
 	 * @return : String : "bonjour".<br/>
 	 */
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="/afficherBonjour", method = RequestMethod.GET)
 	public String afficherBonjour(
 			final ModelMap pModelMap
 				, @RequestParam(value="personne") final String pPersonne) {
@@ -87,7 +87,7 @@ public class BonjourController {
 		/* le contrôleur redirige vers la ressource 
 		 * « /vues/bonjour.jsp ». */
 		/* Le ServletDispatcher gère le bean InternalResourceViewResolver 
-		 * qui précise que les jsp sont sous /vues/. 
+		 * qui précise que les jsp sont sous /WEB-INF/vues/. 
 		 * et ont l'extension .jsp*/
 		return "bonjour";
 		

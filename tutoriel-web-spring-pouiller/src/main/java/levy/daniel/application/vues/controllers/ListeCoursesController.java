@@ -94,7 +94,7 @@ public class ListeCoursesController {
          * « /vues/listeCourses.jsp ». */
         /* Le ServletDispatcher gère le bean 
          * InternalResourceViewResolver 
-		 * qui précise que les jsp sont sous /vues/. 
+		 * qui précise que les jsp sont sous /WEB-INF/vues/. 
 		 * et ont l'extension .jsp*/
         return "listeCourses";
         
