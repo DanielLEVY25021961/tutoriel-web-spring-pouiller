@@ -52,15 +52,13 @@ public class CourseDao implements ICourseDAO {
 	private static final Log LOG = LogFactory.getLog(CourseDao.class);
 
 	
-	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public Course create(Course pCourse) {
-		// TODO Auto-generated method stub
 		this.entityManager.persist(pCourse);
-		return null;
+		return pCourse;
 	}
 
 	/**
@@ -68,7 +66,10 @@ public class CourseDao implements ICourseDAO {
 	 */
 	@Override
 	public Course retrieve(Course pCourse) {
-		// TODO Auto-generated method stub
+		List<Course> courses = this.entityManager.createQuery("select c from Course c where c.libelle = " + pCourse.getLibelle() + "c.quantite = " + pCourse.getQuantite()).getResultList();
+		if(courses != null && courses.size() == 1) {
+			return courses.get(0);
+		}
 		return null;
 	}
 
@@ -77,8 +78,8 @@ public class CourseDao implements ICourseDAO {
 	 */
 	@Override
 	public Course update(Course pCourse) {
-		// TODO Auto-generated method stub
-		return null;
+		this.entityManager.merge(pCourse);
+		return pCourse;
 	}
 
 	/**
@@ -86,7 +87,8 @@ public class CourseDao implements ICourseDAO {
 	 */
 	@Override
 	public boolean delete(Course pCourse) {
-		// TODO Auto-generated method stub
+		this.entityManager.merge(pCourse);
+		this.entityManager.remove(pCourse);
 		return false;
 	}
 
@@ -95,8 +97,8 @@ public class CourseDao implements ICourseDAO {
 	 */
 	@Override
 	public List<Course> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Course> courses = this.entityManager.createQuery("select c from Course c").getResultList();
+		return courses;
 	}
 
 	// *************************METHODES************************************/
