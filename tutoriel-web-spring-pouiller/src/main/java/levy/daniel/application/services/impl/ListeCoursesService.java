@@ -85,9 +85,16 @@ public class ListeCoursesService implements IListeCoursesService {
 	@Override
 	@Transactional
 	public ICourse createCourse(
-			final String pLibelle, final String pQuantite) {
-		// TODO Auto-generated method stub
-		return null;
+			final String pLibelle, final Integer pQuantite) {
+		
+		/* Dialogue avec la couche métier 
+		 * pour la création d'un Objet Course. */
+		final ICourse course = new Course(pLibelle, pQuantite);
+		
+		/* Dialogue avec la couche DAO 
+		 * pour la création d'une Course en base. */
+		return this.dao.createCourse(course);
+		
 	} // Fin de createCourse(...)._________________________________________
 	
 

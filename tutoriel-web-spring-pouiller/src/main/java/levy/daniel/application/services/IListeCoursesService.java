@@ -39,16 +39,16 @@ public interface IListeCoursesService {
 
 	
 	/**
-	 * method createCourse(String pLibelle, String pQuantite) :<br/>
+	 * method createCourse(String pLibelle, Integer pQuantite) :<br/>
 	 * Crée une Course [pLibelle, pQuantite] en base.<br/>
 	 * <br/>
 	 *
 	 * @param pLibelle : String : Libellé du produit acheté.<br/>
-	 * @param pQuantite : String : Quantité de produit achetée.<br/>
+	 * @param pQuantite : Integer : Quantité de produit achetée.<br/>
 	 * 
 	 * @return : Course : La Course créée en base.<br/>
 	 */
-	ICourse createCourse(String pLibelle, String pQuantite);
+	ICourse createCourse(String pLibelle, Integer pQuantite);
 	
 	
 
