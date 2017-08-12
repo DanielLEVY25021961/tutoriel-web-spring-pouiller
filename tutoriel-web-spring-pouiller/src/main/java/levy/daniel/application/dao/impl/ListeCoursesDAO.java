@@ -14,11 +14,12 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Repository;
 
 import levy.daniel.application.dao.IListeCoursesDAO;
-import levy.daniel.application.metier.Course;
+import levy.daniel.application.metier.ICourse;
+import levy.daniel.application.metier.impl.Course;
 
 /**
  * class ListeCoursesDAO :<br/>
- * .<br/>
+ * DAO pour l'ensemble des courses en base.<br/>
  * <br/>
  *
  * - Exemple d'utilisation :<br/>
@@ -96,6 +97,22 @@ public class ListeCoursesDAO implements IListeCoursesDAO {
 		return lTypedQuery.getResultList();
 		
 	} // Fin de rechercherCourses()._______________________________________
+
+
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public ICourse createCourse(
+			final ICourse pCourse) {
+		
+		this.entityManager.persist(pCourse);
+		
+		return pCourse;
+		
+	} // Fin de createCourse(....).________________________________________
+	
 	
 
 

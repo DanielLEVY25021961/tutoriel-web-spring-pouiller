@@ -61,7 +61,7 @@ public class AccueilController {
 	 */
 	@RequestMapping(value="/index.html")
 	public String versPageAccueil() {
-		return "index";
+		return "index.html";
 	}
 
 	

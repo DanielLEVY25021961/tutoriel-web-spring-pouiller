@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  */
 @Controller
-@RequestMapping(value="/bonjour")
+@RequestMapping(value="/")
 public class BonjourController {
 
 	// ************************ATTRIBUTS************************************/

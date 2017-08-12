@@ -2,7 +2,8 @@ package levy.daniel.application.services;
 
 import java.util.List;
 
-import levy.daniel.application.metier.Course;
+import levy.daniel.application.metier.ICourse;
+import levy.daniel.application.metier.impl.Course;
 
 /**
  * class IListeCoursesService :<br/>
@@ -28,12 +29,27 @@ public interface IListeCoursesService {
 	
 	/**
 	 * method rechercherCourses() :<br/>
-	 * .<br/>
+	 * Recherche toutes les courses en base.<br/>
 	 * <br/>
 	 *
-	 * @return : List&lt;Course&gt; : Liste des courses.<br/>
+	 * @return : List&lt;Course&gt; : Liste des courses en base.<br/>
 	 */
 	List<Course> rechercherCourses();
+	
+
+	
+	/**
+	 * method createCourse(String pLibelle, String pQuantite) :<br/>
+	 * Crée une Course [pLibelle, pQuantite] en base.<br/>
+	 * <br/>
+	 *
+	 * @param pLibelle : String : Libellé du produit acheté.<br/>
+	 * @param pQuantite : String : Quantité de produit achetée.<br/>
+	 * 
+	 * @return : Course : La Course créée en base.<br/>
+	 */
+	ICourse createCourse(String pLibelle, String pQuantite);
+	
 	
 
 } // FIN DE L'INTERFACE IListeCoursesService.------------------------------

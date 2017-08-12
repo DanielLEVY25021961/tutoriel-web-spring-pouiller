@@ -1,4 +1,4 @@
-package levy.daniel.application.metier;
+package levy.daniel.application.metier.impl;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,8 @@ import javax.persistence.Table;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import levy.daniel.application.metier.ICourse;
 
 
 /**
@@ -41,7 +43,7 @@ import org.apache.commons.logging.LogFactory;
  */
 @Entity
 @Table(name="LISTECOURSES")
-public class Course {
+public class Course implements ICourse {
 
 	// ************************ATTRIBUTS************************************/
 		
@@ -238,12 +240,9 @@ public class Course {
 
 	
 	/**
-	 * method getId() :<br/>
-	 * Getter de ID en base.<br/>
-	 * <br/>
-	 *
-	 * @return id : Integer.<br/>
+	 * {@inheritDoc}
 	 */
+	@Override
 	public final Integer getId() {
 		return this.id;
 	} // Fin de getId().___________________________________________________
@@ -251,13 +250,9 @@ public class Course {
 
 	
 	/**
-	* method setId(
-	* Integer pId) :<br/>
-	* Setter de ID en base.<br/>
-	* <br/>
-	*
-	* @param pId : Integer : valeur à passer à id.<br/>
-	*/
+	 * {@inheritDoc}
+	 */
+	@Override
 	public final void setId(
 			final Integer pId) {
 		this.id = pId;
@@ -267,12 +262,9 @@ public class Course {
 
 	
 	/**
-	 * method getLibelle() :<br/>
-	 * Getter du Libellé du produit acheté.<br/>
-	 * <br/>
-	 *
-	 * @return libelle : String.<br/>
+	 * {@inheritDoc}
 	 */
+	@Override
 	public final String getLibelle() {
 		return this.libelle;
 	} // Fin de getLibelle().______________________________________________
@@ -280,13 +272,9 @@ public class Course {
 
 	
 	/**
-	* method setLibelle(
-	* String pLibelle) :<br/>
-	* Setter du Libellé du produit acheté.<br/>
-	* <br/>
-	*
-	* @param pLibelle : String : valeur à passer à libelle.<br/>
-	*/
+	 * {@inheritDoc}
+	 */
+	@Override
 	public final void setLibelle(
 			final String pLibelle) {
 		this.libelle = pLibelle;
@@ -296,12 +284,9 @@ public class Course {
 
 	
 	/**
-	 * method getQuantite() :<br/>
-	 * Getter de la Quantité de produit acheté.<br/>
-	 * <br/>
-	 *
-	 * @return quantite : Integer.<br/>
+	 * {@inheritDoc}
 	 */
+	@Override
 	public final Integer getQuantite() {
 		return this.quantite;
 	} // Fin de getQuantite()._____________________________________________
@@ -309,13 +294,9 @@ public class Course {
 
 	
 	/**
-	* method setQuantite(
-	* Integer pQuantite) :<br/>
-	* Setter de la Quantité de produit acheté.<br/>
-	* <br/>
-	*
-	* @param pQuantite : Integer : valeur à passer à quantite.<br/>
-	*/
+	 * {@inheritDoc}
+	 */
+	@Override
 	public final void setQuantite(
 			final Integer pQuantite) {
 		this.quantite = pQuantite;

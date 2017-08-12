@@ -2,7 +2,8 @@ package levy.daniel.application.dao;
 
 import java.util.List;
 
-import levy.daniel.application.metier.Course;
+import levy.daniel.application.metier.ICourse;
+import levy.daniel.application.metier.impl.Course;
 
 /**
  * class IListeCoursesDAO :<br/>
@@ -28,11 +29,27 @@ public interface IListeCoursesDAO {
 	
 	/**
 	 * method rechercherCourses() :<br/>
-	 * Recherche des courses en base.<br/>
+	 * Recherche toutes les courses en base.<br/>
 	 * <br/>
 	 *
 	 * @return : List&lt;Course&gt; : Liste des courses en base.<br/>
 	 */
 	List<Course> rechercherCourses();
+	
+
+	
+	/**
+	 * method createCourse(
+	 * Course pCourse) :<br/>
+	 * Crée la Course pCourse en base.<br/>
+	 * <br/>
+	 *
+	 * @param pCourse : Course.<br/>
+	 * 
+	 * @return : Course : La Course créée en base.<br/>
+	 */
+	ICourse createCourse(ICourse pCourse);
+	
+	
 
 } // FIN DE L'INTERFACE IListeCoursesDAO.----------------------------------

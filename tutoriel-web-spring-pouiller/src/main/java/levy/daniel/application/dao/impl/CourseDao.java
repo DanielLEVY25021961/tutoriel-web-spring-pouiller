@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Repository;
 
 import levy.daniel.application.dao.ICourseDAO;
-import levy.daniel.application.metier.Course;
+import levy.daniel.application.metier.ICourse;
+import levy.daniel.application.metier.impl.Course;
 
 /**
  * class CourseDao :<br/>
@@ -31,6 +34,7 @@ import levy.daniel.application.metier.Course;
  * @since 11 août 2017
  *
  */
+@Repository
 public class CourseDao implements ICourseDAO {
 
 	// ************************ATTRIBUTS************************************/
@@ -50,56 +54,100 @@ public class CourseDao implements ICourseDAO {
 	 */
 	@SuppressWarnings("unused")
 	private static final Log LOG = LogFactory.getLog(CourseDao.class);
+	
 
+	// *************************METHODES************************************/	
+	
+	 /**
+	 * method CONSTRUCTEUR CourseDao() :<br/>
+	 * CONSTRUCTEUR D'ARITE NULLE.<br/>
+	 * <br/>
+	 */
+	public CourseDao() {
+		super();
+	} // Fin de CONSTRUCTEUR D'ARITE NULLE.________________________________
+	
+	
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Course create(Course pCourse) {
+	public ICourse create(
+			final ICourse pCourse) {
+		
 		this.entityManager.persist(pCourse);
 		return pCourse;
-	}
+		
+	} // Fin de create(...)._______________________________________________
 
+	
+	
+	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Course retrieve(Course pCourse) {
-		List<Course> courses = this.entityManager.createQuery("select c from Course c where c.libelle = " + pCourse.getLibelle() + "c.quantite = " + pCourse.getQuantite()).getResultList();
-		if(courses != null && courses.size() == 1) {
+	public ICourse retrieve(
+			final ICourse pCourse) {
+		
+		/* Requête HQL sur le métier. */
+		final String requeteHQLString 
+		= "select c from Course c where c.libelle = " 
+		+ pCourse.getLibelle() 
+		+ "c.quantite = "
+		+ pCourse.getQuantite();
+		
+		/* Création de la requête par l'EntityManager. */
+		final Query requeteHQL 
+			= this.entityManager.createQuery(requeteHQLString);
+		
+		/* Exécution de la requête. */
+		final List<Course> courses = requeteHQL.getResultList();
+		
+		if (courses != null && courses.size() == 1) {
 			return courses.get(0);
 		}
+		
 		return null;
-	}
+		
+	} // Fin de retrieve(...)._____________________________________________
+	
+	
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Course update(Course pCourse) {
+	public ICourse update(
+			final Course pCourse) {
 		this.entityManager.merge(pCourse);
 		return pCourse;
-	}
+	} // Fin de update(...)._______________________________________________
+	
+	
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean delete(Course pCourse) {
+	public boolean delete(
+			final Course pCourse) {
 		this.entityManager.merge(pCourse);
 		this.entityManager.remove(pCourse);
 		return false;
-	}
+	} // Fin de delete(...)._______________________________________________
+	
+	
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public List<Course> getList() {
-		List<Course> courses = this.entityManager.createQuery("select c from Course c").getResultList();
+		final List<Course> courses = this.entityManager.createQuery("select c from Course c").getResultList();
 		return courses;
 	}
 
-	// *************************METHODES************************************/
-}
+
+} // FIN DE LA CLASSE CourseDao.---------------------------------------------

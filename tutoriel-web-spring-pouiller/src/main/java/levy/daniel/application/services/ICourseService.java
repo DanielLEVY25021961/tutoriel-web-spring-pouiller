@@ -1,4 +1,4 @@
-package levy.daniel.application.dao;
+package levy.daniel.application.services;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import levy.daniel.application.metier.ICourse;
 import levy.daniel.application.metier.impl.Course;
 
 /**
- * class ICourseDAO :<br/>
- * Interface pour les CourseDAO concrets.<br/>
+ * class ICourseService :<br/>
+ * .<br/>
  * <br/>
  *
  * - Exemple d'utilisation :<br/>
@@ -25,7 +25,7 @@ import levy.daniel.application.metier.impl.Course;
  * @since 11 août 2017
  *
  */
-public interface ICourseDAO {
+public interface ICourseService {
 	
 	
 	/**
@@ -66,7 +66,7 @@ public interface ICourseDAO {
 	 * 
 	 * @return : Course : La Course modifiée en base.<br/>
 	 */
-	ICourse update(Course pCourse);
+	ICourse update(ICourse pCourse);
 	
 	
 	
@@ -80,7 +80,7 @@ public interface ICourseDAO {
 	 * 
 	 * @return : boolean : true si la course a été détruite.<br/>
 	 */
-	boolean delete(Course pCourse);
+	boolean delete(ICourse pCourse);
 	
 	
 	
@@ -94,6 +94,6 @@ public interface ICourseDAO {
 	 */
 	List<Course> getList();
 	
-	
 
-} // FIN DE L'INTERFACE ICourseDAO.------------------------------------------
+
+} // FIN DE L'INTERFACE ICourseService.------------------------------------

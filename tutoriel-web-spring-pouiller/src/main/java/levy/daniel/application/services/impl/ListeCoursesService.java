@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import levy.daniel.application.dao.IListeCoursesDAO;
-import levy.daniel.application.metier.Course;
+import levy.daniel.application.metier.ICourse;
+import levy.daniel.application.metier.impl.Course;
 import levy.daniel.application.services.IListeCoursesService;
 
 /**
@@ -75,6 +76,19 @@ public class ListeCoursesService implements IListeCoursesService {
 	public List<Course> rechercherCourses() {
 		return this.dao.rechercherCourses();
 	} // Fin de rechercherCourses()._______________________________________
+
+
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@Transactional
+	public ICourse createCourse(
+			final String pLibelle, final String pQuantite) {
+		// TODO Auto-generated method stub
+		return null;
+	} // Fin de createCourse(...)._________________________________________
 	
 
 
