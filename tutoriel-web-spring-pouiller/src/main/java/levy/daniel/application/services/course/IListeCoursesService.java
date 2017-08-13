@@ -1,4 +1,4 @@
-package levy.daniel.application.services;
+package levy.daniel.application.services.course;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public interface IListeCoursesService {
 	 * Recherche toutes les courses en base.<br/>
 	 * <br/>
 	 *
-	 * @return : List&lt;Course&gt; : Liste des courses en base.<br/>
+	 * @return : List&lt;ICourse&gt; : Liste des courses en base.<br/>
 	 */
 	List<Course> rechercherCourses();
 	

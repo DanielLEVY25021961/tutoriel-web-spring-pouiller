@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import levy.daniel.application.metier.course.impl.Course;
-import levy.daniel.application.services.IListeCoursesService;
+import levy.daniel.application.services.course.IListeCoursesService;
 import levy.daniel.application.vues.controllers.formulaires.CreateCourseFormController;
 
 /**
@@ -111,7 +111,8 @@ public class CreateListeCoursesController {
 	 * @return :  :  .<br/>
 	 */
 	@RequestMapping(value="/afficherCreationListeCourses", method = RequestMethod.GET)
-    public String afficher(final ModelMap pModel) {
+    public String afficher(
+    		final ModelMap pModel) {
 		
 		/* Récupération de la liste des courses présentes en base 
 		 * auprès du Service. */

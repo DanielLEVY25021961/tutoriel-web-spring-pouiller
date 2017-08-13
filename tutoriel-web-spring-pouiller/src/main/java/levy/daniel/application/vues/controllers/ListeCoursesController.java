@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import levy.daniel.application.metier.course.impl.Course;
-import levy.daniel.application.services.IListeCoursesService;
+import levy.daniel.application.services.course.IListeCoursesService;
 
 /**
  * class ListeCoursesController :<br/>
@@ -82,13 +82,13 @@ public class ListeCoursesController {
     		final ModelMap pModel) {
 		
 		/* Récupération de la liste des courses auprès du Service. */
-        final List<Course> lListeCourses 
+        final List<Course> listeCourses 
         	= this.listeCoursesService.rechercherCourses();
         
         /* la valeur lListeCourses est associée 
          * à l'attribut « listeCourses » 
 		 * grâce à la méthode « addAttribute » de « ModelMap ». */
-        pModel.addAttribute("listeCourses", lListeCourses);
+        pModel.addAttribute("listeCourses", listeCourses);
         
         /* le contrôleur redirige vers la ressource 
          * « /vues/listeCourses.jsp ». */

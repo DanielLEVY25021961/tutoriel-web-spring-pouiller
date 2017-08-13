@@ -1,4 +1,4 @@
-package levy.daniel.application.services.impl;
+package levy.daniel.application.services.course.impl;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import levy.daniel.application.dao.course.IListeCoursesDAO;
 import levy.daniel.application.metier.course.ICourse;
 import levy.daniel.application.metier.course.impl.Course;
-import levy.daniel.application.services.IListeCoursesService;
+import levy.daniel.application.services.course.IListeCoursesService;
 
 /**
  * class ListeCoursesService :<br/>

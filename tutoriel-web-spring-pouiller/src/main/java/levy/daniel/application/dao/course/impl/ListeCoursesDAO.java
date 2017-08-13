@@ -79,22 +79,22 @@ public class ListeCoursesDAO implements IListeCoursesDAO {
 	public List<Course> rechercherCourses() {
 
 		/* Récupération d'un CriteriaBuilder auprès de entityManager. */
-		final CriteriaBuilder lCriteriaBuilder 
+		final CriteriaBuilder criteriaBuilder 
 			= this.entityManager.getCriteriaBuilder();
 
 		/* Création d'une requête sur la table course. */
-		final CriteriaQuery<Course> lCriteriaQuery 
-			= lCriteriaBuilder.createQuery(Course.class);
+		final CriteriaQuery<Course> criteriaQuery 
+			= criteriaBuilder.createQuery(Course.class);
 		
-		final Root<Course> lRoot 
-			= lCriteriaQuery.from(Course.class);
+		final Root<Course> root 
+			= criteriaQuery.from(Course.class);
 		
-		lCriteriaQuery.select(lRoot);
+		criteriaQuery.select(root);
 		
-		final TypedQuery<Course> lTypedQuery 
-			= this.entityManager.createQuery(lCriteriaQuery);
+		final TypedQuery<Course> typedQuery 
+			= this.entityManager.createQuery(criteriaQuery);
 
-		return lTypedQuery.getResultList();
+		return typedQuery.getResultList();
 		
 	} // Fin de rechercherCourses()._______________________________________
 

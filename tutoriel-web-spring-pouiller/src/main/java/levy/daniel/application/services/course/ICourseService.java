@@ -1,9 +1,8 @@
-package levy.daniel.application.services;
+package levy.daniel.application.services.course;
 
 import java.util.List;
 
 import levy.daniel.application.metier.course.ICourse;
-import levy.daniel.application.metier.course.impl.Course;
 
 /**
  * class ICourseService :<br/>
@@ -30,13 +29,13 @@ public interface ICourseService {
 	
 	/**
 	 * method create(
-	 * Course pCourse) :<br/>
+	 * ICourse pCourse) :<br/>
 	 * Crée la Course pCourse en base.<br/>
 	 * <br/>
 	 *
-	 * @param pCourse : Course.<br/>
+	 * @param pCourse : ICourse.<br/>
 	 * 
-	 * @return : Course : La Course créée en base.<br/>
+	 * @return : ICourse : La Course créée en base.<br/>
 	 */
 	ICourse create(ICourse pCourse);
 	
@@ -44,13 +43,13 @@ public interface ICourseService {
 	
 	/**
 	 * method retrieve(
-	 * Course pCourse) :<br/>
+	 * ICourse pCourse) :<br/>
 	 * Recherche une Course en base.<br/>
 	 * <br/>
 	 *
-	 * @param pCourse : Course.<br/>
+	 * @param pCourse : ICourse.<br/>
 	 * 
-	 * @return : Course : La Course existante en base.<br/>
+	 * @return : ICourse : La Course existante en base.<br/>
 	 */
 	ICourse retrieve(ICourse pCourse);
 	
@@ -58,13 +57,13 @@ public interface ICourseService {
 	
 	/**
 	 * method update(
-	 * Course pCourse) :<br/>
+	 * ICourse pCourse) :<br/>
 	 * Modifie une Course existante en base.<br/>
 	 * <br/>
 	 *
-	 * @param pCourse : Course.<br/>
+	 * @param pCourse : ICourse.<br/>
 	 * 
-	 * @return : Course : La Course modifiée en base.<br/>
+	 * @return : ICourse : La Course modifiée en base.<br/>
 	 */
 	ICourse update(ICourse pCourse);
 	
@@ -72,11 +71,11 @@ public interface ICourseService {
 	
 	/**
 	 * method delete(
-	 * Course pCourse) :<br/>
+	 * ICourse pCourse) :<br/>
 	 * Détruit une Course existante en base.<br/>
 	 * <br/>
 	 *
-	 * @param pCourse : Course.<br/>
+	 * @param pCourse : ICourse.<br/>
 	 * 
 	 * @return : boolean : true si la course a été détruite.<br/>
 	 */
@@ -89,10 +88,10 @@ public interface ICourseService {
 	 * Retourne la liste de toutes les courses présentes en base.<br/>
 	 * <br/>
 	 *
-	 * @return : List&lt;Course&gt; : 
+	 * @return : List&lt;ICourse&gt; : 
 	 * liste de toutes les courses présentes en base.<br/>
 	 */
-	List<Course> getList();
+	List<ICourse> getList();
 	
 
 
