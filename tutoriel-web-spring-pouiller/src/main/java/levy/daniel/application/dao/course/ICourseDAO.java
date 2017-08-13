@@ -2,8 +2,8 @@ package levy.daniel.application.dao.course;
 
 import java.util.List;
 
-import levy.daniel.application.metier.ICourse;
-import levy.daniel.application.metier.impl.Course;
+import levy.daniel.application.dao.IDAO;
+import levy.daniel.application.metier.course.ICourse;
 
 /**
  * class ICourseDAO :<br/>
@@ -25,62 +25,66 @@ import levy.daniel.application.metier.impl.Course;
  * @since 11 août 2017
  *
  */
-public interface ICourseDAO {
+public interface ICourseDAO extends IDAO<ICourse> {
 	
 	
 	/**
 	 * method create(
-	 * Course pCourse) :<br/>
+	 * ICourse pCourse) :<br/>
 	 * Crée la Course pCourse en base.<br/>
 	 * <br/>
 	 *
-	 * @param pCourse : Course.<br/>
+	 * @param pCourse : ICourse.<br/>
 	 * 
-	 * @return : Course : La Course créée en base.<br/>
+	 * @return : ICourse : La Course créée en base.<br/>
 	 */
+	@Override
 	ICourse create(ICourse pCourse);
 	
 	
 	
 	/**
 	 * method retrieve(
-	 * Course pCourse) :<br/>
+	 * ICourse pCourse) :<br/>
 	 * Recherche une Course en base.<br/>
 	 * <br/>
 	 *
-	 * @param pCourse : Course.<br/>
+	 * @param pCourse : ICourse.<br/>
 	 * 
-	 * @return : Course : La Course existante en base.<br/>
+	 * @return : ICourse : La Course existante en base.<br/>
 	 */
+	@Override
 	ICourse retrieve(ICourse pCourse);
 	
 	
 	
 	/**
 	 * method update(
-	 * Course pCourse) :<br/>
+	 * ICourse pCourse) :<br/>
 	 * Modifie une Course existante en base.<br/>
 	 * <br/>
 	 *
-	 * @param pCourse : Course.<br/>
+	 * @param pCourse : ICourse.<br/>
 	 * 
-	 * @return : Course : La Course modifiée en base.<br/>
+	 * @return : ICourse : La Course modifiée en base.<br/>
 	 */
-	ICourse update(Course pCourse);
+	@Override
+	ICourse update(ICourse pCourse);
 	
 	
 	
 	/**
 	 * method delete(
-	 * Course pCourse) :<br/>
+	 * ICourse pCourse) :<br/>
 	 * Détruit une Course existante en base.<br/>
 	 * <br/>
 	 *
-	 * @param pCourse : Course.<br/>
+	 * @param pCourse : ICourse.<br/>
 	 * 
 	 * @return : boolean : true si la course a été détruite.<br/>
 	 */
-	boolean delete(Course pCourse);
+	@Override
+	boolean delete(ICourse pCourse);
 	
 	
 	
@@ -89,10 +93,11 @@ public interface ICourseDAO {
 	 * Retourne la liste de toutes les courses présentes en base.<br/>
 	 * <br/>
 	 *
-	 * @return : List&lt;Course&gt; : 
+	 * @return : List&lt;ICourse&gt; : 
 	 * liste de toutes les courses présentes en base.<br/>
 	 */
-	List<Course> getList();
+	@Override
+	List<ICourse> getList();
 	
 	
 

@@ -11,8 +11,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Repository;
 
 import levy.daniel.application.dao.course.ICourseDAO;
-import levy.daniel.application.metier.ICourse;
-import levy.daniel.application.metier.impl.Course;
+import levy.daniel.application.metier.course.ICourse;
+import levy.daniel.application.metier.course.impl.Course;
 
 /**
  * class CourseDao :<br/>
@@ -120,7 +120,7 @@ public class CourseDao implements ICourseDAO {
 	 */
 	@Override
 	public ICourse update(
-			final Course pCourse) {
+			final ICourse pCourse) {
 		this.entityManager.merge(pCourse);
 		return pCourse;
 	} // Fin de update(...)._______________________________________________
@@ -132,7 +132,7 @@ public class CourseDao implements ICourseDAO {
 	 */
 	@Override
 	public boolean delete(
-			final Course pCourse) {
+			final ICourse pCourse) {
 		this.entityManager.merge(pCourse);
 		this.entityManager.remove(pCourse);
 		return false;
@@ -144,8 +144,8 @@ public class CourseDao implements ICourseDAO {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<Course> getList() {
-		final List<Course> courses = this.entityManager.createQuery("select c from Course c").getResultList();
+	public List<ICourse> getList() {
+		final List<ICourse> courses = this.entityManager.createQuery("select c from Course c").getResultList();
 		return courses;
 	}
 

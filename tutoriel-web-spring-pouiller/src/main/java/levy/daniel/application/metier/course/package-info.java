@@ -15,7 +15,7 @@
  *
  * @author dan Lévy
  * @version 1.0
- * @since 12 août 2017
+ * @since 13 août 2017
  *
  */
-package levy.daniel.application.metier.impl;
+package levy.daniel.application.metier.course;

@@ -14,8 +14,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Repository;
 
 import levy.daniel.application.dao.course.IListeCoursesDAO;
-import levy.daniel.application.metier.ICourse;
-import levy.daniel.application.metier.impl.Course;
+import levy.daniel.application.metier.course.ICourse;
+import levy.daniel.application.metier.course.impl.Course;
 
 /**
  * class ListeCoursesDAO :<br/>

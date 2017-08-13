@@ -1,4 +1,4 @@
-package levy.daniel.application.metier;
+package levy.daniel.application.metier.course;
 
 /**
  * class ICourse :<br/>

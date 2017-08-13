@@ -1,4 +1,4 @@
-package levy.daniel.application.metier.impl;
+package levy.daniel.application.metier.course.impl;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import levy.daniel.application.metier.ICourse;
+import levy.daniel.application.metier.course.ICourse;
 
 
 /**

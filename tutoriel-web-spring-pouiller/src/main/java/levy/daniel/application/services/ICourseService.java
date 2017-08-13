@@ -2,8 +2,8 @@ package levy.daniel.application.services;
 
 import java.util.List;
 
-import levy.daniel.application.metier.ICourse;
-import levy.daniel.application.metier.impl.Course;
+import levy.daniel.application.metier.course.ICourse;
+import levy.daniel.application.metier.course.impl.Course;
 
 /**
  * class ICourseService :<br/>
