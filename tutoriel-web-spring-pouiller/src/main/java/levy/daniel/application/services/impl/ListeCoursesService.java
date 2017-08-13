@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import levy.daniel.application.dao.IListeCoursesDAO;
+import levy.daniel.application.dao.course.IListeCoursesDAO;
 import levy.daniel.application.metier.ICourse;
 import levy.daniel.application.metier.impl.Course;
 import levy.daniel.application.services.IListeCoursesService;

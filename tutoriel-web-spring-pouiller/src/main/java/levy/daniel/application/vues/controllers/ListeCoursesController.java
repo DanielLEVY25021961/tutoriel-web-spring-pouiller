@@ -41,7 +41,7 @@ public class ListeCoursesController {
 
 	/**
 	 * listeCoursesService : IListeCoursesService :<br/>
-	 * Service listant les courses présentes en base.<br/>
+	 * Service listant toutes les courses présentes en base.<br/>
 	 */
 	@Autowired
 	private transient IListeCoursesService listeCoursesService;

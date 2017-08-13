@@ -47,7 +47,7 @@ public class CreateCourseFormController {
 	 */
 	@NotEmpty
 	@Pattern(regexp = "\\d")
-	private Integer quantite;
+	private String quantite;
 	
 
 	/**
@@ -110,9 +110,9 @@ public class CreateCourseFormController {
 	 * Doit être non null, numérique et positif.<br/>
 	 * <br/>
 	 *
-	 * @return quantite : Integer.<br/>
+	 * @return quantite : String.<br/>
 	 */
-	public final Integer getQuantite() {
+	public final String getQuantite() {
 		return this.quantite;
 	} // Fin de getQuantite()._____________________________________________
 
@@ -120,18 +120,18 @@ public class CreateCourseFormController {
 	
 	/**
 	* method setQuantite(
-	* Integer pQuantite) :<br/>
+	* String pQuantite) :<br/>
 	* Setter de la Quantité de produit acheté provenant de la vue.<br/>
 	* Doit être non null, numérique et positif.<br/>
 	* <br/>
 	*
-	* @param pQuantite : Integer : valeur à passer à quantite.<br/>
+	* @param pQuantite : String : valeur à passer à quantite.<br/>
 	*/
 	public final void setQuantite(
-			final Integer pQuantite) {
+			final String pQuantite) {
 		this.quantite = pQuantite;
 	} // Fin de setQuantite(
-	// Integer pQuantite)._________________________________________________
+	// String pQuantite).__________________________________________________
 	
 	
 		

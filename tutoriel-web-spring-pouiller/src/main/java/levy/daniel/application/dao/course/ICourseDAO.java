@@ -1,4 +1,4 @@
-package levy.daniel.application.dao;
+package levy.daniel.application.dao.course;
 
 import java.util.List;
 
