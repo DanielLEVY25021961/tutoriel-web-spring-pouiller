@@ -74,12 +74,36 @@
     <!-- DECLARATION DE LA DATASOURCE DIRECTE (sans passer par JNDI) 	-->
     <!-- Utilisation du bean DriverManagerDataSource					-->
     <!-- ============================================================== -->
+    
+    <!-- ============================================================== -->
+    <!--                                HSQLDB                          -->
+    <!-- ============================================================== -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
        <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" />
        <property name="url" value="jdbc:hsqldb:file:C:\Users\dan\git\tutoriel-web-spring-pouiller\.git\tutoriel-web-spring-pouiller\data\base-tutoriel-web-spring-pouiller" />
        <property name="username" value="sa" />
        <property name="password" value="" />
     </bean>
+    
+    <!-- ============================================================== -->
+    <!--                             POSTGRESQL                         -->
+    <!-- ============================================================== -->
+<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!--        <property name="driverClassName" value="org.postgresql.Driver" /> -->
+<!--        <property name="url" value="jdbc:postgresql://localhost/base-tutoriel-web-spring-pouiller" /> -->
+<!--        <property name="username" value="postgres" /> -->
+<!--        <property name="password" value="postgres" /> -->
+<!--     </bean> -->
+    
+    <!-- ============================================================== -->
+    <!--                             MYSQL                              -->
+    <!-- ============================================================== -->
+<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+<!--        <property name="url" value="jdbc:mysql://localhost/base-tutoriel-web-spring-pouiller" /> -->
+<!--        <property name="username" value="root" /> -->
+<!--        <property name="password" value="" /> -->
+<!--     </bean> -->
 
 
 

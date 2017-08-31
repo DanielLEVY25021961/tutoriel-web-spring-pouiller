@@ -22,7 +22,7 @@
 	<!-- ========================================================== -->
 	<!--                       PACKAGING                            -->
 	<!-- Préciser ici la forme du livrable                          -->
-	<!-- que le module parent Maven doit produire (war, jar,        -->
+	<!-- que le projet Maven doit produire (war, jar,               -->
 	<!--	POM, ...).                                              -->
 	<!-- ========================================================== -->
 	<!-- Résultat du Packaging (forme du livrable). Ici war -->
