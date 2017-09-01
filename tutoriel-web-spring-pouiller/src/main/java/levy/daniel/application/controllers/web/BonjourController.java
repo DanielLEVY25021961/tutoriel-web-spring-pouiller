@@ -2,7 +2,6 @@ package levy.daniel.application.controllers.web;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -79,7 +78,7 @@ public class BonjourController {
 	public String afficherBonjour(
 			final ModelMap pModelMap
 				, @RequestParam(value="personne") final String pPersonne) {
-		
+				
 		/* la valeur pPersonne est associée à l'attribut « personne » 
 		 * grâce à la méthode « addAttribute » de « ModelMap ». */
 		pModelMap.addAttribute("personne", pPersonne);
@@ -95,5 +94,76 @@ public class BonjourController {
 	 // ModelMap pModelMap)._______________________________________________
 	
 	
+	
+	/**
+	 * method enumContient(
+	 * Enumeration&lt;String&gt; pEnum
+	 * , String pString) :<br/>
+	 * <ul>
+	 * <li>détermine si l'Enumération pEnum contient pString.</li>
+	 * <li>retourne true si si l'Enumération pEnum contient pString.</li>
+	 * </ul>
+	 * retourne false si pEnum == null.<br/>
+	 * <br/>
+	 *
+	 * @param pEnum : Enumeration&lt;String&gt;.<br/>
+	 * @param pString : String : chaine à rechercher dans l'enumération.<br/>
+	 * 
+	 * @return : boolean : true si l'Enumération pEnum contient pString.<br/>
+	 */
+//	private boolean enumContient(
+//			final Enumeration<String> pEnum
+//				, final String pString) {
+//		
+//		/* retourne false si pEnum == null. */
+//		if (pEnum == null) {
+//			return false;
+//		}
+//		
+//		while (pEnum.hasMoreElements()) {
+//			final String stringLue = pEnum.nextElement();
+//			if (StringUtils.equalsIgnoreCase(stringLue, pString)) {
+//				return true;
+//			}
+//		}
+//		
+//		return false;
+//		
+//	} // Fin de enumContient(...)._________________________________________
+	
+
+	
+	/**
+	 * method enumSize(
+	 * Enumeration&lt;String&gt; pEnum) :<br/>
+	 * Retourne le nombre d'éléments dans une 
+	 * Enumeration&lt;String&gt; pEnum.<br/>
+	 * <br/>
+	 *
+	 * @param pEnum : Enumeration&lt;String&gt;.<br/>
+	 * 
+	 * @return : Long : nombre d'éléments.<br/>
+	 */
+//	private Long enumSize(
+//			final Enumeration<String> pEnum) {
+//		
+//		/* retourne 0 si pEnum == null. */
+//		if (pEnum == null) {
+//			return 0L;
+//		}
+//		
+//		Long resultat = 0L;
+//		
+//		while (pEnum.hasMoreElements()) {
+//			pEnum.nextElement();
+//			resultat++;
+//		}
+//		
+//		return resultat;
+//		
+//	} // Fin de enumSize(...)._____________________________________________
+
+	
+
 	
 } // FIN DE LA CLASSE BonjourController.-------------------------------------

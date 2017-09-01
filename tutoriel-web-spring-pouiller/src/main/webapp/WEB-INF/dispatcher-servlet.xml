@@ -16,6 +16,21 @@
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 
+	<!-- Informe Spring que l'on utilise les annotations-->
+	<mvc:annotation-driven />
+	
+	<!-- Spécifie la position des ressources statiques par rapport au contexte -->
+	<!-- Accessible directement sans passer par le contrôleur Spring.  -->
+	<!-- ** précise que toutes les ressources statiques 
+	(y compris dans les sous-répertoires sont accessibles-->
+	<mvc:resources location="/static/" mapping="/static/**" />
+	
+	<!-- Equivalent Spring du Welcome File -->
+	<!-- Redirige vers WEB-INF/vues/index.jsp -->
+	<mvc:view-controller path="/" view-name="index"/>
+	
+	
+
 	<!-- ================================================================== -->
 	<!--   BEAN SPRING POUR LECTURE RESOURCEBUNDLE (.properties)            -->
 	<!-- ================================================================== -->
