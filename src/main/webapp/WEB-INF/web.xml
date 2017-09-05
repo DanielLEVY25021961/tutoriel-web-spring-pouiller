@@ -40,7 +40,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>servlet-dispatcher</servlet-name>
-        <url-pattern>/test/*</url-pattern>
+        <url-pattern>/app/*</url-pattern>
     </servlet-mapping>
  
 
