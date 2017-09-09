@@ -202,6 +202,14 @@
 		    <version>5.2.10.Final</version>
 		</dependency>
 		
+		<!-- Joda Time avec Hibernate -->
+		<!-- https://mvnrepository.com/artifact/org.jadira.usertype/usertype.jodatime -->
+		<dependency>
+		    <groupId>org.jadira.usertype</groupId>
+		    <artifactId>usertype.jodatime</artifactId>
+		    <version>2.0.1</version>
+		</dependency>
+		
 		
 		<!-- ====================================================== -->
 		<!--        DEPENDANCES POUR Bases de Données  				-->
@@ -211,9 +219,23 @@
 		<dependency>
 		    <groupId>org.hsqldb</groupId>
 		    <artifactId>hsqldb</artifactId>
-		    <version>2.4.0</version>
-		    
+		    <version>2.4.0</version>		    
 		</dependency>
+		<!-- MySQL -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.7-dmr</version>
+		</dependency>
+		<!-- POSTGRESQL -->
+		<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+		<dependency>
+		    <groupId>postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.1-901-1.jdbc4</version>
+		</dependency>
+		
 		
 	</dependencies>
 

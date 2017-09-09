@@ -50,7 +50,7 @@
 			
 			<!-- ========================================================= -->
 			<!--         STRATEGIE DE CONSERVATION DES TABLES              -->
-			<!-- PASSER EN update pour la PROD.							   -->
+			<!-- PASSER EN validate pour la PROD.						   -->
 			<!-- * none (default) : No action will be performed.           -->
 			<!-- * create-only : Database creation will be generated.      -->
 			<!-- * drop : Database dropping will be generated.             -->
