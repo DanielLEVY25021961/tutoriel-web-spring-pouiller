@@ -157,6 +157,24 @@
 
 
 		<!-- ================================ -->
+		<!--    dépendances pour SPRING       -->
+		<!-- ================================ -->		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <version>4.3.10.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-orm</artifactId>
+		    <version>4.3.10.RELEASE</version>
+		</dependency>
+
+
+
+		<!-- ================================ -->
 		<!--      dépendances pour JPA        -->
 		<!-- ================================ -->		
 		<!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
@@ -177,6 +195,7 @@
 		    <groupId>javax.validation</groupId>
 		    <artifactId>validation-api</artifactId>
 		    <version>2.0.0.Final</version>
+		    <scope>compile</scope>
 		</dependency>
 		
 		<!-- Hibernate-Validator -->
@@ -185,6 +204,7 @@
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-validator</artifactId>
 		    <version>6.0.1.Final</version>
+		    <scope>compile</scope>
 		</dependency>
 		
 		
@@ -208,6 +228,7 @@
 		    <groupId>org.hibernate.javax.persistence</groupId>
 		    <artifactId>hibernate-jpa-2.1-api</artifactId>
 		    <version>1.0.0.Final</version>
+		    <scope>compile</scope>
 		</dependency>
 		
 		<!-- POOL DE CONNEXION c3p0 -->
@@ -216,7 +237,9 @@
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-c3p0</artifactId>
 		    <version>5.2.10.Final</version>
+		    <scope>compile</scope>
 		</dependency>
+
 		
 		
 		<!-- ====================================================== -->
@@ -442,6 +465,13 @@
 							<goals>
 								<goal>compile</goal>
 							</goals>
+							<!-- Garantit l'utilisation dans Eclipse de la 
+							version majeure du JDK 1.8 par défaut 
+							(jdk1.8.144 dans mon Eclipse le 01/09/2017)-->
+							<configuration>
+				                <source>1.8</source>
+				                <target>1.8</target>
+			              	</configuration>
 						</execution>
 						<execution>
 							<id>default-testCompile</id>
@@ -449,6 +479,13 @@
 							<goals>
 								<goal>testCompile</goal>
 							</goals>
+							<!-- Garantit l'utilisation dans Eclipse de la 
+							version majeure du JDK 1.8 par défaut 
+							(jdk1.8.144 dans mon Eclipse le 01/09/2017)-->
+							<configuration>
+				                <source>1.8</source>
+				                <target>1.8</target>
+			              	</configuration>							
 						</execution>
 					</executions>
 					<!-- Garantit l'utilisation dans Eclipse de la 
