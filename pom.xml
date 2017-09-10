@@ -135,45 +135,37 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- ================================== -->
-		<!--      dépendances pour SERVLET      -->
-		<!-- ================================== -->	
-		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+
+		<!-- ================================ -->
+		<!--    dépendances pour Joda Time    -->
+		<!-- ================================ -->		
+		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
 		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>servlet-api</artifactId>
-		    <version>3.0-alpha-1</version>
-		    <scope>provided</scope>
+		    <groupId>joda-time</groupId>
+		    <artifactId>joda-time</artifactId>
+		    <version>2.9.9</version>
+		    <scope>compile</scope>
 		</dependency>
-		
-		<!-- ========================================================== -->
-		<!--           DEPENDANCES POUR SPRING  						-->
-		<!-- ========================================================== -->
-		<!-- SPRING WEB MVC -->
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+		<!-- Joda Time avec Hibernate -->
+		<!-- https://mvnrepository.com/artifact/org.jadira.usertype/usertype.core -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-		</dependency>
-		
-		<!-- SPRING-ORM -->
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-orm</artifactId>
+		    <groupId>org.jadira.usertype</groupId>
+		    <artifactId>usertype.core</artifactId>
+		    <version>6.0.1.GA</version>
+		    <scope>compile</scope>
 		</dependency>
 
 
-		<!-- ========================================================== -->
-		<!--       DEPENDANCES POUR les TAG LIBRARIES  				    -->
-		<!-- ========================================================== -->	
-		<!-- JSTL -->	
-		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
-		<dependency>
-		    <groupId>jstl</groupId>
-		    <artifactId>jstl</artifactId>
-		    <version>1.2</version>
-		</dependency>
+		<!-- ================================ -->
+		<!--      dépendances pour JPA        -->
+		<!-- ================================ -->		
+		<!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
+		<!-- NE PAS METTRE -->
+<!-- 		<dependency> -->
+<!-- 		    <groupId>javax.persistence</groupId> -->
+<!-- 		    <artifactId>persistence-api</artifactId> -->
+<!-- 		    <version>1.0.2</version> -->
+<!-- 		</dependency> -->
 
 
 		<!-- ========================================================== -->
@@ -199,20 +191,31 @@
 		
 		<!-- ====================================================== -->
 		<!--        DEPENDANCES POUR ORM (Hibernate)  				-->
-		<!-- ====================================================== -->		
+		<!-- ====================================================== -->	
+		<!-- ESSENTIEL -->	
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<!-- Remplace hibernate-entitymanager, persistence-api, ... -->
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-core</artifactId>
 		    <version>5.2.10.Final</version>
+		    <scope>compile</scope>
 		</dependency>
 		
-		<!-- Joda Time avec Hibernate -->
-		<!-- https://mvnrepository.com/artifact/org.jadira.usertype/usertype.jodatime -->
+		<!-- LIEN JPA - HIBERNATE -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
 		<dependency>
-		    <groupId>org.jadira.usertype</groupId>
-		    <artifactId>usertype.jodatime</artifactId>
-		    <version>2.0.1</version>
+		    <groupId>org.hibernate.javax.persistence</groupId>
+		    <artifactId>hibernate-jpa-2.1-api</artifactId>
+		    <version>1.0.0.Final</version>
+		</dependency>
+		
+		<!-- POOL DE CONNEXION c3p0 -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-c3p0</artifactId>
+		    <version>5.2.10.Final</version>
 		</dependency>
 		
 		
@@ -224,7 +227,8 @@
 		<dependency>
 		    <groupId>org.hsqldb</groupId>
 		    <artifactId>hsqldb</artifactId>
-		    <version>2.4.0</version>		    
+		    <version>2.4.0</version>
+		    <scope>compile</scope>		    
 		</dependency>
 		<!-- MySQL -->
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -232,6 +236,7 @@
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>8.0.7-dmr</version>
+		    <scope>compile</scope>
 		</dependency>
 		<!-- POSTGRESQL -->
 		<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
@@ -239,26 +244,27 @@
 		    <groupId>postgresql</groupId>
 		    <artifactId>postgresql</artifactId>
 		    <version>9.1-901-1.jdbc4</version>
+		    <scope>compile</scope>
 		</dependency>
-		
-		
+				
 	</dependencies>
-
+	
+	
 				<!-- ================================== -->
 				<!--       REPOSITORIES				    -->
 				<!-- ================================== -->	
 			<!-- Précise la localisation des dépôts Maven -->
-	 <repositories>
-    <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>central</id>
-      <name>Central Repository</name>
-      <url>https://repo.maven.apache.org/maven2</url>
-    </repository>
-  </repositories>
-
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+		</repository>
+	</repositories>
+	
   
   				<!-- ================================== -->
 				<!--       PLUGIN REPOSITORIES			-->
@@ -278,7 +284,7 @@
     </pluginRepository>
   </pluginRepositories>
   
-  
+
   				<!-- ================================== -->
 				<!--       			BUILD				-->
 				<!-- ================================== -->	
@@ -288,6 +294,10 @@
 				compatibilité avec LINUX -->
   
   <build>
+
+					<!-- ====================== -->
+					<!-- CHEMINS ET REPERTOIRES -->
+					<!-- ====================== -->
 
 	<!-- CREER A LA MAIN SI MANQUANT -->
 	<!-- Répertoire des src Java. -->
@@ -314,7 +324,9 @@
 	<!-- REPERTOIRE DES BUILDS -->
 	<directory>target</directory>
 
-	<!-- ROOT CONTEXT -->
+					<!-- =================== -->
+					<!-- NOM DU ROOT CONTEXT -->
+					<!-- =================== -->
 	<finalName>tutoriel-web-spring-pouiller</finalName>
 
 
