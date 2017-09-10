@@ -130,6 +130,25 @@
 			<scope>test</scope>
 		</dependency>
 
+
+		<!-- ================================ -->
+		<!--    dépendances pour Joda Time    -->
+		<!-- ================================ -->		
+		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+		<dependency>
+		    <groupId>joda-time</groupId>
+		    <artifactId>joda-time</artifactId>
+		    <version>2.9.9</version>
+		</dependency>
+		<!-- Joda Time avec Hibernate -->
+		<!-- https://mvnrepository.com/artifact/org.jadira.usertype/usertype.core -->
+		<dependency>
+		    <groupId>org.jadira.usertype</groupId>
+		    <artifactId>usertype.core</artifactId>
+		    <version>6.0.1.GA</version>
+		</dependency>
+		
+
 		<!-- ================================== -->
 		<!--      dépendances pour SERVLET      -->
 		<!-- ================================== -->	
@@ -201,16 +220,7 @@
 		    <artifactId>hibernate-core</artifactId>
 		    <version>5.2.10.Final</version>
 		</dependency>
-		
-		<!-- Joda Time avec Hibernate -->
-		<!-- https://mvnrepository.com/artifact/org.jadira.usertype/usertype.jodatime -->
-		<dependency>
-		    <groupId>org.jadira.usertype</groupId>
-		    <artifactId>usertype.jodatime</artifactId>
-		    <version>2.0.1</version>
-		</dependency>
-		
-		
+				
 		<!-- ====================================================== -->
 		<!--        DEPENDANCES POUR Bases de Données  				-->
 		<!-- ====================================================== -->
@@ -243,16 +253,16 @@
 				<!--       REPOSITORIES				    -->
 				<!-- ================================== -->	
 			<!-- Précise la localisation des dépôts Maven -->
-	 <repositories>
-    <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>central</id>
-      <name>Central Repository</name>
-      <url>https://repo.maven.apache.org/maven2</url>
-    </repository>
-  </repositories>
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+		</repository>
+	</repositories>
 
   
   				<!-- ================================== -->
@@ -309,7 +319,9 @@
 	<!-- REPERTOIRE DES BUILDS -->
 	<directory>target</directory>
 
-	<!-- ROOT CONTEXT -->
+					<!-- =================== -->
+					<!-- NOM DU ROOT CONTEXT -->
+					<!-- =================== -->
 	<finalName>tutoriel-web-spring-pouiller</finalName>
 
 
