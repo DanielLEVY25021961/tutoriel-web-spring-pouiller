@@ -42,6 +42,13 @@ import levy.daniel.application.model.services.course.IListeCoursesService;
 public class CreateListeCoursesController {
 
 	// ************************ATTRIBUTS************************************/
+	
+	/**
+	 * CREATION : String :<br/>
+	 * "creation".<br/>
+	 */
+	public static final String CREATION = "creation";
+	
 
 	/**
 	 * listeCoursesService : IListeCoursesService :<br/>
@@ -87,7 +94,7 @@ public class CreateListeCoursesController {
 	 */
 	@RequestMapping(value="/creerCreationListeCourses", method = RequestMethod.POST)
     public String creer(
-    	@Valid @ModelAttribute(value="creation") 
+    	@Valid @ModelAttribute(value=CREATION) 
     	final CreateCourseFormController pCreation
             , final BindingResult pBindingResult
             	, final ModelMap pModel) {
@@ -124,12 +131,15 @@ public class CreateListeCoursesController {
         pModel.addAttribute("listeCourses", listeCoursesEnBase);
         
         
-        if (pModel.get("creation") == null) {
+        if (pModel.get(CREATION) == null) {
             pModel.addAttribute(
-            		"creation", new CreateCourseFormController());
+            		CREATION, new CreateCourseFormController());
         }
         
-        return "creation";
-    }
+        return CREATION;
+        
+    } // Fin de afficher(....).____________________________________________
+	
+	
 	
 } // FIN DE LA CLASSE CreateListeCoursesController.--------------------------
