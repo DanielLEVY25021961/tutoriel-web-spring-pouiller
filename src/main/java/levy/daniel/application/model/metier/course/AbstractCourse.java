@@ -37,7 +37,7 @@ import levy.daniel.application.model.metier.course.impl.Course;
  *
  */
 @Entity
-@Table(name="LISTECOURSES")
+@Table(name="ABSTRACT_COURSES", schema="PUBLIC")
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class AbstractCourse implements ICourse, Serializable {
 
@@ -56,7 +56,7 @@ public abstract class AbstractCourse implements ICourse, Serializable {
 	 */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="IDOBJET")
+	@Column(name="ID_COURSE")
 	protected Integer id;
 	
 	

@@ -1,6 +1,8 @@
 package levy.daniel.application.model.metier.course.impl;
 
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -37,7 +39,8 @@ import levy.daniel.application.model.metier.course.AbstractCourse;
  *
  */
 @Entity
-//@Table(name="LISTECOURSES_CONCRETE_1")
+@Table(name="COURSES", schema="PUBLIC")
+@PrimaryKeyJoinColumn(name="ID_COURSE")
 public class Course extends AbstractCourse {
 
 	// ************************ATTRIBUTS************************************/
