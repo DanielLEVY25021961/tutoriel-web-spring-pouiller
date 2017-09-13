@@ -44,7 +44,6 @@ public class BonjourController {
 	 * LOG : Log : 
 	 * Logger pour Log4j (utilisant commons-logging).
 	 */
-	@SuppressWarnings("unused")
 	private static final Log LOG = LogFactory.getLog(BonjourController.class);
 
 	// *************************METHODES************************************/
