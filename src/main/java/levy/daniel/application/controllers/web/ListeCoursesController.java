@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import levy.daniel.application.model.metier.course.AbstractCourse;
-import levy.daniel.application.model.services.course.IListeCoursesService;
+import levy.daniel.application.model.services.listecourses.IListeCoursesService;
 
 /**
  * class ListeCoursesController :<br/>

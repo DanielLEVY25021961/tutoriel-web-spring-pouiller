@@ -1,4 +1,4 @@
-package levy.daniel.application.model.dao.course.impl;
+package levy.daniel.application.model.dao.listecourses.impl;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Repository;
 
-import levy.daniel.application.model.dao.course.IListeCoursesDAO;
+import levy.daniel.application.model.dao.listecourses.IListeCoursesDAO;
 import levy.daniel.application.model.metier.course.AbstractCourse;
 import levy.daniel.application.model.metier.course.ICourse;
 

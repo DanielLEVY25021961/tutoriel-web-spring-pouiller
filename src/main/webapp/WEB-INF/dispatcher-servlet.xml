@@ -30,31 +30,13 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-	<!-- Informe Spring que l'on utilise les annotations-->
+	<!-- ===================================================================-->
+    <!--    ACTIVATION CONFIGURATION ANNOTATIONS VALIDATION FORMULAIRE   	-->
+	<!-- ================================================================== -->
+    <!-- active la config par annotations des validations de formulaire	 	-->
+    <!-- par Spring.													 	-->
+	<!-- Informe Spring que l'on utilise les annotations					-->
 	<mvc:annotation-driven />
-
-
-	<!-- Spécifie la position des ressources statiques par rapport au contexte -->
-	<!-- Accessible directement sans passer par le contrôleur Spring.  -->
-	<!-- ** précise que toutes les ressources statiques 
-	(y compris dans les sous-répertoires sont accessibles-->
-	<mvc:resources location="/static/" mapping="/static/**" />
-	
-	<!-- Equivalent Spring du Welcome File -->
-	<!-- Redirige vers WEB-INF/vues/index.jsp -->
-	<mvc:view-controller path="/" view-name="index"/>
-	
-	
-
-	<!-- ================================================================== -->
-	<!--   BEAN SPRING POUR LECTURE RESOURCEBUNDLE (.properties)            -->
-	<!-- ================================================================== -->
-	<!-- bean messageSource de classe ReloadableResourceBundleMessageSource -->
-	<bean id="messageSource"
-		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basename" value="classpath:messages" />
-		<property name="defaultEncoding" value="UTF-8" />
-	</bean>
 
 
 	<!-- ================================================================== -->
@@ -67,9 +49,10 @@
 	<!-- ================================================================== -->
 	<!--                 LOCALISATION DES VUES SPRING                       -->
 	<!-- ================================================================== -->	
-	<!-- déclaration du bean « InternalResourceViewResolver »  -->
-	<!-- Indique où chercher les ressources (jsp, ...) sous le contexte webapp -->
-	<!-- ici dans le dossier « /WEB-INF/vues/ avec l'extension « .jsp » -->
+	<!-- déclaration du bean « InternalResourceViewResolver ». 				-->
+	<!-- Indique où chercher les ressources (jsp, ...)  					-->
+	<!-- contrôlées par l'appli sous le contexte webapp.					-->
+	<!-- ici dans le dossier « /WEB-INF/vues/ avec l'extension « .jsp » 	-->
 	<bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
@@ -80,7 +63,23 @@
         </property>
     </bean>
 
-    
+
+	<!-- ===================================================================-->
+    <!--    RESSOURCES STATIQUES ET WELCOME-FILES						   	-->
+	<!-- ================================================================== -->
+	<!-- Spécifie la position des ressources statiques 						-->
+	<!-- par rapport au contexte. 											-->
+	<!-- Répertoire Accessible directement sans passer par le contrôleur 	-->
+	<!--Spring.  															-->
+	<!-- ** précise que toutes les ressources statiques sous static 		-->
+	<!-- (y compris dans les sous-répertoires) sont accessibles				-->
+	<mvc:resources location="/static/" mapping="/static/**" />
+	
+	<!-- Equivalent Spring du Welcome File -->
+	<!-- Redirige vers WEB-INF/vues/index.jsp -->
+	<mvc:view-controller path="/" view-name="index"/>
+	
+	    
  	<!-- ================================================================== -->
 	<!--                 LIEN SPRING - ORM - BASE DONNEES                   -->
 	<!-- ================================================================== -->	
@@ -91,15 +90,55 @@
 
 		<!-- ============================================================== -->
 		<!--             DECLARATION DE LA DATASOURCE VIA JNDI              -->
-		<!-- Utilisation du bean  JndiObjectFactoryBean.                    -->
+		<!-- Utilisation du bean SPRING JndiObjectFactoryBean.              -->
 		<!-- ============================================================== -->
-		<!-- « JndiObjectFactoryBean » permet de déclarer l'utilisation     -->
-		<!-- de la ressource JDBC (Base de Données) au moyen d'un annuaire JNDI. --> 
-<!--     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
-<!--     <property name="jndiName" value="java:comp/env/jdbc/dsAppliTutoWebSpringPouiller" /> -->
-<!--     </bean> -->
+		<!-- Le bean « JndiObjectFactoryBean » permet de déclarer           -->
+		<!-- l'utilisation de la ressource JDBC (Base de Données) déclarée  -->
+		<!-- dans le web.xml de l'appli et le context.xml de TOMCAT			-->
+		<!--  au moyen d'un annuaire JNDI. 									--> 
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+    	<property name="jndiName" value="java:comp/env/jdbc/dsAppliTutoWebSpringPouiller" />
+    </bean>
+
+
+	<!-- ================================================================== -->
+	<!--             DECLARATION DE ENTITYMANAGERFACTORY              		-->
+	<!-- Utilisation du bean SPRING LocalContainerEntityManagerFactoryBean. -->
+	<!-- ================================================================== -->
+	<!-- Le bean « LocalContainerEntityManagerFactoryBean » utilise			--> 
+	<!-- la ressource JDBC id="dataSource" et le fichier 					--> 
+	<!-- « persistence.xml » pour aboutir 									-->
+	<!--  à la création du « EntityManager » qui est utilisé 				-->
+	<!--  par la couche DAO.												-->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+
+	<!-- ================================================================== -->
+	<!--                GESTION DES TRANSACTIONS                       		-->
+	<!-- ================================================================== -->
+	<!--  (encapsulations des appels à la base dans une transaction).  		-->
+	<!-- Le bean « JpaTransactionManager » permet d'instancier  			-->
+	<!-- le gestionnaire de transaction et de lui associer 					-->
+	<!-- la fabrique de « EntityManager ». 									-->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+
+	<!-- ================================================================== -->
+	<!--   BEAN SPRING POUR LECTURE RESOURCEBUNDLE (.properties)            -->
+	<!-- Gestion des ResourceBundles par Spring.						    -->
+	<!-- ================================================================== -->
+	<!-- bean messageSource de classe ReloadableResourceBundleMessageSource -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
  
-    
     <!-- ============================================================== -->
     <!-- DECLARATION DE LA DATASOURCE DIRECTE (sans passer par JNDI) 	-->
     <!-- Utilisation du bean DriverManagerDataSource					-->
@@ -108,12 +147,12 @@
     <!-- ============================================================== -->
     <!--                                HSQLDB                          -->
     <!-- ============================================================== -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-       <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" />
-       <property name="url" value="jdbc:hsqldb:file:C:\Users\dan\git\tutoriel-web-spring-pouiller\.git\tutoriel-web-spring-pouiller\data\base-tutoriel-web-spring-pouiller" />
-       <property name="username" value="sa" />
-       <property name="password" value="" />
-    </bean>
+<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!--        <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" /> -->
+<!--        <property name="url" value="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" /> -->
+<!--        <property name="username" value="sa" /> -->
+<!--        <property name="password" value="" /> -->
+<!--     </bean> -->
     
     <!-- ============================================================== -->
     <!--                             POSTGRESQL                         -->
@@ -135,32 +174,6 @@
 <!--        <property name="password" value="" /> -->
 <!--     </bean> -->
 
-
-
-	<!-- « LocalContainerEntityManagerFactoryBean » utilise la ressource JDBC --> 
-	<!-- et le fichier « persistence.xml » pour aboutir à la création -->
-	<!-- du « EntityManager » qui est utilisé dans la DAO -->
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
-
-
-	<!-- ============================================================= -->
-	<!--                GESTION DES TRANSACTIONS                       -->
-	<!-- ============================================================= -->
-	<!--  (encapsulations des appels à la base dans une transaction).  -->
-	<!-- « JpaTransactionManager » permet d'instancier le gestionnaire -->
-	<!-- de transaction et lui associer la fabrique de « EntityManager ».  -->
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
-    </bean>
-
-
-	<!-- =============================================================== -->
-    <!--    ACTIVATION CONFIGURATION ANNOTATIONS VALIDATION FORMULAIRE   -->
-	<!-- =============================================================== -->
-    <!-- active la config par annotations des validations de formulaire. -->
-    <mvc:annotation-driven />
 	
 </beans>
 

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import levy.daniel.application.controllers.web.formulaires.CreateCourseFormController;
 import levy.daniel.application.model.metier.course.AbstractCourse;
-import levy.daniel.application.model.services.course.IListeCoursesService;
+import levy.daniel.application.model.services.listecourses.IListeCoursesService;
 
 /**
  * class CreateListeCoursesController :<br/>

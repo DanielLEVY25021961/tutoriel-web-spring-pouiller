@@ -61,17 +61,17 @@
  		<!-- ========================================================= -->
 		<!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
 		<!-- ========================================================= -->
-<!-- 		<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/tuto_fragkouli" /> -->
+<!-- 		<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/xxxx" /> -->
     		
 		 <!-- ========================================================= -->
 		 <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
 		 <!-- ========================================================= -->   	
-<!-- 		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/xxx" /> -->
+<!-- 		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/xxxx" /> -->
 		
 		<!-- ========================================================= -->
 		<!--                     hsqldb 2.4.0                          -->
 		<!-- ========================================================= -->	
-		<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:hsql://localhost/tutowebspringpouiller" />
+		<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" />
 
     	
 						<!-- ******************* -->
@@ -94,7 +94,7 @@
 		<!--                     hsqldb 2.4.0                          -->
 		<!-- ========================================================= -->	
     	<property name="javax.persistence.jdbc.user" value="sa" />
-    	<property name="javax.persistence.jdbc.password" value="sa" />
+    	<property name="javax.persistence.jdbc.password" value="" />
     	    	
 
 

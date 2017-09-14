@@ -1,4 +1,4 @@
-package levy.daniel.application.model.services.course.impl;
+package levy.daniel.application.model.services.listecourses.impl;
 
 import java.util.List;
 
@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import levy.daniel.application.model.dao.course.IListeCoursesDAO;
+import levy.daniel.application.model.dao.listecourses.IListeCoursesDAO;
 import levy.daniel.application.model.metier.course.AbstractCourse;
 import levy.daniel.application.model.metier.course.ICourse;
 import levy.daniel.application.model.metier.course.impl.Course;
-import levy.daniel.application.model.services.course.IListeCoursesService;
+import levy.daniel.application.model.services.listecourses.IListeCoursesService;
 
 /**
  * class ListeCoursesService :<br/>
