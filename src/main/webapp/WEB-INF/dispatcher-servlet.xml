@@ -96,9 +96,9 @@
 		<!-- l'utilisation de la ressource JDBC (Base de Données) déclarée  -->
 		<!-- dans le web.xml de l'appli et le context.xml de TOMCAT			-->
 		<!--  au moyen d'un annuaire JNDI. 									--> 
-    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-    	<property name="jndiName" value="java:comp/env/jdbc/dsAppliTutoWebSpringPouiller" />
-    </bean>
+<!--     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
+<!--     	<property name="jndiName" value="java:comp/env/jdbc/dsAppliTutoWebSpringPouiller" /> -->
+<!--     </bean> -->
 
 
 	<!-- ================================================================== -->
@@ -147,12 +147,12 @@
     <!-- ============================================================== -->
     <!--                                HSQLDB                          -->
     <!-- ============================================================== -->
-<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!--        <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" /> -->
-<!--        <property name="url" value="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" /> -->
-<!--        <property name="username" value="sa" /> -->
-<!--        <property name="password" value="" /> -->
-<!--     </bean> -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+       <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" />
+       <property name="url" value="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" />
+       <property name="username" value="sa" />
+       <property name="password" value="" />
+    </bean>
     
     <!-- ============================================================== -->
     <!--                             POSTGRESQL                         -->
