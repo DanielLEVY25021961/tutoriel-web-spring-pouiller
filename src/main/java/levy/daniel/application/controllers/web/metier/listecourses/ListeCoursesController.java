@@ -1,4 +1,4 @@
-package levy.daniel.application.controllers.web;
+package levy.daniel.application.controllers.web.metier.listecourses;
 
 import java.util.List;
 

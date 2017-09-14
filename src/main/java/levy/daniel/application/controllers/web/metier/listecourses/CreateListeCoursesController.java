@@ -1,4 +1,4 @@
-package levy.daniel.application.controllers.web;
+package levy.daniel.application.controllers.web.metier.listecourses;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import levy.daniel.application.controllers.web.formulaires.CreateCourseFormController;
+import levy.daniel.application.controllers.web.metier.course.forms.CreateCourseFormController;
 import levy.daniel.application.model.metier.course.AbstractCourse;
 import levy.daniel.application.model.services.listecourses.IListeCoursesService;
 

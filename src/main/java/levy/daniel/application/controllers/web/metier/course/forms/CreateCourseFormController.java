@@ -1,4 +1,4 @@
-package levy.daniel.application.controllers.web.formulaires;
+package levy.daniel.application.controllers.web.metier.course.forms;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;

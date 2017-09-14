@@ -1,4 +1,4 @@
-package levy.daniel.application.controllers.web;
+package levy.daniel.application.controllers.web.accueil;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
