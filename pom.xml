@@ -43,7 +43,7 @@
 	
 
 
-	<!-- ================================================ -->
+    <!-- ================================================ -->
 	<!--                    PROPERTIEs                    -->
 	<!-- Préciser ici les propriétés générales du projet. -->
 	<!-- ================================================ -->
@@ -54,7 +54,10 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<!-- Vérifie la conformité des classes Java (.class) avec le JDK 1.8 -->
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<!-- Encodage pourle Reporting (site web) -->
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+
 
 
 	<!-- =========================================================== -->
@@ -93,10 +96,10 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.5</version>
-			<scope>compile</scope>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.6</version>
+		    <scope>compile</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
 		<dependency>
@@ -118,10 +121,17 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
 		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>2.8.2</version>
-			<scope>compile</scope>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-core</artifactId>
+		    <version>2.9.0</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-api</artifactId>
+		    <version>2.9.0</version>
+		    <scope>compile</scope>
 		</dependency>
 
 
@@ -171,6 +181,18 @@
 		</dependency>
 
 
+		<!-- ================================= -->
+		<!--    dépendances pour TAGLIBS       -->
+		<!-- ================================= -->
+		<!-- JSTL -->		
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
+		    <version>1.2</version>
+		    <scope>compile</scope>
+		</dependency>
+
 		<!-- ================================ -->
 		<!--    dépendances pour SPRING       -->
 		<!-- ================================ -->		
@@ -210,18 +232,17 @@
 		    <version>2.0.0.Final</version>
 		    <scope>compile</scope>
 		</dependency>
-		
+				
 		<!-- Hibernate-Validator -->
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
 		<dependency>
-		    <groupId>org.hibernate</groupId>
+		    <groupId>org.hibernate.validator</groupId>
 		    <artifactId>hibernate-validator</artifactId>
-		    <version>6.0.1.Final</version>
-		    <scope>compile</scope>
+		    <version>6.0.2.Final</version>
+		    <scope>test</scope>
 		</dependency>
-		
-		
-		
+
+				
 		<!-- ====================================================== -->
 		<!--        DEPENDANCES POUR ORM (Hibernate)  				-->
 		<!-- ====================================================== -->	
@@ -331,39 +352,43 @@
   
   <build>
 
-					<!-- ====================== -->
-					<!-- CHEMINS ET REPERTOIRES -->
-					<!-- ====================== -->
+		<!-- ====================== -->
+		<!-- CHEMINS ET REPERTOIRES -->
+		<!-- ====================== -->
 
-	<!-- CREER A LA MAIN SI MANQUANT -->
-	<!-- Répertoire des src Java. -->
-	<sourceDirectory>src/main/java</sourceDirectory>
-	<!-- Répertoire des scripts (scripts SQL ou Batch) -->
-	<scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
-	<!-- Répertoire des Tests src Java. -->
-	<testSourceDirectory>src/test/java</testSourceDirectory>
-	<!-- Répetoire des classes compilées -->
-	<outputDirectory>target/classes</outputDirectory>
-	<!-- Répetoire des classes compilées de test -->
-	<testOutputDirectory>target/test-classes</testOutputDirectory>
-	<resources>
-		<resource>
-			<directory>src/main/resources</directory>
-		</resource>
-	</resources>
-	<testResources>
-		<testResource>
-			<directory>src/test/resources</directory>
-		</testResource>
-	</testResources>
+		<!-- CREER A LA MAIN SI MANQUANT -->
+		
+		<!-- REPERTOIRE DES BUILDS (target)-->
+		<directory>${project.basedir}/target</directory>
+		<!-- Répetoire des classes compilées -->
+		<outputDirectory>${project.build.directory}/classes</outputDirectory>
 
-	<!-- REPERTOIRE DES BUILDS -->
-	<directory>target</directory>
+		<!-- REPERTOIRE DES SOURCES (target)-->
+		<!-- Répertoire des src Java. -->
+		<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+		<!-- Répertoire des scripts (scripts SQL ou Batch) -->
+		<scriptSourceDirectory>${project.basedir}/src/main/scripts</scriptSourceDirectory>
+		<!-- Répertoire des Tests src Java. -->
+		<testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+		
+		<!-- Répetoire des classes compilées de test -->
+		<testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>${project.basedir}/src/test/resources</directory>
+			</testResource>
+		</testResources>
 
-					<!-- =================== -->
-					<!-- NOM DU ROOT CONTEXT -->
-					<!-- =================== -->
-	<finalName>tutoriel-web-spring-pouiller</finalName>
+		
+		<!-- ============================================== -->
+		<!-- NOM DU LIVRABLE CREE PAR MAVEN (jar, war, ...) -->
+		<!-- ============================================== -->
+		<finalName>${project.artifactId}-${project.version}</finalName>
 
 
   				<!-- ================================== -->
@@ -565,62 +590,46 @@
 					</executions>
 				</plugin>
 				
-				<!-- Génération par Maven de son site Web. -->
-				<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-    				<artifactId>maven-site-plugin</artifactId>
-    				<version>3.6</version>
-					<executions>
-						<execution>
-							<id>default-site</id>
-							<phase>site</phase>
-							<goals>
-								<goal>site</goal>
-							</goals>
-							<configuration>
-								<outputDirectory>C:\target\site</outputDirectory>
-								<reportPlugins>
-									<reportPlugin>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-project-info-reports-plugin</artifactId>
-									</reportPlugin>
-								</reportPlugins>
-							</configuration>
-						</execution>
-						<execution>
-							<id>default-deploy</id>
-							<phase>site-deploy</phase>
-							<goals>
-								<goal>deploy</goal>
-							</goals>
-							<configuration>
-								<outputDirectory>C:\target\site</outputDirectory>
-								<reportPlugins>
-									<reportPlugin>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-project-info-reports-plugin</artifactId>
-									</reportPlugin>
-								</reportPlugins>
-							</configuration>
-						</execution>
-					</executions>
-					<configuration>
-						<outputDirectory>C:\target\site</outputDirectory>
-						<reportPlugins>
-							<reportPlugin>
-								<groupId>org.apache.maven.plugins</groupId>
-								<artifactId>maven-project-info-reports-plugin</artifactId>
-							</reportPlugin>
-						</reportPlugins>
-					</configuration>
-				</plugin>
-
-
 			</plugins>
 
 		</pluginManagement>
 
 	</build>
+
+	<!-- ========= -->
+	<!-- REPORTING -->
+	<!-- ========= -->	
+	<reporting>
+		<outputDirectory>${project.build.directory}/site</outputDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependencies</report>
+							<report>scm</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<configuration>
+				<!-- Permet d'éviter les erreurs de création de Javadoc avec les <br/> -->
+	                <additionalparam>-Xdoclint:none</additionalparam>
+	            </configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+
 	
 </project>
