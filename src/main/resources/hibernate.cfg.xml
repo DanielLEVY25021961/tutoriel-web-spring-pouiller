@@ -276,10 +276,12 @@
 		<!-- ********************************************************   --> 	
 		<!-- 					AVEC LES ANNOTATIONS 					-->
 		<!-- ********************************************************   --> 
-		<!-- Book -->
-		 <mapping class="levy.daniel.application.model.metier.book.impl.Book" /> 
+		<!-- AbstractCourse -->
+		 <mapping class="levy.daniel.application.model.metier.course.AbstractCourse" /> 
 		<!-- SousBook -->
-		 <mapping class="levy.daniel.application.model.metier.book.impl.SousBook" /> 
+		 <mapping class="levy.daniel.application.model.metier.course.impl.Course" />
+		 <!-- ListeCourses -->
+		 <mapping class="levy.daniel.application.model.metier.listecourses.ListeCourses" />  
 
 	</session-factory>
 	
