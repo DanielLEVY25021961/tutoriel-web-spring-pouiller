@@ -17,7 +17,11 @@
 	<!-- avec serveur applicatif (Tomcat) chargé de fournir             -->  
 	<!-- le EntityManager et de gérer les Transactions.                 -->
 	<!-- ============================================================== -->
-	<persistence-unit name="persistence_unit_base-tutoriel-web-spring-pouiller" transaction-type="JTA">
+<!-- 	<persistence-unit name="persistence_unit_base-tutoriel-web-spring-pouiller" transaction-type="JTA"> -->
+
+<!-- transaction manager géré par spring ne pas utuliser transaction-type -->
+<persistence-unit name="persistence_unit_base-tutoriel-web-spring-pouiller">
+
 
 
 		<!-- INDIQUE QUE LA PERSISTENCE EST REALISEE PAR HIBERNATE -->
@@ -71,7 +75,7 @@
 		<!-- ========================================================= -->
 		<!--                     hsqldb 2.4.0                          -->
 		<!-- ========================================================= -->	
-		<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" />
+<!-- 		<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" /> -->
 
     	
 						<!-- ******************* -->
@@ -93,8 +97,8 @@
  		<!-- ========================================================= -->
 		<!--                     hsqldb 2.4.0                          -->
 		<!-- ========================================================= -->	
-    	<property name="javax.persistence.jdbc.user" value="sa" />
-    	<property name="javax.persistence.jdbc.password" value="" />
+<!--     	<property name="javax.persistence.jdbc.user" value="sa" /> -->
+<!--     	<property name="javax.persistence.jdbc.password" value="" /> -->
     	    	
 
 
@@ -198,11 +202,11 @@
 					<!-- ***************** -->
 					<!-- Pool de Connexion -->
 					<!-- ***************** -->
-			<property name="hibernate.c3p0.min_size" value="5" />
-		    <property name="hibernate.c3p0.max_size" value="20" />
-		    <property name="hibernate.c3p0.timeout" value="500" />
-		    <property name="hibernate.c3p0.max_statements" value="50" />
-		    <property name="hibernate.c3p0.idle_test_period" value="2000" />               
+<!-- 			<property name="hibernate.c3p0.min_size" value="5" /> -->
+<!-- 		    <property name="hibernate.c3p0.max_size" value="20" /> -->
+<!-- 		    <property name="hibernate.c3p0.timeout" value="500" /> -->
+<!-- 		    <property name="hibernate.c3p0.max_statements" value="50" /> -->
+<!-- 		    <property name="hibernate.c3p0.idle_test_period" value="2000" />                -->
 
 			
 		</properties>

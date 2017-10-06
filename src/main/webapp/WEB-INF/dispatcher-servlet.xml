@@ -87,20 +87,6 @@
     <tx:annotation-driven transaction-manager="transactionManager" />
 
 
-
-		<!-- ============================================================== -->
-		<!--             DECLARATION DE LA DATASOURCE VIA JNDI              -->
-		<!-- Utilisation du bean SPRING JndiObjectFactoryBean.              -->
-		<!-- ============================================================== -->
-		<!-- Le bean « JndiObjectFactoryBean » permet de déclarer           -->
-		<!-- l'utilisation de la ressource JDBC (Base de Données) déclarée  -->
-		<!-- dans le web.xml de l'appli et le context.xml de TOMCAT			-->
-		<!--  au moyen d'un annuaire JNDI. 									--> 
-<!--     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
-<!--     	<property name="jndiName" value="java:comp/env/jdbc/dsAppliTutoWebSpringPouiller" /> -->
-<!--     </bean> -->
-
-
 	<!-- ================================================================== -->
 	<!--             DECLARATION DE ENTITYMANAGERFACTORY              		-->
 	<!-- Utilisation du bean SPRING LocalContainerEntityManagerFactoryBean. -->
@@ -112,6 +98,9 @@
 	<!--  par la couche DAO.												-->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
+        
+		<!-- définition de la persistante par persistance.xml JPA -->
+        <property name="persistenceUnitName" value="persistence_unit_base-tutoriel-web-spring-pouiller"/>
     </bean>
 
 
@@ -147,12 +136,12 @@
     <!-- ============================================================== -->
     <!--                                HSQLDB                          -->
     <!-- ============================================================== -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-       <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" />
-       <property name="url" value="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" />
-       <property name="username" value="sa" />
-       <property name="password" value="" />
-    </bean>
+<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!--        <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" /> -->
+<!--        <property name="url" value="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" /> -->
+<!--        <property name="username" value="sa" /> -->
+<!--        <property name="password" value="" /> -->
+<!--     </bean> -->
     
     <!-- ============================================================== -->
     <!--                             POSTGRESQL                         -->
@@ -174,6 +163,17 @@
 <!--        <property name="password" value="" /> -->
 <!--     </bean> -->
 
+	<!-- ============================================================== -->
+	<!--             DECLARATION DE LA DATASOURCE VIA JNDI              -->
+	<!-- Utilisation du bean SPRING JndiObjectFactoryBean.              -->
+	<!-- ============================================================== -->
+	<!-- Le bean « JndiObjectFactoryBean » permet de déclarer           -->
+	<!-- l'utilisation de la ressource JDBC (Base de Données) déclarée  -->
+	<!-- dans le web.xml de l'appli et le context.xml de TOMCAT			-->
+	<!--  au moyen d'un annuaire JNDI. 									--> 
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+    	<property name="jndiName" value="java:comp/env/jdbc/dsAppliTutoWebSpringPouiller" />
+    </bean>
 	
 </beans>
 
