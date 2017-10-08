@@ -73,13 +73,15 @@
 	<!-- =========================================================== -->  
 	<dependencyManagement>
 	    <dependencies>
-	        <dependency>
-	            <groupId>org.springframework</groupId>
-	            <artifactId>spring-framework-bom</artifactId>
-	            <version>4.3.10.RELEASE</version>
-	            <type>pom</type>
-	            <scope>import</scope>
-	        </dependency>
+	        <!-- https://mvnrepository.com/artifact/org.springframework/spring-framework-bom -->
+			<dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-framework-bom</artifactId>
+			    <version>5.0.0.RELEASE</version>
+			    <type>pom</type>
+			    <!-- Indispensable de préciser scope = import -->
+			    <scope>import</scope>
+			</dependency>
 	    </dependencies>
 	</dependencyManagement>
 	
@@ -236,18 +238,39 @@
 		</dependency>
 		
 
+
 		<!-- ================================ -->
 		<!--    dépendances pour SPRING       -->
-		<!-- ================================ -->		
+		<!-- ================================ -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <scope>compile</scope>
+		</dependency>		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-aop</artifactId>
+		    <scope>compile</scope>
+		</dependency>		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-webmvc</artifactId>
+		    <scope>compile</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-orm</artifactId>
+		    <scope>compile</scope>
 		</dependency>
 
 
@@ -350,19 +373,46 @@
 	</dependencies>
 	
 	
-				<!-- ================================== -->
-				<!--       REPOSITORIES				    -->
-				<!-- ================================== -->	
+	
+				<!-- ======================================  -->
+				<!--   REPOSITORIES	POUR LES DEPENDANCES  	 -->
+				<!-- ======================================  -->	
 			<!-- Précise la localisation des dépôts Maven -->
 	<repositories>
+	
+		<!-- Dépôt Central MAVEN pour les dépendances -->
 		<repository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
 			<id>central</id>
 			<name>Central Repository</name>
 			<url>https://repo.maven.apache.org/maven2</url>
+			<!-- Ici les RELEASES, pas les milestones ou les snapshots. -->
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>			
 		</repository>
+		
+		<!-- http://www.baeldung.com/spring-maven-repository -->
+		<!-- dépôt Maven pour SPRING au cas où le dépôt central est indisponible. -->
+		<repository> 
+        <id>repository.spring.release</id> 
+        	<name>Spring GA Repository</name> 
+        	<url>http://repo.spring.io/release</url>
+        	<!-- Ici les RELEASES, pas les milestones ou les snapshots. -->
+        	<snapshots>
+				<enabled>false</enabled>
+			</snapshots>			         
+    	</repository>
+    	
+    	<!-- dépôt Maven pour SPRING au cas où le dépôt central est indisponible. -->
+    	<repository>
+	        <id>io.spring.repo.maven.release</id>
+	        <url>http://repo.spring.io/release/</url>
+	        <!-- Ici les RELEASES, pas les milestones ou les snapshots. -->
+	        <snapshots>
+	        	<enabled>false</enabled>
+	        </snapshots>
+	    </repository>
+    	    	
 	</repositories>
 	
   
@@ -370,19 +420,20 @@
 				<!--       PLUGIN REPOSITORIES			-->
 				<!-- ================================== -->	
   			
-  <pluginRepositories>
-    <pluginRepository>
-      <releases>
-        <updatePolicy>never</updatePolicy>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>central</id>
-      <name>Central Repository</name>
-      <url>https://repo.maven.apache.org/maven2</url>
-    </pluginRepository>
-  </pluginRepositories>
+	  <pluginRepositories>
+	    <pluginRepository>
+	      <releases>
+	        <updatePolicy>never</updatePolicy>
+	      </releases>
+	      <snapshots>
+	        <enabled>false</enabled>
+	      </snapshots>
+	      <id>central</id>
+	      <name>Central Repository</name>
+	      <url>https://repo.maven.apache.org/maven2</url>
+	    </pluginRepository>
+	  </pluginRepositories>
+  
   
 
   				<!-- ================================== -->
@@ -534,6 +585,8 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+			
+			
 			
 			<!-- Compilation des sources en classes. -->
 			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->

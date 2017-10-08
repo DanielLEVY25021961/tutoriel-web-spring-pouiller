@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+        <Resource auth="Container"
+                name="jdbc/dsAppliTutoWebSpringPouiller"
+                url="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller"
+                username="sa"
+                password=""
+                type="javax.sql.DataSource"
+                driverClassName="org.hsqldb.jdbc.JDBCDriver"
+                 maxActive="10"
+            maxIdle="5"
+            maxWait="-1"
+            removeAbandoned="true"
+            removeAbandonedTimeout="60"
+            logAbandoned="true"
+        />
+</Context>
