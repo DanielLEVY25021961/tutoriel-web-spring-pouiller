@@ -19,7 +19,7 @@
 	<!-- ============================================================== -->
 <!-- 	<persistence-unit name="persistence_unit_base-tutoriel-web-spring-pouiller" transaction-type="JTA"> -->
 
-<!-- transaction manager géré par spring ne pas utuliser transaction-type -->
+<!-- transaction manager géré par SPRING ne pas utiliser transaction-type -->
 <persistence-unit name="persistence_unit_base-tutoriel-web-spring-pouiller">
 
 

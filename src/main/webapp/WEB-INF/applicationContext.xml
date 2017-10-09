@@ -131,6 +131,8 @@
     <!-- ============================================================== -->
     <!-- DECLARATION DE LA DATASOURCE DIRECTE (sans passer par JNDI) 	-->
     <!-- Utilisation du bean DriverManagerDataSource					-->
+	<!-- Pas conseillé en web, la connexion est gérée par l'application -->
+	<!-- et plus par le serveur directement  						-->
     <!-- ============================================================== -->
     
     <!-- ============================================================== -->

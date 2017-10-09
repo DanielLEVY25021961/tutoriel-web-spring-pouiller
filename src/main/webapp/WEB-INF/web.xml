@@ -18,10 +18,10 @@
 	<!--                      SPRING                          -->
 	<!-- ==================================================== -->
 	<!-- variable de contexte contextConfigLocation pointant 
-	sur /WEB-INF/dispatcher-servlet.xml -->
+	sur /WEB-INF/applicationContext.xml -->
 	<context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
     </context-param>
 
 
@@ -32,20 +32,20 @@
     </listener>
 
     
-    <!-- Declaration de la servlet DispatcherServlet de Spring et de son mapping -->
-    <!-- DispatcherServlet redirige les requêtes HTTP vers les contrôleurs voulus -->
-    <!-- DispatcherServlet est équivalente à la « ActionServlet » de Struts). --> 
+    <!-- Declaration de la servlet ApplicationContext de Spring et de son mapping -->
+    <!-- ApplicationContext redirige les requêtes HTTP vers les contrôleurs voulus -->
+    <!-- ApplicationContext est équivalente à la « ActionServlet » de Struts). --> 
     <servlet>
-        <servlet-name>servlet-dispatcher</servlet-name>
+        <servlet-name>servlet-application-context</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+            <param-value>/WEB-INF/applicationContext.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>servlet-dispatcher</servlet-name>
+        <servlet-name>servlet-application-context</servlet-name>
         <url-pattern>/app/*</url-pattern>
     </servlet-mapping>
  
@@ -59,19 +59,4 @@
 		<welcome-file>vues/bonjour.jsp</welcome-file>
 	</welcome-file-list>
 	
-
-	<!-- ==================================================== -->
-	<!--                   BASES DE DONNEES                   -->
-	<!-- ==================================================== -->
-	
-    <!-- Declaration de l'utilisation de la ressource JDBC -->
-<!--     <resource-ref> -->
-<!--         <description>Ressource JDBC de l'application</description> -->
-<!--         NOM JNDI de la DataSource DEFINIE DANS context.xml de TOMCAT -->
-<!--         <res-ref-name>jdbc/dsAppliTutoWebSpringPouiller</res-ref-name> -->
-<!--         <res-type>javax.sql.DataSource</res-type> -->
-<!--         <res-auth>Container</res-auth> -->
-<!--         <res-sharing-scope>Shareable</res-sharing-scope> -->
-<!--     </resource-ref>  -->
-     
 </web-app>
