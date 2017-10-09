@@ -26,4 +26,8 @@
 		<h1>index.jsp sous WEB-INF/vues/</h1>
 	</body>
 	
+	<a href = "<c:url value = "/app/afficherListeCourses"/>">Afficher liste de courses</a>
+	</br>
+	<a href = "<c:url value = "/app/afficherCreationListeCourses"/>">Afficher la création de la liste de courses</a>
+
 </html>

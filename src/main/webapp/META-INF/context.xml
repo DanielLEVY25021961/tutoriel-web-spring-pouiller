@@ -2,18 +2,38 @@
 <Context>
 
 	<!-- Ce context.xml surchargeant celui de tomcat définit un pool de connexion à la base indiquée.  -->
+<!-- 	<Resource auth="Container" -->
+<!--     	name="jdbc/dsAppliTutoWebSpringPouiller" -->
+<!-- 		url="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" -->
+<!--         username="sa" -->
+<!--         password="" -->
+<!--         type="javax.sql.DataSource" -->
+<!--         driverClassName="org.hsqldb.jdbc.JDBCDriver" -->
+<!--         maxActive="10" -->
+<!--         maxIdle="5" -->
+<!--         maxWait="-1" -->
+<!--         removeAbandoned="true" -->
+<!--         removeAbandonedTimeout="60" -->
+<!--         logAbandoned="true"/> -->
+
+
+
+<!-- pour une base de données postgres  -->
+
 	<Resource auth="Container"
     	name="jdbc/dsAppliTutoWebSpringPouiller"
-		url="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller"
-        username="sa"
+		url="jdbc:postgresql://localhost:5432/base-tutoriel-web-spring-pouiller"
+        username="postgres"
         password=""
         type="javax.sql.DataSource"
-        driverClassName="org.hsqldb.jdbc.JDBCDriver"
+        driverClassName="org.postgresql.Driver"
         maxActive="10"
         maxIdle="5"
         maxWait="-1"
         removeAbandoned="true"
         removeAbandonedTimeout="60"
         logAbandoned="true"/>
+
+
 
 </Context>
