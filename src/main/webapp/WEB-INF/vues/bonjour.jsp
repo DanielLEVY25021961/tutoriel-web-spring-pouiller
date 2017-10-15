@@ -23,7 +23,7 @@
 		
 		<%-- Titre de l'onglet  --%>
 		<%--va chercher les values de clés comme 'titre.bonjour' dans messages.properties --%>
-		<%--défini dans le bean id="messageSource" de dispatcher-servlet.xml --%>
+		<%--défini dans le bean id="messageSource" de applicationContext.xml --%>
 		<%-- Expressions Languages « ${personne} » afin de restituer la donnée fournie par le controller. --%>
 		<title><spring:message code="titre.bonjour"/> : <c:out value="${personne}" default="" escapeXml="true" /></title>
 	
@@ -32,7 +32,7 @@
 	<body>
 	
 		<%--va chercher les values de clés comme 'libelle.bonjour.lemonde' dans messages.properties --%>
-		<%--défini dans le bean id="messageSource" de dispatcher-servlet.xml --%>
+		<%--défini dans le bean id="messageSource" de applicationContext.xml --%>
 		<%-- Expressions Languages « ${personne} » afin de restituer la donnée fournie par le controller. --%>	
 	 	<h1><spring:message code="libelle.bonjour.lemonde" arguments="${personne}"/></h1>
 	 	

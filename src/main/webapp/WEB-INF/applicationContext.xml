@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-							<!-- ============ -->
-							<!--    SPRING    -->
-							<!-- ============ -->
+							<!-- ================= -->
+							<!--    SPRING 5.0.0   -->
+							<!-- ================= -->
 
-<!-- ================================================================================== -->
-<!-- Déclaration des espaces de Nommage de Spring 4.3.10.RELEASE 						-->
-<!-- mvc pour utiliser Spring MVC 														-->
-<!-- context pour utiliser applicationContext.xml et détecter automatiquement les beans -->
-<!-- aop pour utiliser Spring AOP			 											-->
-<!-- tx pour utiliser les annotations 													-->
-<!-- ================================================================================== -->
+<!-- ====================================================================================== -->
+<!-- Déclaration des espaces de Nommage de Spring 5.0.0										-->
+<!-- * mvc pour utiliser Spring MVC 														-->
+<!-- * context pour utiliser applicationContext.xml et détecter automatiquement les beans 	-->
+<!-- * aop pour utiliser Spring AOP			 												-->
+<!-- * tx pour utiliser les annotations 													-->
+<!-- ====================================================================================== -->
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -43,6 +43,8 @@
 	<!--           ACTIVATION CONFIGURATION ANNOTATION SPRING               -->
 	<!-- ================================================================== -->		
 	<!-- active la configuration par annotations de Spring (plus de XML)    -->
+	<!-- VA RECHERCHER TOUS LES OBJETS ANNOTES SPRING DANS LE PACKAGE 		-->
+	<!-- (SERVICES, BEANS, DAO) 											-->
 	<context:component-scan base-package="levy.daniel.application" />
 
 
@@ -92,15 +94,24 @@
 	<!-- Utilisation du bean SPRING LocalContainerEntityManagerFactoryBean. -->
 	<!-- ================================================================== -->
 	<!-- Le bean « LocalContainerEntityManagerFactoryBean » utilise			--> 
-	<!-- la ressource JDBC id="dataSource" et le fichier 					--> 
+	<!-- le Bean avec id="dataSource" du présent applicationContext.xml 	--> 
+	<!-- qui connait la référence JNDI de la DataSource et le fichier 		--> 
 	<!-- « persistence.xml » pour aboutir 									-->
 	<!--  à la création du « EntityManager » qui est utilisé 				-->
 	<!--  par la couche DAO.												-->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    
+    	<!-- précise l'id (dataSource) du Bean JndiObjectFactoryBean 		-->
+    	<!-- dans le présent applicationContext.xml							-->
+    	<!-- qui connait la référence de la DataSource déclarée 			-->
+    	<!-- dans le context.xml de TOMCAT (éventuellement surchargé). 		-->
         <property name="dataSource" ref="dataSource" />
         
-		<!-- définition de la persistante par persistance.xml JPA -->
-        <property name="persistenceUnitName" value="persistence_unit_base-tutoriel-web-spring-pouiller"/>
+        <!-- Il serait possible d'encapsuler dans le EntityManager			-->
+        <!-- plusieurs DataSources.										    -->
+<!--         <property name="dataSource" ref="dataSource2" /> -->
+<!--         <property name="dataSource" ref="dataSource3" /> -->
+        
     </bean>
 
 
@@ -131,9 +142,32 @@
     <!-- ============================================================== -->
     <!-- DECLARATION DE LA DATASOURCE DIRECTE (sans passer par JNDI) 	-->
     <!-- Utilisation du bean DriverManagerDataSource					-->
-	<!-- Pas conseillé en web, la connexion est gérée par l'application -->
-	<!-- et plus par le serveur directement  						-->
+	<!-- DECONSEILLE *** en web, la connexion serait gérée 				-->
+	<!-- par l'application et plus par le serveur directement  			-->
     <!-- ============================================================== -->
+
+    
+    <!-- ============================================================== -->
+    <!--                             POSTGRESQL                         -->
+    <!-- ============================================================== -->
+<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!--        <property name="driverClassName" value="org.postgresql.Driver" /> -->
+<!--        <property name="url" value="jdbc:postgresql://localhost/base-tutoriel-web-spring-pouiller" /> -->
+<!--        <property name="username" value="postgres" /> -->
+<!--        <property name="password" value="postgres" /> -->
+<!--     </bean> -->
+
+
+    <!-- ============================================================== -->
+    <!--                             MYSQL                              -->
+    <!-- ============================================================== -->
+<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+<!--        <property name="url" value="jdbc:mysql://localhost/base-tutoriel-web-spring-pouiller" /> -->
+<!--        <property name="username" value="root" /> -->
+<!--        <property name="password" value="" /> -->
+<!--     </bean> -->
+
     
     <!-- ============================================================== -->
     <!--                                HSQLDB                          -->
@@ -145,25 +179,8 @@
 <!--        <property name="password" value="" /> -->
 <!--     </bean> -->
     
-    <!-- ============================================================== -->
-    <!--                             POSTGRESQL                         -->
-    <!-- ============================================================== -->
-<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!--        <property name="driverClassName" value="org.postgresql.Driver" /> -->
-<!--        <property name="url" value="jdbc:postgresql://localhost/base-tutoriel-web-spring-pouiller" /> -->
-<!--        <property name="username" value="postgres" /> -->
-<!--        <property name="password" value="postgres" /> -->
-<!--     </bean> -->
-    
-    <!-- ============================================================== -->
-    <!--                             MYSQL                              -->
-    <!-- ============================================================== -->
-<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
-<!--        <property name="url" value="jdbc:mysql://localhost/base-tutoriel-web-spring-pouiller" /> -->
-<!--        <property name="username" value="root" /> -->
-<!--        <property name="password" value="" /> -->
-<!--     </bean> -->
+
+
 
 	<!-- ============================================================== -->
 	<!--             DECLARATION DE LA DATASOURCE VIA JNDI              -->
@@ -171,8 +188,16 @@
 	<!-- ============================================================== -->
 	<!-- Le bean « JndiObjectFactoryBean » permet de déclarer           -->
 	<!-- l'utilisation de la ressource JDBC (Base de Données) déclarée  -->
-	<!-- dans le web.xml de l'appli et le context.xml de TOMCAT			-->
-	<!--  au moyen d'un annuaire JNDI. 									--> 
+	<!-- dans le context.xml de TOMCAT (éventuellement surchargé		--> 
+	<!-- par un webapp/META-INF/context.xml dans le projet)				-->
+	<!--  au moyen d'un annuaire JNDI 									-->
+	<!-- ============================================================== -->
+	<!-- java:comp/env est le contexte de nommage standard racine de    -->
+	<!-- toutes les ressources fournies par TOMCAT.					    -->
+	<!-- Le sous-contexte /jdbc relatif au contexte de nommage racine	-->
+	<!-- précise qu'il s'agit d'une ressource jdbc.						-->
+	<!-- Le nom JNDI suit par convention le sous-contexte /jdbc		    -->
+	<!-- (DataSource = jdbc/dsAppliTutoWebSpringPouiller). 				--> 
     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
     	<property name="jndiName" value="java:comp/env/jdbc/dsAppliTutoWebSpringPouiller" />
     </bean>

@@ -17,24 +17,27 @@
 	<!-- ==================================================== -->
 	<!--                      SPRING                          -->
 	<!-- ==================================================== -->
-	<!-- variable de contexte contextConfigLocation pointant 
-	sur /WEB-INF/applicationContext.xml -->
+	<!-- variable de contexte contextConfigLocation pointant  --> 
+	<!-- sur /WEB-INF/applicationContext.xml 				  -->
 	<context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
     </context-param>
 
 
-	<!-- Le listener ContextLoaderListener charge la configuration Spring
-	 à partir de la variable de contexte contextConfigLocation -->
+	<!-- CHARGEMENT DE LA CONFIGURATION DE SPRING							 -->
+	<!-- Le listener ContextLoaderListener charge la configuration Spring	 -->
+	<!-- à partir de la variable de contexte contextConfigLocation 			 -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
     
-    <!-- Declaration de la servlet ApplicationContext de Spring et de son mapping -->
-    <!-- ApplicationContext redirige les requêtes HTTP vers les contrôleurs voulus -->
-    <!-- ApplicationContext est équivalente à la « ActionServlet » de Struts). --> 
+    <!-- DECLARE LE CONTROLLER UNIQUE MVC2 de SPRING (DispatcherServlet)			-->
+    <!-- Declaration de la servlet DispatcherServlet de Spring et de son mapping 	-->
+    <!-- DispatcherServlet est le Controller UNIQUE MVC2 de SPRING. 				-->
+    <!-- ApplicationContext redirige les requêtes HTTP vers les contrôleurs voulus 	-->
+    <!-- ApplicationContext est équivalente à la « ActionServlet » de Struts). 		--> 
     <servlet>
         <servlet-name>servlet-application-context</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

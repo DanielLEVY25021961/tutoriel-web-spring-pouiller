@@ -1,5 +1,10 @@
 package levy.daniel.application.controllers.web.accueil;
 
+import java.util.Enumeration;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -35,7 +40,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  */
 @Controller
-@RequestMapping(value="/")
+//@RequestMapping(value="/")
 public class BonjourController {
 
 	// ************************ATTRIBUTS************************************/
@@ -64,24 +69,50 @@ public class BonjourController {
 	 * method afficherBonjour(
 	 * ModelMap pModelMap
 	 * , String pPersonne) :<br/>
-	 * associe la valeur pPersonne à l'attribut "personne".<br/>
-	 * redirige vers la ressource "bonjour".<br/>
+	 * <ul>
+	 * <li>associe la valeur pPersonne à l'attribut "personne".</li>
+	 * <li>redirige vers la ressource "bonjour" 
+	 * (/WEB-INF/vues/bonjour.jsp).</li>
+	 * </ul>
+	 * defaultValue = "l'anonyme" remplacera ?Personne=xxx dans la requête
+	 * si xxx est blank comme si ?personne est omis.<br/>
 	 * <br/>
 	 *
 	 * @param pModelMap : ModelMap.<br/>
 	 * @param pPersonne : String
+	 * @param request  : HttpServletRequest.<br/>
 	 * 
 	 * @return : String : "bonjour".<br/>
 	 */
 	@RequestMapping(value="/afficherBonjour", method = RequestMethod.GET)
 	public String afficherBonjour(
 			final ModelMap pModelMap
-				, @RequestParam(value="personne") final String pPersonne) {
-				
-		/* la valeur pPersonne est associée à l'attribut « personne » 
-		 * grâce à la méthode « addAttribute » de « ModelMap ». */
-		pModelMap.addAttribute("personne", pPersonne);
+				, @RequestParam(value="personne", required=false, defaultValue = "l'anonyme") final String pPersonne
+					, final HttpServletRequest request) {
 		
+		
+		final Enumeration<String> enumeration = request.getParameterNames();
+		
+		/* Vérification de l'existence du paramètre "personne" dans la requête. */
+		final boolean parametrePersonneDansRequete 
+			= this.enumContient(enumeration, "personne");
+		
+		String typeRequeteAParametres = null;
+		
+		if (!parametrePersonneDansRequete) {
+			typeRequeteAParametres = "Requête sans paramètres";
+		} else {
+			typeRequeteAParametres = "Requête avec paramètres";
+		}
+		
+		if (pPersonne != null) {
+			/* la valeur pPersonne est associée à l'attribut « personne » 
+			 * grâce à la méthode « addAttribute » de « ModelMap ». */
+			pModelMap.addAttribute("personne", pPersonne);
+			pModelMap.addAttribute("typeRequeteAParametres"
+					, typeRequeteAParametres);
+		}
+						
 		/* le contrôleur redirige vers la ressource 
 		 * « /vues/bonjour.jsp ». */
 		/* Le ServletDispatcher gère le bean InternalResourceViewResolver 
@@ -110,25 +141,25 @@ public class BonjourController {
 	 * 
 	 * @return : boolean : true si l'Enumération pEnum contient pString.<br/>
 	 */
-//	private boolean enumContient(
-//			final Enumeration<String> pEnum
-//				, final String pString) {
-//		
-//		/* retourne false si pEnum == null. */
-//		if (pEnum == null) {
-//			return false;
-//		}
-//		
-//		while (pEnum.hasMoreElements()) {
-//			final String stringLue = pEnum.nextElement();
-//			if (StringUtils.equalsIgnoreCase(stringLue, pString)) {
-//				return true;
-//			}
-//		}
-//		
-//		return false;
-//		
-//	} // Fin de enumContient(...)._________________________________________
+	private boolean enumContient(
+			final Enumeration<String> pEnum
+				, final String pString) {
+		
+		/* retourne false si pEnum == null. */
+		if (pEnum == null) {
+			return false;
+		}
+		
+		while (pEnum.hasMoreElements()) {
+			final String stringLue = pEnum.nextElement();
+			if (StringUtils.equalsIgnoreCase(stringLue, pString)) {
+				return true;
+			}
+		}
+		
+		return false;
+		
+	} // Fin de enumContient(...)._________________________________________
 	
 
 	

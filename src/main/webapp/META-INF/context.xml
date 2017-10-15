@@ -1,7 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
 <Context>
 
 	<!-- Ce context.xml surchargeant celui de tomcat définit un pool de connexion à la base indiquée.  -->
+
+			<!-- ================================================== -->
+			<!-- Paramètres de connexion JDBC à la base de données -->
+			<!-- ================================================== -->
+
+	
+		    <!-- ========================================================= -->
+		    <!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
+		    <!-- ========================================================= -->
+				<!-- pour une base de données postgres  -->
+	<Resource auth="Container"
+    	name="jdbc/dsAppliTutoWebSpringPouiller"
+		url="jdbc:postgresql://localhost:5432/base-tutoriel-web-spring-pouiller"
+        username="postgres"
+        password="postgres"
+        type="javax.sql.DataSource"
+        driverClassName="org.postgresql.Driver"
+        maxActive="10"
+        maxIdle="5"
+        maxWait="-1"
+        removeAbandoned="true"
+        removeAbandonedTimeout="60"
+        logAbandoned="true"/>
+
+	
+			 <!-- ========================================================= -->
+			 <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
+			 <!-- ========================================================= -->  
+<!-- 	<Resource auth="Container" -->
+<!--     	name="jdbc/dsAppliTutoWebSpringPouiller" -->
+<!-- 		url="jdbc:mysql://localhost:3306/base-tutoriel-web-spring-pouiller" -->
+<!--         username="root" -->
+<!--         password="root" -->
+<!--         type="javax.sql.DataSource" -->
+<!--         driverClassName="com.mysql.jdbc.Driver" -->
+<!--         maxActive="10" -->
+<!--         maxIdle="5" -->
+<!--         maxWait="-1" -->
+<!--         removeAbandoned="true" -->
+<!--         removeAbandonedTimeout="60" -->
+<!--         logAbandoned="true"/> -->
+			  	
+	
+			<!-- ========================================================= -->
+		    <!--                     hsqldb 2.4.0                          -->
+		    <!-- ========================================================= -->
+	
 <!-- 	<Resource auth="Container" -->
 <!--     	name="jdbc/dsAppliTutoWebSpringPouiller" -->
 <!-- 		url="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" -->
@@ -15,24 +64,6 @@
 <!--         removeAbandoned="true" -->
 <!--         removeAbandonedTimeout="60" -->
 <!--         logAbandoned="true"/> -->
-
-
-
-<!-- pour une base de données postgres  -->
-
-	<Resource auth="Container"
-    	name="jdbc/dsAppliTutoWebSpringPouiller"
-		url="jdbc:postgresql://localhost:5432/base-tutoriel-web-spring-pouiller"
-        username="postgres"
-        password=""
-        type="javax.sql.DataSource"
-        driverClassName="org.postgresql.Driver"
-        maxActive="10"
-        maxIdle="5"
-        maxWait="-1"
-        removeAbandoned="true"
-        removeAbandonedTimeout="60"
-        logAbandoned="true"/>
 
 
 
