@@ -27,7 +27,7 @@
 	</body>
 	
 	<a href = "<c:url value = "/app/afficherListeCourses"/>">Afficher liste de courses</a>
-	</br>
+	<br/>
 	<a href = "<c:url value = "/app/afficherCreationListeCourses"/>">Afficher la création de la liste de courses</a>
 
 </html>
