@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-         
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	        
          <!-- ================================================== -->
          <!-- 			POM pour MAVEN 3.5.0					 -->
          <!-- 			Java 1.8.0_144							 -->
@@ -9,6 +10,7 @@
 
 	<!-- Version du POM. -->
 	<modelVersion>4.0.0</modelVersion>
+	
 	
 	<!-- ========================================================== -->
 	<!-- GAV (identifiant du projet)                                -->
@@ -33,6 +35,7 @@
 	<!-- ========================================================== -->
 	<!-- Résultat du Packaging (forme du livrable). Ici war -->
 	<packaging>war</packaging>
+
 	
 	<!-- ========================================================== -->
 	<!-- NOM DU LIVRABLE GENERE PAR MAVEN                           -->
@@ -47,13 +50,14 @@
 	<!-- URL éventuelle permettant de se connecter à l'application -->
 	<url>http://maven.apache.org</url>
 	
-
+	
 
     <!-- ================================================ -->
 	<!--                    PROPERTIEs                    -->
 	<!-- Préciser ici les propriétés générales du projet. -->
 	<!-- ================================================ -->
 	<properties>
+	
 		<!-- Force l'encoding des sources du projet en UTF-8 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Vérifie la conformité des classes Java (.java) avec le JDK 1.8 -->
@@ -62,6 +66,32 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<!-- Encodage pourle Reporting (site web) -->
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+
+		
+		<!-- ========================================================== -->
+		<!-- 		VERSIONS DES COMPOSANTS DANS LES DEPENDANCES		-->
+		<!-- ========================================================== -->
+		<!-- 				Version de SPRING 							-->
+		<spring.version>5.0.0.RELEASE</spring.version>
+		<!-- 				Version d'HIBERNATE 						-->
+		<hibernate.version>5.2.11.Final</hibernate.version>
+		<!-- 			Version d'HIBERNATE VALIDATOR				    -->
+		<hibernate.validator>6.0.2.Final</hibernate.validator>
+		<!-- 			Version du POOL DE CONNEXION c3p0	 			-->
+		<c3p0.version>0.9.5.2</c3p0.version>
+		<!-- 					Version de JSTL						 	-->
+		<jstl.version>1.2</jstl.version>
+		<!-- 			Version des Taglibs JSTL 						-->
+		<taglibs-standard-impl.version>1.2.5</taglibs-standard-impl.version>
+		<!-- 				Version de Servlet 							-->
+		<servlets.version>3.1.0</servlets.version>
+		<!--				Version de JSP							    -->
+		<jsp.version>2.2.1-b03</jsp.version>
+		<!-- 				Version de HSQLDB						    -->
+		<hsqldb.version>2.4.0</hsqldb.version>
+		
 	</properties>
 
 
@@ -77,7 +107,7 @@
 			<dependency>
 			    <groupId>org.springframework</groupId>
 			    <artifactId>spring-framework-bom</artifactId>
-			    <version>5.0.0.RELEASE</version>
+			    <version>${spring.version}</version>
 			    <type>pom</type>
 			    <!-- Indispensable de préciser scope = import -->
 			    <scope>import</scope>
@@ -214,27 +244,36 @@
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>javax.servlet-api</artifactId>
-		    <version>3.1.0</version>
+		    <version>${servlets.version}</version>
 		    <scope>provided</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
+		<dependency>
+		    <groupId>javax.servlet.jsp</groupId>
+		    <artifactId>jsp-api</artifactId>
+		    <version>${jsp.version}</version>
+		    <scope>provided</scope>
+		</dependency>
+		
 
 
 		<!-- ================================= -->
 		<!--    dépendances pour TAGLIBS       -->
 		<!-- ================================= -->
 		<!-- JSTL -->		
-		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+		<!-- tuto : https://www.journaldev.com/2090/jstl-tutorial-jstl-tags-example -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api -->
 		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>jstl</artifactId>
-		    <version>1.2</version>
+		    <groupId>javax.servlet.jsp.jstl</groupId>
+		    <artifactId>jstl-api</artifactId>
+		    <version>${jstl.version}</version>
 		    <scope>compile</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
 		<dependency>
 		    <groupId>org.apache.taglibs</groupId>
 		    <artifactId>taglibs-standard-impl</artifactId>
-		    <version>1.2.5</version>
+		    <version>${taglibs-standard-impl.version}</version>
 		    <scope>compile</scope>
 		</dependency>		
 
@@ -304,7 +343,7 @@
 		<dependency>
 		    <groupId>org.hibernate.validator</groupId>
 		    <artifactId>hibernate-validator</artifactId>
-		    <version>6.0.2.Final</version>
+		    <version>${hibernate.validator}</version>
 		    <scope>test</scope>
 		</dependency>
 
@@ -315,10 +354,11 @@
 		<!-- ESSENTIEL -->	
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<!-- Remplace hibernate-entitymanager, persistence-api, ... -->
+		<!-- 				HIBERNATE-CORE 							-->
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-core</artifactId>
-		    <version>5.2.10.Final</version>
+		    <version>${hibernate.version}</version>
 		    <scope>compile</scope>
 		</dependency>
 		
@@ -331,27 +371,39 @@
 		    <scope>compile</scope>
 		</dependency>
 		
-		<!-- POOL DE CONNEXION c3p0 -->
+		<!-- Intégration du POOL DE CONNEXION c3p0 pour Hibernate 			 -->
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-c3p0</artifactId>
-		    <version>5.2.10.Final</version>
+		    <version>${hibernate.version}</version>
 		    <scope>compile</scope>
 		</dependency>
 
+
+		<!-- ====================================================== -->
+		<!--        DEPENDANCES POUR Pool de connexion  			-->
+		<!-- ====================================================== -->
+		<!-- c3p0 -->
+		<!-- https://mvnrepository.com/artifact/com.mchange/c3p0 	-->
+		<dependency>
+		    <groupId>com.mchange</groupId>
+		    <artifactId>c3p0</artifactId>
+		    <version>${c3p0.version}</version>
+		    <scope>compile</scope>
+		</dependency>
 		
 		
 		<!-- ====================================================== -->
 		<!--        DEPENDANCES POUR Bases de Données  				-->
 		<!-- ====================================================== -->
-		<!-- HSQLDB -->		
-		<!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
+		<!-- POSTGRESQL -->
+		<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
 		<dependency>
-		    <groupId>org.hsqldb</groupId>
-		    <artifactId>hsqldb</artifactId>
-		    <version>2.4.0</version>
-		    <scope>compile</scope>		    
+		    <groupId>postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.1-901-1.jdbc4</version>
+		    <scope>compile</scope>
 		</dependency>
 		<!-- MySQL -->
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -361,13 +413,13 @@
 		    <version>8.0.7-dmr</version>
 		    <scope>compile</scope>
 		</dependency>
-		<!-- POSTGRESQL -->
-		<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+		<!-- HSQLDB -->		
+		<!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
 		<dependency>
-		    <groupId>postgresql</groupId>
-		    <artifactId>postgresql</artifactId>
-		    <version>9.1-901-1.jdbc4</version>
-		    <scope>compile</scope>
+		    <groupId>org.hsqldb</groupId>
+		    <artifactId>hsqldb</artifactId>
+		    <version>${hsqldb.version}</version>
+		    <scope>test</scope>		    
 		</dependency>
 				
 	</dependencies>
@@ -435,6 +487,7 @@
 	  </pluginRepositories>
   
   
+ 
 
   				<!-- ================================== -->
 				<!--       			BUILD				-->
