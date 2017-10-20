@@ -21,10 +21,11 @@
         password="postgres"
         type="javax.sql.DataSource"
         driverClassName="org.postgresql.Driver"
-        maxActive="10"
+        maxTotal="10"
         maxIdle="5"
-        maxWait="-1"
-        removeAbandoned="true"
+        maxWaitMillis="-1"
+        removeAbandonedOnBorrow="true"
+        removeAbandonedOnMaintenance="true"
         removeAbandonedTimeout="60"
         logAbandoned="true"/>
 
@@ -39,10 +40,11 @@
 <!--         password="root" -->
 <!--         type="javax.sql.DataSource" -->
 <!--         driverClassName="com.mysql.jdbc.Driver" -->
-<!--         maxActive="10" -->
+<!--         maxTotal="10" -->
 <!--         maxIdle="5" -->
-<!--         maxWait="-1" -->
-<!--         removeAbandoned="true" -->
+<!--         maxWaitMillis="-1" -->
+<!--         removeAbandonedOnBorrow="true" -->
+<!-- 		 removeAbandonedOnMaintenance="true" -->
 <!--         removeAbandonedTimeout="60" -->
 <!--         logAbandoned="true"/> -->
 			  	
@@ -58,10 +60,11 @@
 <!--         password="" -->
 <!--         type="javax.sql.DataSource" -->
 <!--         driverClassName="org.hsqldb.jdbc.JDBCDriver" -->
-<!--         maxActive="10" -->
+<!--         maxTotal="10" -->
 <!--         maxIdle="5" -->
-<!--         maxWait="-1" -->
-<!--         removeAbandoned="true" -->
+<!--         maxWaitMillis="-1" -->
+<!--         removeAbandonedOnBorrow="true" -->
+<!-- 		 removeAbandonedOnMaintenance="true" -->
 <!--         removeAbandonedTimeout="60" -->
 <!--         logAbandoned="true"/> -->
 
