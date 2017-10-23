@@ -116,7 +116,7 @@ public class BonjourController {
 		/* le contrôleur redirige vers la ressource 
 		 * « /vues/bonjour.jsp ». */
 		/* Le ServletDispatcher gère le bean InternalResourceViewResolver 
-		 * qui précise que les jsp sont sous /WEB-INF/vues/. 
+		 * qui précise que les jsp sont sous /WEB-INF/vues/web/. 
 		 * et ont l'extension .jsp*/
 		return "bonjour";
 		

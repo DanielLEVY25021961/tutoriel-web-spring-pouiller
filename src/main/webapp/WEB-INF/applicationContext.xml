@@ -54,11 +54,12 @@
 	<!-- déclaration du bean « InternalResourceViewResolver ». 				-->
 	<!-- Indique où chercher les ressources (jsp, ...)  					-->
 	<!-- contrôlées par l'appli sous le contexte webapp.					-->
-	<!-- ici dans le dossier « /WEB-INF/vues/ avec l'extension « .jsp » 	-->
+	<!-- ici dans le dossier « /WEB-INF/vues/web/ 							-->
+	<!--avec l'extension « .jsp » 											-->
 	<bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
-            <value>/WEB-INF/vues/</value>
+            <value>/WEB-INF/vues/web/</value>
         </property>
         <property name="suffix">
             <value>.jsp</value>
@@ -77,9 +78,10 @@
 	<!-- (y compris dans les sous-répertoires) sont accessibles				-->
 	<mvc:resources location="/static/" mapping="/static/**" />
 	
-	<!-- Equivalent Spring du Welcome File -->
-	<!-- Redirige vers WEB-INF/vues/index.jsp -->
-	<mvc:view-controller path="/" view-name="index"/>
+	<!-- 					REDIRECTION SPRING 					-->
+	<!-- Equivalent Spring du Welcome File 						-->
+	<!-- Redirige vers WEB-INF/vues/web/accueil/accueil.jsp 	-->
+	<mvc:view-controller path="/" view-name="accueil/accueil"/>
 	
 	    
  	<!-- ================================================================== -->

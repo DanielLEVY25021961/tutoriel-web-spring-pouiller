@@ -13,6 +13,9 @@
 	<!--  -->
 	<display-name>tutoriel-web-spring-pouiller</display-name>
 
+	<descr>application web avec java 1.8.144, Spring 5.0.0, Servlet 3.1, JPA 2.1, Hibernate 5.2.11</descr>
+
+
 	
 	<!-- ==================================================== -->
 	<!--                      SPRING                          -->
@@ -47,6 +50,8 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <!-- Précise que le Controller unique MVC2 DispatcherServlet de SPRING 	 -->
+    <!-- interceptera toutes les actions (URL) préfixées par /app.			 -->
     <servlet-mapping>
         <servlet-name>servlet-application-context</servlet-name>
         <url-pattern>/app/*</url-pattern>
@@ -59,7 +64,7 @@
     <!-- =============== -->
     <welcome-file-list>
     	<welcome-file>index.html</welcome-file>
-		<welcome-file>vues/bonjour.jsp</welcome-file>
+    	<welcome-file>static/indexStatic.html</welcome-file>
 	</welcome-file-list>
 	
 </web-app>
