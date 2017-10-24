@@ -20,8 +20,9 @@
 	
 		<%-- Description du contenu de la page (texte HTML) et de son encodage. --%>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		
-				
+
+		<meta charset="UTF-8"/>
+								
 		<%-- ========================================================================== --%>
 		<%-- 			LIENS VERS LES css EN HTML. 									--%>
 		<%-- Le lien "href" doit être interprété PAR RAPPORT au contexte (ABSOLU). 		--%>
@@ -31,18 +32,27 @@
 		<%--  http://host:8080/context/static/css/style_index.css 						--%>
 		<%-- * la présente page est située directement sous le contexte. 				--%>
 		<%-- ========================================================================== --%>
-		<link type="text/css" rel="stylesheet" href="static/css/style_index.css" />
+		<link type="text/css" rel="stylesheet" href="static/css/style_index.css"/>
 		
 		
 		<%-- Titre s'affichant dans l'onglet. --%>
-		<title>/WEB-INF/vues/web/accueil/accueil.jsp</title>
+		<title>accueil.jsp</title>
+		
+		<!-- REDIRECTION VERS /app/ AU BOUT DE 0 SECONDES -->
+<!-- 		<meta http-equiv="refresh" content="0; URL=app/"> -->
 		
 	</head>
 	
 	<body>
 		
 		<%--RECUPERATION DU CONTEXTE EN JSTL --%>
+		<c:set var="host" value="${pageContext.request.serverName}" scope="session" />
+		<c:set var="port" value="${pageContext.request.localPort}" scope="session" />
 		<c:set var="context" value="${pageContext.request.contextPath}" scope="session" />
+		<c:set var="path_jsp" value="${pageContext.request.servletPath}" scope="session" />
+		<c:set var="url_context" value="http://${host}:${port}${context}"/>
+		<c:set var="url_jsp" value="http://${host}:${port}${context}${path_jsp}"/>
+		
 				
 		<%-- MENU EN HAUT --%>	
         <nav class="bordure_fond_bleu">
@@ -52,8 +62,8 @@
 					<td>
 						<%-- LIEN (URL) --%>
 						<a href="<c:url value="/index.html" />" 
-						title="vers indexStatic.html sous static/">
-							Vers la page index.html
+						title="vers index.html sous le contexte (redirigé vers accueil.jsp)">
+							Vers la page index.html (redirigé vers accueil.jsp)
 						</a>   
 					</td>
 					<td>
@@ -70,7 +80,32 @@
 							Vers la page indexTest.html
 						</a>   
 					</td>
-				</tr>												
+				</tr>
+				
+				<tr>
+					<td>
+						<%-- LIEN (URL) --%>
+						<a href="<c:url value="static/photos/armillaria_mellea.jpg" />" 
+						title="vers armillaria_mellea.jpg sous /static/photos/">
+							Vers armillaria_mellea.jpg
+						</a>   
+					</td>
+					<td>
+						<%-- LIEN (URL) --%>
+						<a href="<c:url value="static/images/chemins_relatifs.png" />" 
+						title="vers chemins_relatifs.png sous /static/images/">
+							Vers chemins_relatifs.png
+						</a>   
+					</td>
+					<td>
+						<%-- LIEN (URL) --%>
+						<a href="<c:url value="static/css/style_index.css"/>" 
+						title="vers style_index.css sous /static/css/">
+							Vers style_index.css
+						</a>   
+					</td>
+				</tr>
+																												
 				<tr>				
 					<td>
 						<%-- LIEN (URL) --%>
@@ -101,26 +136,24 @@
 				</tr>								
 			</table>													
         </nav>
-		
-				
+						
 		<div class="section1">
 		
 			<!-- TITRE 1 HTML -->
 			<h1 class="centre" id="objectif">
-				accueil.jsp située à context/WEB-INF/vues/web/accueil/accueil.jsp
+				accueil.jsp située à ${url_jsp}
 			</h1>
 	
 			<!-- CONTENU DU TITRE 1 HTML -->			
 			<p class="centre-encadre">
 				<span class="souligne">OBJECTIF</span> : Page d'accueil 
-				de l'application gérée par le conteneur SPRING.
+				de l'application gérée par le Controller SPRING.
 			</p>
 						
 			<div>
 								
 				<p>
-					Cette page jsp <b>${context}/WEB-INF/vues/web/accueil/accueil.jsp
-					</b> située <b>
+					Cette page jsp <b>${url_jsp} </b>située<b> 
 					dans un sous-répertoire sous le WEB-INF</b> ne doit être 
 					accessible que <b>via le Controller SPRING</b>.
 				</p>
@@ -129,41 +162,130 @@
 					Cette page JSP "accueil.jsp" est accessible en tapant 
 					dans l'URL du navigateur soit :
 					<ul>
-						<li><b>http://host:8080${context}/app/</b> si le 
+						<li>${url_context}<b>/app/</b> si le 
 							welcome-file SPRING est <b>activé</b> dans le 
-							/WEB-INF/applicationContext.xml</li>
-						<li><b>http://host:8080${context}/app/accueil</b> 
+							<b>/WEB-INF/applicationContext.xml</b> et 
+							redirige vers <b>${url_jsp}</b></li>
+						<li>${url_context}<b>/app/accueil</b> 
 							si le welcome-file SPRING est <b>désactivé</b> dans 
 							le /WEB-INF/applicationContext.xml</li>
 					</ul>
 				</div>
 		
-				<p>l'URL <b>[http://localhost:8080${context}/app/]</b> n'est donc
-					équivalente à l' URL <b>[http://localhost:8080${context}/app/accueil]</b>
-					que si le welcome-file de SPRING vers 
-					<b>${context}/WEB-INF/vues/web/accueil/accueil.jsp</b> est activé 
-					dans le applicationContext.xml.
-				</p>
-		
-				<p>
-					Le welcome-file de SPRING exécute une <b>redirection</b> vers 
-					la première ressource valable 
-					(citée dans le &lt;welcome-file-list&gt; et
-					présente dans la zone des ressources déclarée
-					 WEB-INF/vues/web/) qu'il trouve.
-				</p>
-		
+			</div>
+			
+			<div class="redirection_spring">
+			
+				<div class="interception_web_xml">
+				
+					<h2>Interception par le Controller Spring (web.xml)</h2>
+					
+					<p>
+					L'interception par le Controller SPRING de toutes 
+					les URL préfixées par "/app/" est 
+					paramétrée dans le <b>/WEB-INF/web.xml</b> : 
+					</p>
+					
+					<code>
+						&lt;servlet-mapping&gt;<br/>
+        					&lt;servlet-name&gt;servlet-application-context&lt;/servlet-name&gt;<br/>
+        					&lt;url-pattern&gt;/app/*&lt;/url-pattern&gt;<br/>
+    					&lt;/servlet-mapping&gt;<br/>					
+					</code>
+					
+					<p>
+						Ces lignes <b>interceptent</b> toutes les URL 
+						de la forme <b>${url_context}/app/*</b> et les
+						transmettent au <b>Controller SPRING</b>
+					</p>
+					
+					<div>
+						<figure class="centre">	
+							<!-- IMAGE CENTREE -->
+							<img class="image_centree" src="static/images/cheminement_url.png" 
+							alt="cheminement d'une URL dans l'application" border="1" align="middle" 
+							title="cheminement d'une URL dans l'application"/>
+							<figcaption>
+								<p>
+									cheminement d'une URL dans l'application
+								</p>						
+							</figcaption>								
+						</figure>				
+					</div>
+				
+				</div>
+			
+				<div class="redirection_applicationContext_xml">
+				
+					<h2>Redirection par le Controller Spring (applicationContext.xml)</h2>
+					
+					<p>
+					La redirection par le Controller SPRING de 
+					l' URL /app/ est 
+					paramétrée dans le <b>/WEB-INF/applicationContext.xml</b> : 
+					</p>
+					
+					<code>
+						&lt;mvc:view-controller path="/" view-name="accueil/accueil"/&gt;				
+					</code>
+					
+					<p>
+						Cette ligne <b>redirige</b> l'URL <b>http://host:8080${context}/app/</b> 
+						vers <b>http://host:8080${context}/WEB-INF/vues/web/accueil/accueil.jsp</b>
+					</p>
+					
+					<div>
+						<figure class="centre">	
+							<!-- IMAGE CENTREE -->
+							<img class="image_centree" src="static/images/redirection_SPRING.png" 
+							alt="redirection par SPRING" border="1" align="middle" 
+							title="Redirection par SPRING"/>
+							<figcaption>
+								<p>
+									redirection par SPRING
+								</p>						
+							</figcaption>								
+						</figure>				
+					</div>
+									
+				</div>
+				
+				<div class="prefixage_applicationContext_xml">
+				
+					<h2>Préfixage et suffixage des vues par le Controller Spring (applicationContext.xml)</h2>
+					
+					<p>
+					Le Préfixage et le suffixage des vues par le Controller SPRING de 
+					toutes les URL commençant par /app/ sont 
+					paramétrés dans le <b>/WEB-INF/applicationContext.xml</b> : 
+					</p>
+					
+					<code>
+						&lt;bean<br/>
+					        class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt;<br/>
+					        &lt;property name="prefix"&gt;<br/>
+					            &lt;value&gt;/WEB-INF/vues/web/&lt;/value&gt;<br/>
+					        &lt;/property&gt;<br/>
+					        &lt;property name="suffix"&gt;<br/>
+					            &lt;value&gt;.jsp&lt;/value&gt;<br/>
+					        &lt;/property&gt;<br/>
+					    &lt;/bean&gt;<br/>				
+					</code>
+				
+				</div>
+				
+			
 			</div>
 		
 			<div>
 				<figure class="centre">	
 					<!-- IMAGE CENTREE -->
-					<img class="image_centree" src="static/images/index_html.png" 
-					alt="position de index.html" border="1" align="middle" 
-					title="position de index.html par rapport au contexte webapp"/>
+					<img class="image_centree" src="static/images/accueil_jsp.png" 
+					alt="position de accueil.jsp" border="1" align="middle" 
+					title="position de accueil.jsp par rapport au contexte webapp"/>
 					<figcaption>
 						<p>
-							position de index.html par rapport au contexte webapp
+							position de accueil.jsp par rapport au contexte webapp
 						</p>						
 					</figcaption>								
 				</figure>				
@@ -176,7 +298,11 @@
 		
 			
 		<%--VARIABLE PERMETTANT D'ACCEDER AU CONTEXTE EN JSTL. --%>				
-		<p>CONTEXTE PAR JSTL (pageContext.request.contextPath) : <c:out value="${context}" /></p>
+		<p>HOST (pageContext.request.serverName) : <c:out value="${host}" /></p>
+		<p>PORT (pageContext.request.localPort) : <c:out value="${port}"/></p>
+		<p>CONTEXT (pageContext.request.contextPath) : <c:out value="${context}"/></p>
+		<p>PATH (pageContext.request.servletPath) : <c:out value="${path_jsp}" /></p>
+		<p>URL de la JSP (http://HOST:PORT/CONTEXT/PATH) : <c:out value="${url_jsp}" /></p>
 		
 	
 	</body>

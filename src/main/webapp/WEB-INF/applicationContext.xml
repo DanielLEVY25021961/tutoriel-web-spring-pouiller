@@ -154,7 +154,7 @@
     <!-- ============================================================== -->
 <!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
 <!--        <property name="driverClassName" value="org.postgresql.Driver" /> -->
-<!--        <property name="url" value="jdbc:postgresql://localhost/base-tutoriel-web-spring-pouiller" /> -->
+<!--        <property name="url" value="jdbc:postgresql:5432//localhost/base-tutoriel-web-spring-pouiller" /> -->
 <!--        <property name="username" value="postgres" /> -->
 <!--        <property name="password" value="postgres" /> -->
 <!--     </bean> -->

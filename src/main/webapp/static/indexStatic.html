@@ -9,6 +9,8 @@
 		<!-- Description du contenu de la page (texte HTML) et de son encodage. -->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		
+		<meta charset="UTF-8"/>
+		
 		
 		<!-- ========================================================================== -->
 		<!-- 			LIENS VERS LES css EN HTML. 									-->
@@ -36,16 +38,22 @@
 	
 		<!-- MENU EN HAUT -->	
         <nav class="bordure_fond_bleu">       
-        	<p id="menu_haut">
-        		MENU DU HAUT
-        	</p>		
-			<table>			
+			<table>
+				<tr>
+					<td>
+	            		<a href="../app/accueil" 
+	            		title = "Vers la page d'accueil de l'application accueil.jsp">
+	            		Vers la page d'accueil de l'application accueil.jsp
+	            		</a>					
+					</td>
+				</tr>
+				
 				<tr>
 					<td>
 						<!-- LIEN (URL) -->
 						<a href="../index.html" 
-						title="vers index.html directement sous le context">
-							Vers la page index.html
+						title="vers index.html directement sous le context (redirigé vers accueil.jsp)">
+							Vers la page index.html (redirigé vers accueil.jsp)
 						</a>		 
 					</td>
 					<td>
@@ -56,6 +64,31 @@
 						</a>   
 					</td>
 				</tr>												
+				
+				<tr>
+					<td>
+						<!-- LIEN (URL) -->
+						<a href="../app/static/photos/armillaria_mellea.jpg" 
+						title="vers la photo armillaria_mellea.jpg">
+							vers la photo static/photos/armillaria_mellea.jpg
+						</a>   
+					</td>
+					<td>
+						<!-- LIEN (URL) -->
+						<a href="../app/static/images/chemins_relatifs.png" 
+						title="vers l'image chemins_relatifs.png">
+							vers l'image chemins_relatifs.png
+						</a>   
+					</td>
+					<td>
+						<!-- LIEN (URL) -->
+						<a href="../app/static/css/style_index.css" 
+						title="vers style_index.css sous /static/css/">
+							Vers style_index.css
+						</a>   
+					</td>									
+				</tr>
+							
 				<tr>				
 					<td>
 						<!-- LIEN (URL) -->
