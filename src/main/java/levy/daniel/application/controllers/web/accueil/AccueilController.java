@@ -1,5 +1,7 @@
 package levy.daniel.application.controllers.web.accueil;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -80,12 +82,23 @@ public class AccueilController {
 	 * On ne met que la partie de l'URL nécessaire dans la méthode.<br/>
 	 * </ul>
 	 * </ul>
+	 * @param pRequest : HttpServletRequest.<br/>
 	 *
 	 * @return : String : chemin vers la jsp .<br/>
 	 */
 	@RequestMapping(value="accueil")
-	public String versPageAccueil() {
+	public String versPageAccueil(
+			final HttpServletRequest pRequest) {
+		
+		/* Texte du lien clickable dans le fil d'ariane. */
+		final String arianeAccueil 
+			= "accueil";
+		
+		pRequest.setAttribute("ariane", arianeAccueil);
+		
+		/* retourne l'URL de la JSP. */
 		return "accueil/accueil";
+		
 	} // Fin de versPageAccueil()._________________________________________
 	
 

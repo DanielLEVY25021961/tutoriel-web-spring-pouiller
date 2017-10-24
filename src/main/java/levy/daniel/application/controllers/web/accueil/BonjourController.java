@@ -80,18 +80,18 @@ public class BonjourController {
 	 *
 	 * @param pModelMap : ModelMap.<br/>
 	 * @param pPersonne : String
-	 * @param request  : HttpServletRequest.<br/>
+	 * @param pRequest  : HttpServletRequest.<br/>
 	 * 
 	 * @return : String : "bonjour".<br/>
 	 */
-	@RequestMapping(value="/afficherBonjour", method = RequestMethod.GET)
+	@RequestMapping(value="/bonjour", method = RequestMethod.GET)
 	public String afficherBonjour(
 			final ModelMap pModelMap
 				, @RequestParam(value="personne", required=false, defaultValue = "l'anonyme") final String pPersonne
-					, final HttpServletRequest request) {
+					, final HttpServletRequest pRequest) {
 		
 		
-		final Enumeration<String> enumeration = request.getParameterNames();
+		final Enumeration<String> enumeration = pRequest.getParameterNames();
 		
 		/* Vérification de l'existence du paramètre "personne" dans la requête. */
 		final boolean parametrePersonneDansRequete 
@@ -114,11 +114,11 @@ public class BonjourController {
 		}
 						
 		/* le contrôleur redirige vers la ressource 
-		 * « /vues/bonjour.jsp ». */
+		 * « /WEB-INF/vues/web/accueil/bonjour.jsp ». */
 		/* Le ServletDispatcher gère le bean InternalResourceViewResolver 
 		 * qui précise que les jsp sont sous /WEB-INF/vues/web/. 
 		 * et ont l'extension .jsp*/
-		return "bonjour";
+		return "accueil/bonjour";
 		
 	} // Fin de afficherBonjour(
 	 // ModelMap pModelMap)._______________________________________________

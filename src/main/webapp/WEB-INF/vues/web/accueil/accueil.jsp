@@ -53,6 +53,26 @@
 		<c:set var="url_context" value="http://${host}:${port}${context}"/>
 		<c:set var="url_jsp" value="http://${host}:${port}${context}${path_jsp}"/>
 		
+    	<!-- HEADER -->
+    	<header class="bordure">
+    	
+            <%-- FIL D'ARIANE --%>
+			<div class="ariane">
+				<p>
+					<%-- Image clickable --%>
+					<a href="<c:url value="accueil"/> ">
+						<img alt="accueil" src="<c:url value="/static/images/home.png"/>" />
+					</a>
+					<%-- Texte clickable comme l'image. --%>
+					<span class="filariane">
+						<a href="<c:url value="${ariane}" />">
+							<c:out value="${ariane}" />
+						</a>
+					</span>
+				</p>
+				<c:set var="ariane" value="${ariane}" scope="session" />
+			</div>
+        </header>
 				
 		<%-- MENU EN HAUT --%>	
         <nav class="bordure_fond_bleu">
@@ -271,6 +291,14 @@
 					        &lt;/property&gt;<br/>
 					    &lt;/bean&gt;<br/>				
 					</code>
+					
+					<p>
+					Ces lignes permettent de ne préciser que le path 
+					essentiel des jsp dans les "actions" SPRING.<br/>
+					Par exemple, dans l'action SPRING "metier/commande/creerCommande"
+					sera remplacé par SPRING par 
+					<b>/WEB-INF/vues/web/</b>metier/commande/creerCommande<b>.jsp</b>
+					</p>
 				
 				</div>
 				
