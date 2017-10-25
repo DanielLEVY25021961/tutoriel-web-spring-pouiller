@@ -13,12 +13,12 @@ h1 {
 }
 
 h2 {
-	text-decoration: underline; /* Makes underline */
-	color:blue;
+/* 	text-decoration: underline; Makes underline */
+/* 	color:blue; */
 }
 
 h3 {
-	text-decoration: underline; /* Makes underline */
+/* 	text-decoration: underline; Makes underline */
 }
 
 
@@ -293,4 +293,42 @@ p#menu_haut {
   border-bottom: 10px solid transparent; 
   
   border-right:10px solid blue; 
+}
+
+/* .class : Couleurs avec des Classes-------------------------------------- */
+
+.couleur_bleu_intense {
+	color:#4e51c2; 	
+}
+
+.couleur_orange_intense {
+	color:#d58c3c; 	
+}
+
+.couleur_vert_intense {
+	color:#5e7763; 	
+}
+
+.couleur_noir_intense {
+	color:#000000; 	
+}
+
+
+#fonte14gras {
+	
+	/* TEXTE. */
+	font: normal 14pt verdana, helvetica, sans-serif; /* fonte. */
+	font-style: normal; /* style de la fonte (normal=sans italics, ...). */
+	font-weight: bold; /* en gras (normal=pas gras). */
+	font-size:14pt; /* taille de la fonte. */	
+	color:#000000; /* couleur de la fonte (#000000=noir). */
+	text-align: center; /* Contre le texte horizontalement dans la page. */
+    text-decoration:none; /* soulignement, surlignement, ... (none=rien). */
+    background-color:#fefbd6; /* couleur de background (#fefbd6=jaune clair). */
+
+    /* BORDURE. */
+    border: 3px #0000ff solid; /* taille et couleur de la bordure (#0000ff=bleu intense). */	
+	padding: 20px; /* ecartement de la bordure autour du texte. */
+    margin: 40px; /* marges autour du cadre*/	
+
 }

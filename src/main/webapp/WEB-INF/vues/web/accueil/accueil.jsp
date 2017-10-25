@@ -156,7 +156,168 @@
 				</tr>								
 			</table>													
         </nav>
+		
+		<div class="tutoriel">
+		
+			
+		<div class="liens">
+        		<ul>
+        			<li><a href='<c:url value="bonjour" />'>vers bonjour.jsp</a></li>
+        		
+        		</ul>
+        </div>
+        	
+			
+		
+			<div class="titre_Tuto">
+					
+				<h1>TUTORIEL WEB SPRING HIBERNATE de M. Régis Pouiller</h1>
+			
+				<p>Le tutoriel utilisé est disponible 
+					<a href="http://rpouiller.developpez.com/tutoriels/spring/application-web-spring-hibernate/"
+					 title="site du tutoriel de Régis Pouiller" 
+					 	target="_blank">
+						ici
+					</a>
+				</p>
 						
+			</div>
+		
+			<div class="objectifs">
+			
+				<h2>Objectifs poursuivis dans le tutoriel</h2>
+				
+				<ol>
+					<li>Déclarer le Controller SPRING dans le descripteur 
+					de déploiement d'une application web.xml.</li>
+					<li>Utiliser la configuration par annotations de 
+					SPRING (context : component-scan dans applicationContext.xml).</li>
+					<li>Utiliser l'internationalisation de SPRING 
+					(bean ReloadableResourceBundleMessageSource dans 
+					le applicationContext.xml).</li>
+					<li>Utiliser les taglibs de SPRING dans les jsp.</li>
+					<li>Créer un Controller annoté par SPRING interceptant 
+					une action et aiguillant vers une ressource (jsp).</li>
+					<li>Alimenter les attributs d'une requête dans un 
+					Controller annoté SPRING.</li>
+					<li>Utiliser des Expression Language (EL) dans une jsp 
+					pour restituer les attributs d'une requête.</li>
+					<li></li>
+					<li></li>
+									
+				</ol>
+			
+			</div>
+			
+			<div class="internationalisation">
+			
+				<h2>Internationalisation avec Spring (ResourceBundle)</h2>
+				
+				<p>Tâches à réaliser pour l'internationalisation avec SPRING : </p>
+				
+				<div class="image_taches_internationalisation">
+					<figure>	
+						<!-- IMAGE CENTREE -->
+						<img src="static/images/internationalisation_SPRING.png" 
+						alt="tâches à réaliser pour l'internationalisation avec SPRING" border="1" align="middle" 
+						title="tâches à réaliser pour l'internationalisation avec SPRING"/>			
+					</figure>				
+				</div>
+				
+				<ol>
+				
+					<li><b>Déclarer le bean ReloadableResourceBundleMessageSource</b> 
+					dans applicationContext.xml.<br/>
+					C'est ce bean qui se charge de l'internationalisation avec SPRING.</li>
+					
+					<li><b>Préciser le nom de base</b> des properties contenant 
+					les messages SPRING dans applicationContext.xml.<br/>
+					Ici : "messages".
+					
+						<p>
+							<code>
+								&lt;bean id="messageSource"<br/>
+									class="org.springframework.context.support.ReloadableResourceBundleMessageSource"&gt;<br/>
+									&lt;property name="basename" value="classpath:messages" /&gt;<br/>
+									&lt;property name="defaultEncoding" value="UTF-8" /&gt;<br/>
+								&lt;/bean&gt;<br/>
+							</code>
+						</p>
+					</li>
+					
+					<li>
+						<b>Créer les properties</b> contenant les messages SPRING 
+						<i>sous le classpath</i>.<br/>
+						
+						<p>
+							Exemples de couples [clé-valeur] contenus dans 
+							messages_fr_FR.properties : <br/>
+						</p>	
+						
+						<p>	
+							<code>
+								titre.bonjour = Bonjour avec Spring<br/>
+								libelle.bonjour.lemonde = Bonjour {0} avec Spring<br/>
+								<br/>
+								titre.listecourses=Liste de courses<br/>
+								colonne.identifiant=IDOBJET<br/>
+								colonne.libelle=LIBELLE<br/>
+								colonne.quantite=QUANTITE<br/>
+							</code>
+						</p>			
+					</li>
+					
+					<li><b>Incorporer la directive d'inclusion des taglibs SPRING</b> 
+					dans les vues jsp affichant les messages SPRING.
+					
+						<p>
+							En haut des vues jsp sous la déclaration de la 
+							DTD HTML5 et avant la balise html. :<br/>
+						</p>
+						
+						<p>
+							<code>
+								&lt;%@taglib uri="http://www.springframework.org/tags" 
+								prefix="spring"%&gt;<br/>
+							</code>						
+						</p>			
+					</li>
+					
+					<li>
+						<b>Incorporer les balises &lt;spring:message code="key"/&gt;</b> 
+						dans les vues jsp affichant les messages SPRING.<br/>
+						
+						<p>
+							<code>
+								&lt;title&gt;<br/>
+									&lt;spring:message code="titre.bonjour"/&gt; : 
+									&lt;c:out value="${personne}" default
+									="" escapeXml="true" /&gt;<br/>
+								&lt;/title&gt;<br/>							
+							</code>						
+						</p>
+					</li>
+				
+				</ol>
+				
+				<p>
+					SPRING va alors rechercher les messages (values) 
+					associés au clés (keys)
+					dans les properties et les injecter dans les 
+					balises spring:message.<br/>
+				</p>
+				
+				<h3>
+					Voir le résultat dans <a href='<c:url value="bonjour"/>'>bonjour.jsp</a>
+				</h3>
+			
+			</div>
+				
+		</div>
+				
+		<!-- TRAIT HORIZONTAL SUR TOUTE LA PAGE -->
+		<hr width="100%"/>
+        							
 		<div class="section1">
 		
 			<!-- TITRE 1 HTML -->

@@ -70,19 +70,31 @@ public class BonjourController {
 	 * ModelMap pModelMap
 	 * , String pPersonne) :<br/>
 	 * <ul>
-	 * <li>associe la valeur pPersonne à l'attribut "personne".</li>
-	 * <li>redirige vers la ressource "bonjour" 
-	 * (/WEB-INF/vues/bonjour.jsp).</li>
+	 * <li>redirige l'URL "/app/bonjour" vers la ressource (jsp) 
+	 * sous le WEB-INF "accueil/bonjour" 
+	 * (/WEB-INF/vues/web/accueil/bonjour.jsp).</li>
+	 * <li>Le RequestMapping ne contient que "/bonjour" car le web.xml 
+	 * déclare que les URL interceptées par le Controller SPRING 
+	 * (Dispatcher-Servlet) commencent par "/app/".<br/>
+	 * Le controller SPRING rajoute automatiquement "/app/" 
+	 * au RequestMapping.</li> 
+	 * <li>associe la valeur pPersonne à l'attribut "personne" 
+	 * dans la Map <b>pModelMap</b> contenant les attributs 
+	 * de la requête.</li>
 	 * </ul>
-	 * defaultValue = "l'anonyme" remplacera ?Personne=xxx dans la requête
-	 * si xxx est blank comme si ?personne est omis.<br/>
+	 * - RequestParam(value="personne", required=false, ...) permet
+	 * de rendre le paramètre personne dans la requête 
+	 * <b>nullable</b>.<br/>
+	 * - defaultValue = "l'anonyme" remplacera ?personne=xxx 
+	 * dans la requête si xxx est blank comme si ?personne est omis.<br/>
 	 * <br/>
 	 *
 	 * @param pModelMap : ModelMap.<br/>
 	 * @param pPersonne : String
 	 * @param pRequest  : HttpServletRequest.<br/>
 	 * 
-	 * @return : String : "bonjour".<br/>
+	 * @return : String : "accueil/bonjour" traduit par le Controller SPRING 
+	 * en "/WEB-INF/vues/web/accueil/bonjour.jsp".<br/>
 	 */
 	@RequestMapping(value="/bonjour", method = RequestMethod.GET)
 	public String afficherBonjour(
@@ -105,14 +117,16 @@ public class BonjourController {
 			typeRequeteAParametres = "Requête avec paramètres";
 		}
 		
+		/* Ajout des attributs à la requête. */
 		if (pPersonne != null) {
 			/* la valeur pPersonne est associée à l'attribut « personne » 
 			 * grâce à la méthode « addAttribute » de « ModelMap ». */
 			pModelMap.addAttribute("personne", pPersonne);
-			pModelMap.addAttribute("typeRequeteAParametres"
-					, typeRequeteAParametres);
 		}
-						
+		
+		pModelMap.addAttribute("typeRequeteAParametres"
+				, typeRequeteAParametres);
+		
 		/* le contrôleur redirige vers la ressource 
 		 * « /WEB-INF/vues/web/accueil/bonjour.jsp ». */
 		/* Le ServletDispatcher gère le bean InternalResourceViewResolver 

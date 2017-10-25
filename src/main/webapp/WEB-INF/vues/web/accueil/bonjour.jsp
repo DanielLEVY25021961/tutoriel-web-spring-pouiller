@@ -160,15 +160,107 @@
 			</table>													
         </nav>
 
+
+        <div class="contenu">
         
-        <h1 class="centre">bonjour.jsp situé à <c:out value="${url_jsp}"/></h1>	
+        	<div class="liens">
+        		<ul>
+        			<li><a href='<c:url value="accueil" />'>vers accueil</a></li>
+        		
+        		</ul>
+        	</div>
         
-        
-		<%--va chercher les values de clés comme 'libelle.bonjour.lemonde' dans messages.properties --%>
-		<%--défini dans le bean id="messageSource" de applicationContext.xml --%>
-		<%-- Expressions Languages « ${personne} » afin de restituer la donnée fournie par le controller. --%>	
-	 	<h2><spring:message code="libelle.bonjour.lemonde" arguments="${personne}"/></h2>
-	 	
+	        <h1 class="centre">bonjour.jsp situé à <c:out value="${url_jsp}"/></h1>
+
+			<div class="internationalisation">
+	
+				<h2 class="souligne">INTERNATIONALISATION</h2>
+	
+				<div class="internationalisation_titre">
+	
+					<p>Cette VUE jsp "bonjour.jsp" utilise les messages contenus
+						dans messages.properties (situé sous le classpath) et
+						l'internationalisation par SPRING (ResourceBundle).</p>
+	
+					<h3 class="souligne">Dans le titre de l'onglet :</h3>
+	
+					<p>
+						Le titre de l'onglet restitue un message contenu dans
+						message.properties et associé à la clé (code) code="titre.bonjour".<br />
+						Le message délivré par le properties associé à cette clé est
+						"Bonjour avec Spring".
+					</p>
+	
+					<div class="explication_titre">
+						Le code dans le titre de l'onglet de la JSP utilise :
+						<ul>
+							<li><span class="couleur_bleu_intense"> du HTML, </span></li>
+							<li><span class="couleur_orange_intense"> des tags
+									SPRING, </span></li>
+							<li><span class="couleur_vert_intense"> des tags JSTL,
+							</span></li>
+							<li>des Expression Language (EL) - "l'anonyme" est en réalité
+								une valeur par défaut passée à l'Expression Language {personne}<br />
+							</li>
+						</ul>
+					</div>
+	
+					<p>
+						<code>
+							<span class="couleur_bleu_intense">&lt;title&gt;</span><br /> <span
+								class="couleur_orange_intense"> &lt;spring:message
+								code="titre.bonjour"/&gt; </span> <span class="couleur_vert_intense">
+								: &lt;c:out value=<span class="couleur_noir_intense">"${personne}"</span> 
+								default="" escapeXml="true" /&gt;<br />
+							</span> <span class="couleur_bleu_intense">&lt;/title&gt;</span><br />
+						</code>
+					</p>
+	
+	
+				</div>
+	
+	
+				<div class="internationalisation_message_el">
+	
+					<h3 class="souligne">Dans le corps du texte :</h3>
+	
+					<p>
+						Le bloc ci-dessous restitue un message contenu dans
+						message.properties sous le classpath et associé à la <b>clé</b>
+						(code) code="libelle.bonjour.lemonde".<br />
+					</p>
+					<p>
+						Le message <b>(value)</b> délivré par le properties associé à cette
+						clé est "Bonjour {0} avec Spring".<br />
+					</p>
+					<p>
+						{0} est un <b>PLACEHOLDER</b> alimenté par les paramètres de la
+						requête (le paramètre "personne" doit être le premier (index
+						0-based) dans les paramètres passés à la requête pour se substituer
+						à {0}).
+					</p>
+					<p>
+						Il suffit de taper
+						"http://localhost:8080/tutoriel-web-spring-pouiller/ app/bonjour<b>?personne=Zorro</b>"
+						dans l'URL du navigateur pour que le message devienne "Bonjour
+						Zorro avec Spring".<br /> Le premier paramètre passé dans la
+						requête est en effet "personne" et sa valeur est "Zorro".
+					</p>
+	
+					<%--va chercher les values de clés comme 'libelle.bonjour.lemonde' dans messages.properties --%>
+					<%--défini dans le bean id="messageSource" de applicationContext.xml --%>
+					<%-- Expressions Languages « ${personne} » afin de restituer la donnée fournie par le controller. --%>
+					<h4 id="fonte14gras">
+						<spring:message code="libelle.bonjour.lemonde"
+							arguments="${personne}" />
+					</h4>
+	
+				</div>
+	
+			</div>
+	
+		</div>
+ 	 	
 	</body>
 	
 </html>
