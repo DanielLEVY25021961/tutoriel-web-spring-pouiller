@@ -35,6 +35,7 @@
 	<persistence-unit name="persistence_unit_base-tutoriel-web-spring-pouiller">
 
 
+		<!-- ========================================================== -->
 		<!-- 				CHOIX DE L'ORM							    -->
 		<!-- INDIQUE QUE LA PERSISTENCE EST REALISEE PAR HIBERNATE 		-->
 		<!-- ========================================================== -->
@@ -56,76 +57,71 @@
 					<!-- ************************* -->
 					<!-- DRIVER DE BASE DE DONNEES -->
 					<!-- ************************* -->
-			<!-- ========================================================= -->
-			<!-- postgresql 9.6.4 - port : 5432 - [postgres, postgres] -->
-			<!-- ========================================================= -->
-			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-
-			<!-- ========================================================= -->
-			<!-- mySql 5.7.19.0 - port : 3306 - [root, root] -->
-			<!-- ========================================================= -->
-			<!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" 
-				/> -->
-
-			<!-- ========================================================= -->
-			<!-- hsqldb 2.4.0 -->
-			<!-- ========================================================= -->
-			<!-- <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" 
-				/> -->
+		<!-- ========================================================= -->
+		<!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
+		<!-- ========================================================= -->
+		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			      
+		 <!-- ========================================================= -->
+		 <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
+		 <!-- ========================================================= -->   	
+<!-- 		 <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" /> -->
+				
+		<!-- ========================================================= -->
+		<!--                     hsqldb 2.4.0                          -->
+		<!-- ========================================================= -->
+<!-- 		<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" /> -->
 
 
 						<!-- **************************** -->
 						<!--          DIALECT             -->
 						<!-- **************************** -->
-			<!-- Dialecte que doit utiliser Hibernate pour communiquer -->
-			<!-- avec la BD de l'application. -->
+			<!-- Dialecte que doit utiliser Hibernate pour communiquer 	   -->
+			<!-- avec la BD de l'application.  							   -->
 			<!-- ========================================================= -->
-			<!-- postgresql 9.6.4 - port : 5432 - [postgres, postgres] -->
+		    <!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
+		    <!-- ========================================================= -->
+    		<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
+    		
+		    <!-- ========================================================= -->
+		    <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
+		    <!-- ========================================================= -->   	
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" /> -->
+			
 			<!-- ========================================================= -->
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
-
-			<!-- ========================================================= -->
-			<!-- mySql 5.7.19.0 - port : 3306 - [root, root] -->
-			<!-- ========================================================= -->
-			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect" 
-				/> -->
-
-			<!-- ========================================================= -->
-			<!-- hsqldb 2.4.0 -->
-			<!-- ========================================================= -->
-			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" 
-				/> -->
-
+		    <!--                     hsqldb 2.4.0                          -->
+		    <!-- ========================================================= -->
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" /> -->
+			
 
 		 			<!-- ************************** -->
 					<!-- pour voir les requetes SQL -->
 					<!-- ************************** -->
 
-			<!-- Montrer toutes les réquêtes générées -->
-			<property name="hibernate.show_sql" value="true" />
-			<!-- <property name="hibernate.show_sql" value="false" /> -->
-
-			<!-- Formater le SQL de sortie -->
+        	<!-- Montrer toutes les réquêtes générées -->
+	        <property name="hibernate.show_sql" value="true" />
+<!--      	    <property name="hibernate.show_sql" value="false" /> -->
+	        
+	        <!-- Formater le SQL de sortie -->
 			<property name="hibernate.format_sql" value="true" />
-			<!-- <property name="hibernate.format_sql" value="false" /> -->
+<!-- 			<property name="hibernate.format_sql" value="false" /> -->
 
 			<!-- faciliter le débogage du SQL -->
 			<property name="hibernate.use_sql_comments" value="true" />
-			<!-- <property name="hibernate.use_sql_comments" value="false" /> -->
+<!--  			<property name="hibernate.use_sql_comments" value="false" /> -->
 
 
 				<!-- *************************************** -->
 				<!-- Pour générer des statistiques Hibernate -->
 				<!-- *************************************** -->
-			<property name="hibernate.generate_statistics" value="true" />
-			<!-- <property name="hibernate.generate_statistics" value="false" /> -->
+        	<property name="hibernate.generate_statistics" value="true" />
+<!--         	<property name="hibernate.generate_statistics" value="false" /> -->
 
 
 				<!-- ************************************ -->
 				<!-- Désactiver le cache de second niveau -->
 				<!-- ************************************ -->
-			<property name="cache.provider_class" value="org.hibernate.cache.NoCacheProvider" />
-
+			<property name="cache.provider_class" value="org.hibernate.cache.NoCacheProvider" />	
 
 
 
@@ -160,12 +156,11 @@
 <!-- 			<property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
 
 			<!-- Supprime et re-créée le schéma de base de données au démarrage -->
-			<!-- <property name="hbm2ddl.auto" value="create" /> -->
-
-			<!-- Met à jour le schéma (sans destruction de données) si modification 
-				d'une Entity -->
-			<!-- <property name="hibernate.hbm2ddl.auto" value="update" /> -->
-
+<!-- 			<property name="hbm2ddl.auto"  value="create" /> -->
+		
+			<!-- Met à jour le schéma (sans destruction de données) si modification d'une Entity -->
+<!--  			<property name="hibernate.hbm2ddl.auto" value="update" /> -->
+		
 			<!-- VALIDE LE SCHEMA ET CONSERVE LES DONNEES. POUR LA PROD. -->
 			<property name="hibernate.hbm2ddl.auto" value="validate" />
 
@@ -177,13 +172,13 @@
 			<!-- DEPLOIE L'APPLI SOUS UN TOMCAT. 									-->
 			<!-- TOMCAT SE CHARGERA DU POOL DE CONNEXION 							-->
 			<!-- A PRECISER SI APPLI STANDALONE. 									-->
-			<!-- <property name="hibernate.c3p0.min_size" value="5" /> 				-->
-			<!-- <property name="hibernate.c3p0.max_size" value="20" /> 			-->
-			<!-- <property name="hibernate.c3p0.timeout" value="500" /> 			-->
-			<!-- <property name="hibernate.c3p0.max_statements" value="50" /> 		-->
-			<!-- <property name="hibernate.c3p0.idle_test_period" value="2000" /> 	-->
+<!-- 			<property name="hibernate.c3p0.min_size" value="5" /> -->
+<!-- 		    <property name="hibernate.c3p0.max_size" value="20" /> -->
+<!-- 		    <property name="hibernate.c3p0.timeout" value="500" /> -->
+<!-- 		    <property name="hibernate.c3p0.max_statements" value="50" /> -->
+<!-- 		    <property name="hibernate.c3p0.idle_test_period" value="2000" />                -->
 
-
+			
 		</properties>
 
 	</persistence-unit>

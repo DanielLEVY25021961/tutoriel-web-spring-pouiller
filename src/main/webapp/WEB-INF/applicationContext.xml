@@ -134,6 +134,7 @@
 	<!-- Gestion des ResourceBundles par Spring.						    -->
 	<!-- ================================================================== -->
 	<!-- bean messageSource de classe ReloadableResourceBundleMessageSource -->
+	<!-- SPRING utilise les messages.properties sous le classpath.		    -->
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:messages" />
