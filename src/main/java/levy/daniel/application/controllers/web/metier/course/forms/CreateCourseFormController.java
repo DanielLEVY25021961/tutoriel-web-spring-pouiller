@@ -43,7 +43,9 @@ public class CreateCourseFormController {
 	/**
 	 * quantite : Integer :<br/>
 	 * Quantité de produit acheté provenant de la vue.<br/>
-	 * Doit être non null, numérique et positif.<br/>
+	 * Doit être non null, numérique et positif 
+	 * (Pattern(regexp = "\\d")).<br/>
+	 * (\\d) signifie appartenant à [0-9].<br/>
 	 */
 	@NotEmpty
 	@Pattern(regexp = "\\d")

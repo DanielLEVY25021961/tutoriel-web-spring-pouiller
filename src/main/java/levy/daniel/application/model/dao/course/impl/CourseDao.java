@@ -143,7 +143,7 @@ public class CourseDao implements ICourseDAO {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<ICourse> getList() {
+	public List<ICourse> findAll() {
 		final List<ICourse> courses = this.entityManager.createQuery("select c from Course c").getResultList();
 		return courses;
 	}

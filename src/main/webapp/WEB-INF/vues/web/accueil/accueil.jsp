@@ -53,6 +53,10 @@
 		<c:set var="url_context" value="http://${host}:${port}${context}"/>
 		<c:set var="url_jsp" value="http://${host}:${port}${context}${path_jsp}"/>
 		
+		<%--ANCRE POUR LE RETOUR EN HAUT --%>
+		<div id="sommet"></div>
+		
+		
     	<!-- HEADER -->
     	<header class="bordure">
     	
@@ -70,7 +74,7 @@
 						</a>
 					</span>
 				</p>
-				<c:set var="ariane" value="${ariane}" scope="session" />
+<%-- 				<c:set var="ariane" value="${ariane}" scope="session" /> --%>
 			</div>
         </header>
 				
@@ -156,18 +160,41 @@
 				</tr>								
 			</table>													
         </nav>
+
+		<!-- ANCRES -->
+		<div class="ancres">
+		
+		    <p class="souligne">Aller directement à la partie traitant de (ancres) :</p>
+		    
+		    <table class="ancres">
+		    	<tr>
+					<td><a href="#objectifs" title="vers OBJECTIFS">OBJECTIFS</a></td>	
+			    	<td><a href="#internationalisation" title="vers INTERNATIONALISATION">INTERNATIONALISATION</a></td>
+			    	<td><a href="#mise_en_place_bd" title="vers MISE EN PLACE D'UNE BD">MISE EN PLACE D'UNE BD</a></td>
+				</tr>
+		    </table>
+		    
+		    
+		    		    	
+		</div>
+				
+		<!-- TRAIT HORIZONTAL SUR TOUTE LA PAGE -->
+		<hr class="trait_horizontal" width="100%"/>
+
 		
 		<div class="tutoriel">
 		
 			
-		<div class="liens">
-        		<ul>
-        			<li><a href='<c:url value="bonjour" />'>vers bonjour.jsp</a></li>
-        		
-        		</ul>
-        </div>
+			<div class="liens">
+	        		<ul>
+	        			<li><a href='<c:url value="bonjour" />'>vers bonjour.jsp</a></li>
+	        		
+	        		</ul>
+	        </div>
         	
-			
+			<!-- TRAIT HORIZONTAL SUR TOUTE LA PAGE -->
+			<hr class="trait_horizontal" width="100%"/>
+ 			
 		
 			<div class="titre_Tuto">
 					
@@ -182,10 +209,24 @@
 				</p>
 						
 			</div>
+
 		
 			<div class="objectifs">
 			
-				<h2>Objectifs poursuivis dans le tutoriel</h2>
+				<h2 id="objectifs">
+					Objectifs poursuivis dans le tutoriel
+					
+					<%--Image clickable flèche retour vers le haut --%>
+					<span class="a_droite">
+						<a href="#sommet">
+						<img 
+						alt="retour vers le haut" 
+						title="retour vers le haut" 
+						src='<c:url value="static/images/fleche_vers-haut-icone-5723-16x16.png"/>'>
+						</a>
+					</span>
+					
+				</h2>
 				
 				<ol>
 					<li>Déclarer le Controller SPRING dans le descripteur 
@@ -202,7 +243,7 @@
 					Controller annoté SPRING.</li>
 					<li>Utiliser des Expression Language (EL) dans une jsp 
 					pour restituer les attributs d'une requête.</li>
-					<li></li>
+					<li>Créer une base de données (BD)</li>
 					<li></li>
 									
 				</ol>
@@ -211,7 +252,20 @@
 			
 			<div class="internationalisation">
 			
-				<h2>Internationalisation avec Spring (ResourceBundle)</h2>
+				<h2 class="internationalisation_avec_spring" id="internationalisation">
+					Internationalisation avec Spring (ResourceBundle)
+					
+					<%--Image clickable flèche retour vers le haut --%>
+					<span class="a_droite">
+						<a href="#sommet">
+						<img 
+						alt="retour vers le haut" 
+						title="retour vers le haut" 
+						src='<c:url value="static/images/fleche_vers-haut-icone-5723-16x16.png"/>'>
+						</a>
+					</span>
+
+				</h2>
 				
 				<p>Tâches à réaliser pour l'internationalisation avec SPRING : </p>
 				
@@ -312,11 +366,37 @@
 				</h3>
 			
 			</div>
+			
+			<!-- TRAIT HORIZONTAL SUR TOUTE LA PAGE -->
+			<hr class="trait_horizontal" width="100%"/>
+	
+			<div class="base_donnees">
+			
+				<h2 class="mise_en_place_bd" id="mise_en_place_bd">
+					Mise en place d'une Base de Données (BD)
+					
+					<%--Image clickable flèche retour vers le haut --%>
+					<span class="a_droite">
+						<a href="#sommet">
+						<img 
+						alt="retour vers le haut" 
+						title="retour vers le haut" 
+						src='<c:url value="static/images/fleche_vers-haut-icone-5723-16x16.png"/>'>
+						</a>
+					</span>
+					
+				</h2>
 				
+			
+			
+			</div>
+							
 		</div>
+		
+		
 				
 		<!-- TRAIT HORIZONTAL SUR TOUTE LA PAGE -->
-		<hr width="100%"/>
+		<hr class="trait_horizontal" width="100%"/>
         							
 		<div class="section1">
 		

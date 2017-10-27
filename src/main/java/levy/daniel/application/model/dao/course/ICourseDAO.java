@@ -97,7 +97,7 @@ public interface ICourseDAO extends IDAO<ICourse> {
 	 * liste de toutes les courses présentes en base.<br/>
 	 */
 	@Override
-	List<ICourse> getList();
+	List<ICourse> findAll();
 	
 	
 

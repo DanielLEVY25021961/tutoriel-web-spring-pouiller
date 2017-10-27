@@ -89,7 +89,7 @@ public interface IDAO<T> {
 	
 	
 	/**
-	 * method getList() :<br/>
+	 * method findAll() :<br/>
 	 * Retourne la liste de tous les objets métier de Type paramétré T 
 	 * présents en base.<br/>
 	 * <br/>
@@ -98,7 +98,7 @@ public interface IDAO<T> {
 	 * liste de tous les objets métier de Type paramétré T 
 	 * présents en base.<br/>
 	 */
-	List<T> getList();
+	List<T> findAll();
 	
 	
 	

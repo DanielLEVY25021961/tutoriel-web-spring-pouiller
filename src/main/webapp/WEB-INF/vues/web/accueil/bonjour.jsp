@@ -160,7 +160,17 @@
 			</table>													
         </nav>
 
-
+		<!-- ANCRES -->
+		<div class="ancres">
+		    <p class="souligne">Aller directement à la partie traitant de (ancres) :</p>
+		
+		    <a href="#internationalisation">INTERNATIONALISATION</a><br />	
+		    <a href="#remplacement_el">REMPLACEMENT DES EL PAR LES ATTRIBUTS</a><br />		
+		</div>
+		
+		<!-- TRAIT HORIZONTAL SUR TOUTE LA PAGE -->
+		<hr class="trait_horizontal" width="100%"/>
+ 	
         <div class="contenu">
         
         	<div class="liens">
@@ -169,12 +179,15 @@
         		
         		</ul>
         	</div>
+        	
+ 		<!-- TRAIT HORIZONTAL SUR TOUTE LA PAGE -->
+		<hr class="trait_horizontal" width="100%"/>
         
 	        <h1 class="centre">bonjour.jsp situé à <c:out value="${url_jsp}"/></h1>
 
 			<div class="internationalisation">
 	
-				<h2 class="souligne">INTERNATIONALISATION</h2>
+				<h2 class="souligne" id="internationalisation">INTERNATIONALISATION</h2>
 	
 				<div class="internationalisation_titre">
 	
@@ -240,7 +253,7 @@
 						à {0}).
 					</p>
 					<p>
-						Il suffit de taper
+						Il suffit de <b>taper</b>
 						"http://localhost:8080/tutoriel-web-spring-pouiller/ app/bonjour<b>?personne=Zorro</b>"
 						dans l'URL du navigateur pour que le message devienne "Bonjour
 						Zorro avec Spring".<br /> Le premier paramètre passé dans la
@@ -257,6 +270,49 @@
 	
 				</div>
 	
+			</div>
+
+ 		<!-- TRAIT HORIZONTAL SUR TOUTE LA PAGE -->
+		<hr class="trait_horizontal" width="100%"/>
+			
+			<div class="remplacement_el" >
+			
+				<h2 class="souligne" id="remplacement_el">
+					REMPLACEMENT DES EL PAR LES ATTRIBUTS ET 
+					DES PLACEHOLDERS PAR LES PARAMETRES
+				</h2>
+				
+				<div class="images_display_flex">
+							
+					<figure class="image_gauche">
+					
+									<!-- IMAGE GAUCHE -->
+						<img 
+						src="static/images/Utilisation_placeholders_EL.png" 
+						alt="Utilisation des EL et placeholders" border="1" align="middle" 
+						title="Utilisation des EL et placeholders"/>
+						<figcaption>
+							<p class="centre">
+								Utilisation des EL et placeholders
+							</p>						
+						</figcaption>
+						
+					</figure>
+					
+									<!-- IMAGE DROITE -->
+					<figure>
+						<img src="static/images/sequence_EL_placeholders.png" 
+						alt="diagramme de séquence lors de la substitution des EL et placeholders" border="1" align="middle" 
+						title="diagramme de séquence lors de la substitution des EL et placeholders"/>
+						<figcaption>
+							<p class="centre">
+								diagramme de séquence lors de la substitution des EL et placeholders
+							</p>						
+						</figcaption>
+					</figure>	
+												
+				</div>
+							
 			</div>
 	
 		</div>

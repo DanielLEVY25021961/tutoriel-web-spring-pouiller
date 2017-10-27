@@ -60,17 +60,17 @@
 		<!-- ========================================================= -->
 		<!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
 		<!-- ========================================================= -->
-		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+<!-- 		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> -->
 			      
 		 <!-- ========================================================= -->
 		 <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
 		 <!-- ========================================================= -->   	
-<!-- 		 <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" /> -->
+<!-- 		 <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" /> -->
 				
 		<!-- ========================================================= -->
 		<!--                     hsqldb 2.4.0                          -->
 		<!-- ========================================================= -->
-<!-- 		<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" /> -->
+		<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
 
 
 						<!-- **************************** -->
@@ -81,7 +81,7 @@
 			<!-- ========================================================= -->
 		    <!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
 		    <!-- ========================================================= -->
-    		<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
+<!--     		<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" /> -->
     		
 		    <!-- ========================================================= -->
 		    <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
@@ -91,7 +91,7 @@
 			<!-- ========================================================= -->
 		    <!--                     hsqldb 2.4.0                          -->
 		    <!-- ========================================================= -->
-<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" /> -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
 			
 
 		 			<!-- ************************** -->
@@ -153,7 +153,7 @@
 	    	<!-- PASSER EN update pour la PROD.					-->
 			<!-- ******************************************** 	-->		
 			<!-- Recrée le schéma à chaque démarrage. Drop à la fermeture -->
-<!-- 			<property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 
 			<!-- Supprime et re-créée le schéma de base de données au démarrage -->
 <!-- 			<property name="hbm2ddl.auto"  value="create" /> -->
@@ -162,7 +162,7 @@
 <!--  			<property name="hibernate.hbm2ddl.auto" value="update" /> -->
 		
 			<!-- VALIDE LE SCHEMA ET CONSERVE LES DONNEES. POUR LA PROD. -->
-			<property name="hibernate.hbm2ddl.auto" value="validate" />
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="validate" /> -->
 
 
 					<!-- ***************** -->

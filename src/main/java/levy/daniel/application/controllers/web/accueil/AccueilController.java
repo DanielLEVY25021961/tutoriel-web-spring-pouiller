@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * class AccueilController :<br/>
@@ -86,7 +87,7 @@ public class AccueilController {
 	 *
 	 * @return : String : chemin vers la jsp .<br/>
 	 */
-	@RequestMapping(value="accueil")
+	@RequestMapping(value={"/", "accueil"}, method = RequestMethod.GET)
 	public String versPageAccueil(
 			final HttpServletRequest pRequest) {
 		
@@ -95,7 +96,7 @@ public class AccueilController {
 			= "accueil";
 		
 		pRequest.setAttribute("ariane", arianeAccueil);
-		
+				
 		/* retourne l'URL de la JSP. */
 		return "accueil/accueil";
 		

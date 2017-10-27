@@ -1,0 +1,1 @@
+DROP DATABASE IF EXISTS "base-tutoriel-web-spring-pouiller";

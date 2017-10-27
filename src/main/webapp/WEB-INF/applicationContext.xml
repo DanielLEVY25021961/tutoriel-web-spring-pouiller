@@ -165,8 +165,8 @@
     <!--                             MYSQL                              -->
     <!-- ============================================================== -->
 <!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
-<!--        <property name="url" value="jdbc:mysql://localhost/base-tutoriel-web-spring-pouiller" /> -->
+<!--        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" /> -->
+<!--        <property name="url" value="jdbc:mysql://localhost/base-tutoriel-web-spring-pouiller?serverTimezone=UTC&amp;useSSL=FALSE" /> -->
 <!--        <property name="username" value="root" /> -->
 <!--        <property name="password" value="" /> -->
 <!--     </bean> -->

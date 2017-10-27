@@ -14,20 +14,20 @@
 		    <!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
 		    <!-- ========================================================= -->
 				<!-- pour une base de données postgres  -->
-	<Resource auth="Container"
-    	name="jdbc/dsAppliTutoWebSpringPouiller"
-		url="jdbc:postgresql://localhost:5432/base-tutoriel-web-spring-pouiller"
-        username="postgres"
-        password="postgres"
-        type="javax.sql.DataSource"
-        driverClassName="org.postgresql.Driver"
-        maxTotal="10"
-        maxIdle="5"
-        maxWaitMillis="-1"
-        removeAbandonedOnBorrow="true"
-        removeAbandonedOnMaintenance="true"
-        removeAbandonedTimeout="60"
-        logAbandoned="true"/>
+<!-- 	<Resource auth="Container" -->
+<!--     	name="jdbc/dsAppliTutoWebSpringPouiller" -->
+<!-- 		url="jdbc:postgresql://localhost:5432/base-tutoriel-web-spring-pouiller" -->
+<!--         username="postgres" -->
+<!--         password="postgres" -->
+<!--         type="javax.sql.DataSource" -->
+<!--         driverClassName="org.postgresql.Driver" -->
+<!--         maxTotal="10" -->
+<!--         maxIdle="5" -->
+<!--         maxWaitMillis="-1" -->
+<!--         removeAbandonedOnBorrow="true" -->
+<!--         removeAbandonedOnMaintenance="true" -->
+<!--         removeAbandonedTimeout="60" -->
+<!--         logAbandoned="true"/> -->
 
 	
 			 <!-- ========================================================= -->
@@ -35,11 +35,11 @@
 			 <!-- ========================================================= -->  
 <!-- 	<Resource auth="Container" -->
 <!--     	name="jdbc/dsAppliTutoWebSpringPouiller" -->
-<!-- 		url="jdbc:mysql://localhost:3306/base-tutoriel-web-spring-pouiller" -->
+<!-- 		url="jdbc:mysql://localhost:3306/base-tutoriel-web-spring-pouiller?serverTimezone=UTC&amp;useSSL=FALSE" -->
 <!--         username="root" -->
 <!--         password="root" -->
 <!--         type="javax.sql.DataSource" -->
-<!--         driverClassName="com.mysql.jdbc.Driver" -->
+<!--         driverClassName="com.mysql.cj.jdbc.Driver" -->
 <!--         maxTotal="10" -->
 <!--         maxIdle="5" -->
 <!--         maxWaitMillis="-1" -->
@@ -53,20 +53,20 @@
 		    <!--                     hsqldb 2.4.0                          -->
 		    <!-- ========================================================= -->
 	
-<!-- 	<Resource auth="Container" -->
-<!--     	name="jdbc/dsAppliTutoWebSpringPouiller" -->
-<!-- 		url="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" -->
-<!--         username="sa" -->
-<!--         password="" -->
-<!--         type="javax.sql.DataSource" -->
-<!--         driverClassName="org.hsqldb.jdbc.JDBCDriver" -->
-<!--         maxTotal="10" -->
-<!--         maxIdle="5" -->
-<!--         maxWaitMillis="-1" -->
-<!--         removeAbandonedOnBorrow="true" -->
-<!-- 		 removeAbandonedOnMaintenance="true" -->
-<!--         removeAbandonedTimeout="60" -->
-<!--         logAbandoned="true"/> -->
+	<Resource auth="Container"
+    	name="jdbc/dsAppliTutoWebSpringPouiller"
+		url="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller"
+        username="sa"
+        password=""
+        type="javax.sql.DataSource"
+        driverClassName="org.hsqldb.jdbc.JDBCDriver"
+        maxTotal="10"
+        maxIdle="5"
+        maxWaitMillis="-1"
+        removeAbandonedOnBorrow="true"
+		removeAbandonedOnMaintenance="true"
+        removeAbandonedTimeout="60"
+        logAbandoned="true"/>
 
 
 

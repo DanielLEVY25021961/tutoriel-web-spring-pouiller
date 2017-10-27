@@ -21,6 +21,34 @@ h3 {
 /* 	text-decoration: underline; Makes underline */
 }
 
+table.ancres td {
+	
+	padding-right : 150px;
+
+}
+
+/* Positionnement des flèches de retour vers le haut. */
+.a_droite {
+	padding-right:20px;
+	float : right; /* Met à droite. */
+}
+
+.tutoriel {
+	
+	width: 95%;
+/* 	border: 1px solid black; */
+	text-align: justify;
+	
+	padding-top: 0px;  /* Marge intérieure. */
+	padding-right: 12px; /* Marge intérieure. */
+	padding-left: 12px; /* Marge intérieure. */
+	padding-bottom: 0px; /* Marge intérieure. */
+	
+	margin-top: 0px; /* Marge extérieure. */
+	margin-right: 50px; /* Marge extérieure. */
+	margin-left: 50px; /* Marge extérieure. */
+	margin-bottom: 0px; /* Marge extérieure. */
+}
 
 /* .class : Styles et couleurs ------------------------------------------ */
 
@@ -230,6 +258,14 @@ p#menu_haut {
 }
 
 .images_section3 {
+	
+	display: flex; /* alignement en ligne. */
+    flex-direction: row; /* alignement en ligne sur l'axe horizontal (axe principal). */
+	justify-content: space-around; /* répartit l'espace entre chaque élément (y compris les bords). */
+	align-items: center; /* aligne les centres sur l'axe secondaire (vertical ici). */
+}
+
+.images_display_flex {
 	
 	display: flex; /* alignement en ligne. */
     flex-direction: row; /* alignement en ligne sur l'axe horizontal (axe principal). */

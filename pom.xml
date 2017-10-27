@@ -411,7 +411,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		<dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
-		    <version>8.0.7-dmr</version>
+		    <version>8.0.8-dmr</version>
 		    <scope>compile</scope>
 		</dependency>
 		<!-- HSQLDB -->		

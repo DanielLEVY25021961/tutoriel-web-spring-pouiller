@@ -96,7 +96,7 @@ public class BonjourController {
 	 * @return : String : "accueil/bonjour" traduit par le Controller SPRING 
 	 * en "/WEB-INF/vues/web/accueil/bonjour.jsp".<br/>
 	 */
-	@RequestMapping(value="/bonjour", method = RequestMethod.GET)
+	@RequestMapping(value="bonjour", method = RequestMethod.GET)
 	public String afficherBonjour(
 			final ModelMap pModelMap
 				, @RequestParam(value="personne", required=false, defaultValue = "l'anonyme") final String pPersonne
