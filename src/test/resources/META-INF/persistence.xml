@@ -32,7 +32,7 @@
 	<!-- 						AVEC SPRING 5.0.0 						-->
 	<!-- transaction manager géré par SPRING.							-->
 	<!-- Donc, ne pas utiliser l'attribut transaction-type 				-->
-	<persistence-unit name="persistence_unit_base-tutoriel-web-spring-pouiller">
+	<persistence-unit name="persistence_unit_base-tutoriel-web-spring-pouiller-test">
 
 	
 
@@ -82,7 +82,7 @@
 			<!-- ========================================================= -->
 		    <!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
 		    <!-- ========================================================= -->
-    		<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
+<!--     		<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" /> -->
     		
 		    <!-- ========================================================= -->
 		    <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
@@ -92,7 +92,7 @@
 			<!-- ========================================================= -->
 		    <!--                     hsqldb 2.4.0                          -->
 		    <!-- ========================================================= -->
-<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" /> -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
 			
 
 		 			<!-- ************************** -->

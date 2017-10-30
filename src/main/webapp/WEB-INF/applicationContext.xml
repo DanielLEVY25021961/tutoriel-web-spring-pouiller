@@ -109,10 +109,8 @@
     	<!-- dans le context.xml de TOMCAT (éventuellement surchargé). 		-->
         <property name="dataSource" ref="dataSource" />
         
-        <!-- Il serait possible d'encapsuler dans le EntityManager			-->
-        <!-- plusieurs DataSources.										    -->
-<!--         <property name="dataSource" ref="dataSource2" /> -->
-<!--         <property name="dataSource" ref="dataSource3" /> -->
+        <!-- Fait le lien avec le persistence unit défini dans persistence.xml -->
+        <property name="persistenceUnitName" value="persistence_unit_base-tutoriel-web-spring-pouiller" />
         
     </bean>
 

@@ -30,10 +30,119 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-<!-- Tutoriel : https://howtodoinjava.com/best-practices/how-you-should-unit-test-dao-layer/ -->
+	<!-- ===================================================================-->
+    <!--    ACTIVATION CONFIGURATION ANNOTATIONS VALIDATION FORMULAIRE   	-->
+	<!-- ================================================================== -->
+    <!-- active la config par annotations des validations de formulaire	 	-->
+    <!-- par Spring.													 	-->
+	<!-- Informe Spring que l'on utilise les annotations					-->
+	<mvc:annotation-driven />
 
-	<!-- IMPORT DU application-context.xml de PROD -->
-	<import resource="WEB-INF/application-context.xml"/>
+
+	<!-- ================================================================== -->
+	<!--           ACTIVATION CONFIGURATION ANNOTATION SPRING               -->
+	<!-- ================================================================== -->		
+	<!-- active la configuration par annotations de Spring (plus de XML)    -->
+	<!-- VA RECHERCHER TOUS LES OBJETS ANNOTES SPRING DANS LE PACKAGE 		-->
+	<!-- (SERVICES, BEANS, DAO) 											-->
+	<context:component-scan base-package="levy.daniel.application" />
+
+
+	<!-- ================================================================== -->
+	<!--                 LOCALISATION DES VUES SPRING                       -->
+	<!-- ================================================================== -->	
+	<!-- déclaration du bean « InternalResourceViewResolver ». 				-->
+	<!-- Indique où chercher les ressources (jsp, ...)  					-->
+	<!-- contrôlées par l'appli sous le contexte webapp.					-->
+	<!-- ici dans le dossier « /WEB-INF/vues/web/ 							-->
+	<!--avec l'extension « .jsp » 											-->
+<!-- 	<bean -->
+<!--         class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+<!--         <property name="prefix"> -->
+<!--             <value>/WEB-INF/vues/web/</value> -->
+<!--         </property> -->
+<!--         <property name="suffix"> -->
+<!--             <value>.jsp</value> -->
+<!--         </property> -->
+<!--     </bean> -->
+
+
+	<!-- ===================================================================-->
+    <!--    RESSOURCES STATIQUES ET WELCOME-FILES						   	-->
+	<!-- ================================================================== -->
+	<!-- Spécifie la position des ressources statiques 						-->
+	<!-- par rapport au contexte. 											-->
+	<!-- Répertoire Accessible directement sans passer par le contrôleur 	-->
+	<!--Spring.  															-->
+	<!-- ** précise que toutes les ressources statiques sous static 		-->
+	<!-- (y compris dans les sous-répertoires) sont accessibles				-->
+<!-- 	<mvc:resources location="/static/" mapping="/static/**" /> -->
+	
+	<!-- 					REDIRECTION SPRING 					-->
+	<!-- Equivalent Spring du Welcome File 						-->
+	<!-- Redirige vers WEB-INF/vues/web/accueil/accueil.jsp 	-->
+<!-- 	<mvc:view-controller path="/" view-name="accueil/accueil"/> -->
+	
+	    
+ 	<!-- ================================================================== -->
+	<!--                 LIEN SPRING - ORM - BASE DONNEES                   -->
+	<!-- ================================================================== -->	
+	<!-- JTA (Annotations transactionnelles) de Spring.                     -->    
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+
+	<!-- ================================================================== -->
+	<!--             DECLARATION DE ENTITYMANAGERFACTORY              		-->
+	<!-- Utilisation du bean SPRING LocalContainerEntityManagerFactoryBean. -->
+	<!-- ================================================================== -->
+	<!-- Le bean « LocalContainerEntityManagerFactoryBean » utilise			--> 
+	<!-- le Bean avec id="dataSource" du présent applicationContext.xml 	--> 
+	<!-- qui connait la référence JNDI de la DataSource et le fichier 		--> 
+	<!-- « persistence.xml » pour aboutir 									-->
+	<!--  à la création du « EntityManager » qui est utilisé 				-->
+	<!--  par la couche DAO.												-->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    
+    	<!-- précise l'id (dataSource) du Bean JndiObjectFactoryBean 		-->
+    	<!-- dans le présent applicationContext.xml							-->
+    	<!-- qui connait la référence de la DataSource déclarée 			-->
+    	<!-- dans le context.xml de TOMCAT (éventuellement surchargé). 		-->
+        <property name="dataSource" ref="dataSource" />
+        
+        <property name="persistenceUnitName" value="persistence_unit_base-tutoriel-web-spring-pouiller-test" />
+        
+        <!-- Il serait possible d'encapsuler dans le EntityManager			-->
+        <!-- plusieurs DataSources.										    -->
+<!--         <property name="dataSource" ref="dataSource2" /> -->
+<!--         <property name="dataSource" ref="dataSource3" /> -->
+        
+    </bean>
+
+
+	<!-- ================================================================== -->
+	<!--                GESTION DES TRANSACTIONS                       		-->
+	<!-- ================================================================== -->
+	<!--  (encapsulations des appels à la base dans une transaction).  		-->
+	<!-- Le bean « JpaTransactionManager » permet d'instancier  			-->
+	<!-- le gestionnaire de transaction et de lui associer 					-->
+	<!-- la fabrique de « EntityManager ». 									-->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+
+	<!-- ================================================================== -->
+	<!--   BEAN SPRING POUR LECTURE RESOURCEBUNDLE (.properties)            -->
+	<!-- Gestion des ResourceBundles par Spring.						    -->
+	<!-- ================================================================== -->
+	<!-- bean messageSource de classe ReloadableResourceBundleMessageSource -->
+	<!-- SPRING utilise les messages.properties sous le classpath.		    -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
  
     <!-- ============================================================== -->
     <!-- DECLARATION DE LA DATASOURCE DIRECTE (sans passer par JNDI) 	-->
@@ -68,12 +177,12 @@
     <!-- ============================================================== -->
     <!--                                HSQLDB                          -->
     <!-- ============================================================== -->
-<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!--        <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" /> -->
-<!--        <property name="url" value="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" /> -->
-<!--        <property name="username" value="sa" /> -->
-<!--        <property name="password" value="" /> -->
-<!--     </bean> -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+       <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" />
+       <property name="url" value="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" />
+       <property name="username" value="sa" />
+       <property name="password" value="" />
+    </bean>
     
 
 
@@ -94,9 +203,9 @@
 	<!-- précise qu'il s'agit d'une ressource jdbc.						-->
 	<!-- Le nom JNDI suit par convention le sous-contexte /jdbc		    -->
 	<!-- (DataSource = jdbc/dsAppliTutoWebSpringPouiller). 				--> 
-    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-    	<property name="jndiName" value="java:comp/env/jdbc/dsAppliTutoWebSpringPouiller" />
-    </bean>
+<!--     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
+<!--     	<property name="jndiName" value="java:comp/env/jdbc/dsAppliTutoWebSpringPouiller" /> -->
+<!--     </bean> -->
 	
 </beans>
 

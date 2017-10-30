@@ -37,7 +37,7 @@ import levy.daniel.application.model.metier.course.impl.Course;
  * @since 30 oct. 2017
  *
  */
-@ContextConfiguration(locations = "classpath:application-context-test.xml")
+@ContextConfiguration(locations = "classpath:applicationContext-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class DaoCourseTest {
 
@@ -52,11 +52,11 @@ public class DaoCourseTest {
 
 	
 	/**
-	 * DAO_COURSE : DaoCourse :<br/>
+	 * daoCourse : DaoCourse :<br/>
 	 * Dao pour les Course.<br/>
 	 */
 	@Autowired
-	public static final DaoCourse DAO_COURSE = new DaoCourse();
+	public final DaoCourse daoCourse = new DaoCourse();
 	
 	
 	/**
@@ -111,18 +111,24 @@ public class DaoCourseTest {
 		
 		try {
 			
-			courseNullPersistante = DAO_COURSE.create(courseNull);
+			courseNullPersistante = this.daoCourse.create(courseNull);
 			
 			/* garantit que create(null) retourne null. */
 			assertNull("create(null) doit retourner null : ", courseNullPersistante);
 			
-			course1Persistante = DAO_COURSE.create(course1);
+			course1Persistante = this.daoCourse.create(course1);
 			
 			/* AFFICHAGE A LA CONSOLE. */
 			if (AFFICHAGE_GENERAL && affichage) {
-				System.out.println(
-						"course1Persistante.toString() : " 
-								+ course1Persistante.toString());
+				if (course1Persistante != null) {
+					System.out.println(
+							"course1Persistante.toString() : " 
+									+ course1Persistante.toString());
+				}
+				else{
+					System.out.println("course1Persistante est null");
+				}
+				
 			}
 			
 		}
