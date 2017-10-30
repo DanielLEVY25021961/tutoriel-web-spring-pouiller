@@ -52,7 +52,7 @@
 			<!-- ========================================================= -->
 		    <!--                     hsqldb 2.4.0                          -->
 		    <!-- ========================================================= -->
-	
+
 	<Resource auth="Container"
     	name="jdbc/dsAppliTutoWebSpringPouiller"
 		url="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller"
