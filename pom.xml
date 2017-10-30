@@ -75,7 +75,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		<!-- 		VERSIONS DES COMPOSANTS DANS LES DEPENDANCES		-->
 		<!-- ========================================================== -->
 		<!-- 				Version de SPRING 							-->
-		<spring.version>5.0.0.RELEASE</spring.version>
+		<spring.version>5.0.1.RELEASE</spring.version>
 		<!-- 				Version d'HIBERNATE 						-->
 		<hibernate.version>5.2.11.Final</hibernate.version>
 		<!-- 			Version d'HIBERNATE VALIDATOR				    -->

@@ -30,6 +30,20 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
+	<!-- Activates various annotations to be detected in bean classes -->
+	<!-- http://yannart.developpez.com/java/spring/tutoriel/ -->
+	<!-- ANNOTATIONS POUR L'INJECTION DE DEPENDANCES -->
+    <context:annotation-config/>
+    
+	<!-- ================================================================== -->
+	<!--           ACTIVATION CONFIGURATION ANNOTATION SPRING               -->
+	<!-- ================================================================== -->		
+	<!-- active la configuration par annotations de Spring (plus de XML)    -->
+	<!-- VA RECHERCHER TOUS LES OBJETS ANNOTES SPRING DANS LE PACKAGE 		-->
+	<!-- (SERVICES, BEANS, DAO) 											-->
+	<context:component-scan base-package="levy.daniel.application" />
+
+
 	<!-- ===================================================================-->
     <!--    ACTIVATION CONFIGURATION ANNOTATIONS VALIDATION FORMULAIRE   	-->
 	<!-- ================================================================== -->
@@ -41,17 +55,6 @@
 	<!-- Configures the annotation-driven Spring MVC Controller programming model.
     Note that, with Spring 3.0, this tag works in Servlet MVC only!  -->
 	<mvc:annotation-driven />
-
-<!-- Activates various annotations to be detected in bean classes -->
-    <context:annotation-config/>
-    
-	<!-- ================================================================== -->
-	<!--           ACTIVATION CONFIGURATION ANNOTATION SPRING               -->
-	<!-- ================================================================== -->		
-	<!-- active la configuration par annotations de Spring (plus de XML)    -->
-	<!-- VA RECHERCHER TOUS LES OBJETS ANNOTES SPRING DANS LE PACKAGE 		-->
-	<!-- (SERVICES, BEANS, DAO) 											-->
-	<context:component-scan base-package="levy.daniel.application" />
 
 
 	<!-- ================================================================== -->

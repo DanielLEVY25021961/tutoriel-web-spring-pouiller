@@ -45,7 +45,8 @@
 		<!-- ========================================================== -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-
+<!-- 		<class>levy.daniel.application.model.metier.course.impl.Course</class> -->
+		
 
 			<!-- ================================================== -->
 			<!-- Paramétrages Hibernate -->
@@ -181,6 +182,7 @@
 
 			
 		</properties>
+
 
 	</persistence-unit>
 
