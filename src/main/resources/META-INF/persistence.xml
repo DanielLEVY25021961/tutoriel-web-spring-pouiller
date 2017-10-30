@@ -163,6 +163,7 @@
 		
 			<!-- VALIDE LE SCHEMA ET CONSERVE LES DONNEES. POUR LA PROD. -->
 <!-- 			<property name="hibernate.hbm2ddl.auto" value="validate" /> -->
+			
 
 
 					<!-- ***************** -->
