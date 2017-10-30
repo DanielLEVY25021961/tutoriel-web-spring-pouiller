@@ -41,7 +41,7 @@ et accessibles à toutes les applications hébergées par TOMCAT.
 ATTENTION - SPRING : La gestion des transactions lors de la persistance 
 est à la charge du gestionnaire de transaction de spring.
 Il faut donc désactiver le gestionnaire de transaction dans 
-le applicationContext.xml lorsque l'on utilise spring .
+le persistence.xml lorsque l'on utilise spring . (transaction-type="JTA")
 										
 
 

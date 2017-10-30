@@ -51,7 +51,20 @@ public abstract class AbstractDaoGenericJPASpring<T, ID extends Serializable>
 
 	// ************************ATTRIBUTS************************************/
 
+	/**
+	 * CLASSE_ABSTRACTDAOGENERIC : String :<br/>
+	 * "Classe AbstractDaoGenericJPASpring".<br/>
+	 */
+	public static final String CLASSE_ABSTRACTDAOGENERIC 
+		= "Classe AbstractDaoGenericJPASpring";
 	
+	/**
+	 * SEPARATEUR_MOINS_AERE : String :<br/>
+	 * " - ".<br/>
+	 */
+	public static final String SEPARATEUR_MOINS_AERE = " - ";
+	
+
 	/**
 	 * entityManager : javax.persistence.EntityManager :<br/>
 	 * JPA EntityManager fourni par SPRING.<br/>
@@ -145,9 +158,26 @@ public abstract class AbstractDaoGenericJPASpring<T, ID extends Serializable>
 		try {
 			
 			/* PERSISTE en base. */
-			this.entityManager.persist(pObject);
+			if (this.entityManager != null) {
+				
+				this.entityManager.persist(pObject);
+				
+				persistentObject = pObject;
+			}
 			
-			persistentObject = pObject;
+			else {
+				final String message 
+					= CLASSE_ABSTRACTDAOGENERIC 
+					+ SEPARATEUR_MOINS_AERE
+					+ "Méthode Create(T pObject)"
+					+ SEPARATEUR_MOINS_AERE
+					+ "Le entityManager de SPRING est null";
+				
+				if (LOG.isFatalEnabled()) {
+					LOG.fatal(message);
+				}
+			}
+			
 												
 		}
 		catch (Exception e) {
