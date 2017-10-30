@@ -60,7 +60,7 @@
 		<!-- ========================================================= -->
 		<!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
 		<!-- ========================================================= -->
-		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+<!-- 		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> -->
 			      
 		 <!-- ========================================================= -->
 		 <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
@@ -70,7 +70,7 @@
 		<!-- ========================================================= -->
 		<!--                     hsqldb 2.4.0                          -->
 		<!-- ========================================================= -->
-<!-- 		<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" /> -->
+		<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
 
 
 		

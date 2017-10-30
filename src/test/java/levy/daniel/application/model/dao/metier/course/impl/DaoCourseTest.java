@@ -120,12 +120,16 @@ public class DaoCourseTest {
 			
 			/* AFFICHAGE A LA CONSOLE. */
 			if (AFFICHAGE_GENERAL && affichage) {
+				
+				System.out.println("COURSE1 (Non PERSISTANTE : " 
+						+ course1.toString());
+				
 				if (course1Persistante != null) {
 					System.out.println(
 							"course1Persistante.toString() : " 
 									+ course1Persistante.toString());
 				}
-				else{
+				else {
 					System.out.println("course1Persistante est null");
 				}
 				

@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import levy.daniel.application.model.metier.course.impl.Course;
+
 
 /**
  * class AbstractCourse :<br/>
@@ -179,7 +179,7 @@ public abstract class AbstractCourse implements ICourse, Serializable {
 			return false;
 		}
 			
-		final Course other = (Course) pObj;
+		final AbstractCourse other = (AbstractCourse) pObj;
 		
 		if (this.libelle == null) {
 			
