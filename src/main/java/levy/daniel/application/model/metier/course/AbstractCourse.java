@@ -18,7 +18,16 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * class AbstractCourse :<br/>
- * .<br/>
+ * Classe abstraite modélisant toutes les Courses concrètes.<br/>
+ * Modélise une Course Abstraite effectuée dans un magasin 
+ * par un libellé et une quantité.<br/>
+ * <ul>
+ * <li>Classe persistente grâce à l'annotation Entity 
+ * (javax.persistence.Entity).</li>
+ * <li>La présente classe est stockée en base 
+ * dans la table « ABSTRACT_COURSES » du schéma PUBLIC
+ * (annotation Table (javax.persistence.Table)).</li>
+ * </ul>
  * <br/>
  *
  * - Exemple d'utilisation :<br/>
@@ -36,7 +45,7 @@ import org.apache.commons.logging.LogFactory;
  * @since 13 août 2017
  *
  */
-@Entity
+@Entity(name="AbstractCourse")
 @Table(name="ABSTRACT_COURSES", schema="PUBLIC")
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class AbstractCourse implements ICourse, Serializable {

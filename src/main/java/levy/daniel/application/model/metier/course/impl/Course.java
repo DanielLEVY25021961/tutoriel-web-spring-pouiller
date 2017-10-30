@@ -12,13 +12,13 @@ import levy.daniel.application.model.metier.course.AbstractCourse;
 
 /**
  * class Course :<br/>
- * Modélise une course effectuée dans un magasin 
+ * Modélise une Course effectuée dans un magasin 
  * par un libellé et une quantité.<br/>
  * <ul>
  * <li>Classe persistente grâce à l'annotation Entity 
  * (javax.persistence.Entity).</li>
  * <li>La présente classe est stockée en base 
- * dans la table « LISTECOURSES » 
+ * dans la table « COURSES » du schéma PUBLIC
  * (annotation Table (javax.persistence.Table)).</li>
  * </ul>
  * <br/>
@@ -38,7 +38,7 @@ import levy.daniel.application.model.metier.course.AbstractCourse;
  * @since 10 août 2017
  *
  */
-@Entity
+@Entity(name="Course")
 @Table(name="COURSES", schema="PUBLIC")
 @PrimaryKeyJoinColumn(name="ID_COURSE")
 public class Course extends AbstractCourse {

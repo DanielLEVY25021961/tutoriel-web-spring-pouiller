@@ -112,6 +112,9 @@
         <!-- Fait le lien avec le persistence unit défini dans persistence.xml -->
         <property name="persistenceUnitName" value="persistence_unit_base-tutoriel-web-spring-pouiller" />
         
+        <!-- Localisation du fichier paramétrant l'ORM (META-INF/persistence.xml) -->
+        <property name="persistenceXmlLocation" value="META-INF/persistence.xml"/>
+                
     </bean>
 
 

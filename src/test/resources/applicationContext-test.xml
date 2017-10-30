@@ -36,9 +36,15 @@
     <!-- active la config par annotations des validations de formulaire	 	-->
     <!-- par Spring.													 	-->
 	<!-- Informe Spring que l'on utilise les annotations					-->
+	
+	<!-- https://stackoverflow.com/questions/27676817/entitymanagerfactory-and-applicationcontext-usage -->
+	<!-- Configures the annotation-driven Spring MVC Controller programming model.
+    Note that, with Spring 3.0, this tag works in Servlet MVC only!  -->
 	<mvc:annotation-driven />
 
-
+<!-- Activates various annotations to be detected in bean classes -->
+    <context:annotation-config/>
+    
 	<!-- ================================================================== -->
 	<!--           ACTIVATION CONFIGURATION ANNOTATION SPRING               -->
 	<!-- ================================================================== -->		
@@ -111,6 +117,9 @@
         
         <!-- Fait le lien avec le persistence unit défini dans persistence.xml -->
         <property name="persistenceUnitName" value="persistence_unit_base-tutoriel-web-spring-pouiller-test" />
+        
+        <!-- Localisation du fichier paramétrant l'ORM (META-INF/persistence.xml) -->
+        <property name="persistenceXmlLocation" value="META-INF/persistence-test.xml"/>
         
     </bean>
 

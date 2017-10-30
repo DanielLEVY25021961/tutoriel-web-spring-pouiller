@@ -56,7 +56,7 @@ public class DaoCourseTest {
 	 * Dao pour les Course.<br/>
 	 */
 	@Autowired
-	public final DaoCourse daoCourse = new DaoCourse();
+	public final transient DaoCourse daoCourse = new DaoCourse();
 	
 	
 	/**
