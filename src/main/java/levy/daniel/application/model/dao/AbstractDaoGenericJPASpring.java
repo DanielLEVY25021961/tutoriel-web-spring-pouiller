@@ -11,6 +11,8 @@ import javax.persistence.Query;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import levy.daniel.application.model.dao.daoexceptions.AbstractDaoException;
@@ -29,6 +31,7 @@ import levy.daniel.application.model.dao.daoexceptions.GestionnaireDaoException;
  *<br/>
  * 
  * - Mots-clé :<br/>
+ * 
  * <br/>
  *
  * - Dépendances :<br/>
@@ -46,6 +49,7 @@ import levy.daniel.application.model.dao.daoexceptions.GestionnaireDaoException;
  *
  */
 @Repository
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public abstract class AbstractDaoGenericJPASpring<T, ID extends Serializable> 
 											implements IDaoGenericJPASpring<T, ID> {
 
@@ -166,6 +170,7 @@ public abstract class AbstractDaoGenericJPASpring<T, ID extends Serializable>
 			}
 			
 			else {
+				
 				final String message 
 					= CLASSE_ABSTRACTDAOGENERIC 
 					+ SEPARATEUR_MOINS_AERE

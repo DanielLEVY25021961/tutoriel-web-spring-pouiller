@@ -163,12 +163,12 @@
     <!-- ============================================================== -->
     <!--                             POSTGRESQL                         -->
     <!-- ============================================================== -->
-<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!--        <property name="driverClassName" value="org.postgresql.Driver" /> -->
-<!--        <property name="url" value="jdbc:postgresql:5432//localhost/base-tutoriel-web-spring-pouiller" /> -->
-<!--        <property name="username" value="postgres" /> -->
-<!--        <property name="password" value="postgres" /> -->
-<!--     </bean> -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+       <property name="driverClassName" value="org.postgresql.Driver" />
+       <property name="url" value="jdbc:postgresql://localhost:5432/base-tutoriel-web-spring-pouiller" />
+       <property name="username" value="postgres" />
+       <property name="password" value="postgres" />
+    </bean>
 
 
     <!-- ============================================================== -->
@@ -185,12 +185,13 @@
     <!-- ============================================================== -->
     <!--                                HSQLDB                          -->
     <!-- ============================================================== -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-       <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" />
-       <property name="url" value="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" />
-       <property name="username" value="sa" />
-       <property name="password" value="" />
-    </bean>
+<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!--        <property name="driverClassName" value="org.hsqldb.jdbc.JDBCDriver" /> -->
+<!--        <property name="url" value="jdbc:hsqldb:file:D:/Donnees/eclipse/eclipseworkspace_neon/tutoriel-web-spring-pouiller/data/base-tutoriel-web-spring-pouiller" /> -->
+<!--        <property name="url" value="jdbc:hsqldb:mem:base-tutoriel-web-spring-pouiller" /> -->
+<!--        <property name="username" value="sa" /> -->
+<!--        <property name="password" value="" /> -->
+<!--     </bean> -->
     
 
 

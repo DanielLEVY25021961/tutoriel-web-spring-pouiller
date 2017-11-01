@@ -45,7 +45,18 @@
 		<!-- ========================================================== -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-<!-- 		<class>levy.daniel.application.model.metier.course.impl.Course</class> -->
+
+
+
+		<!-- ========================================================== -->
+		<!-- 				DECLARATION DES CLASSES						-->
+		<!-- INUTILE AVEC LES ANNOTATIONS SPRING				 		-->
+		<!-- ========================================================== -->
+		<class>levy.daniel.application.model.metier.course.AbstractCourse</class>	
+		<class>levy.daniel.application.model.metier.course.impl.Course</class>
+
+
+
 		
 
 			<!-- ================================================== -->
@@ -61,7 +72,7 @@
 		<!-- ========================================================= -->
 		<!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
 		<!-- ========================================================= -->
-<!-- 		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> -->
+		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			      
 		 <!-- ========================================================= -->
 		 <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
@@ -71,7 +82,7 @@
 		<!-- ========================================================= -->
 		<!--                     hsqldb 2.4.0                          -->
 		<!-- ========================================================= -->
-		<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
+<!-- 		<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" /> -->
 
 
 		
@@ -83,7 +94,7 @@
 			<!-- ========================================================= -->
 		    <!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
 		    <!-- ========================================================= -->
-<!--     		<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" /> -->
+    		<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
     		
 		    <!-- ========================================================= -->
 		    <!--         mySql 5.7.19.0 - port : 3306 - [root, root]       -->
@@ -93,7 +104,7 @@
 			<!-- ========================================================= -->
 		    <!--                     hsqldb 2.4.0                          -->
 		    <!-- ========================================================= -->
-			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" /> -->
 			
 
 		 			<!-- ************************** -->
@@ -154,17 +165,29 @@
 	    	<!-- Comportement pour la conservation des tables 	-->
 	    	<!-- PASSER EN update pour la PROD.					-->
 			<!-- ******************************************** 	-->		
-			<!-- Recrée le schéma à chaque démarrage. Drop à la fermeture -->
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<!-- SUPPRIME et RECREE le schéma à chaque démarrage. 				-->
+			<!-- Drop (SUPPRESSION DU SCHEMA) à chaque fermeture. 				-->
+			<!-- SUPPRIME le schéma après la fermeture de l'application.		-->
+			<!-- Le schéma de la BD est INVISIBLE dans le manager de BD 		-->
+			<!-- après la fermeture de l'application.							-->
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
 
-			<!-- Supprime et re-créée le schéma de base de données au démarrage -->
-<!-- 			<property name="hbm2ddl.auto"  value="create" /> -->
+			<!-- SUPPRIME et RECREE le schéma de base de données au démarrage.   -->
+			<!-- Ne SUPPRIME PAS le schéma après fermeture de l'application.	 -->
+			<!-- Le schéma de la BD est visible dans le manager de BD			 -->
+			<!-- après la fermeture de l'application.							 -->
+<!-- 			<property name="hibernate.hbm2ddl.auto"  value="create" /> -->
 		
 			<!-- Met à jour le schéma (sans destruction de données) si modification d'une Entity -->
 <!--  			<property name="hibernate.hbm2ddl.auto" value="update" /> -->
 		
 			<!-- VALIDE LE SCHEMA ET CONSERVE LES DONNEES. POUR LA PROD. -->
-<!-- 			<property name="hibernate.hbm2ddl.auto" value="validate" /> -->
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
+
+			<!-- Permet de démarrer l'application sans connexion à la BD -->
+			<!-- ATTENTION : ne fonctionne qu'avec une connexion JNDI (gérée par TOMCAT). -->
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="none" /> -->
+
 
 
 					<!-- ***************** -->

@@ -1,5 +1,7 @@
 package levy.daniel.application.model.dao.daoexceptions;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 import javax.persistence.EntityExistsException;
 import javax.persistence.PersistenceException;
 
@@ -12,10 +14,25 @@ import levy.daniel.application.model.dao.daoexceptions.technical.impl.DaoDoublon
 
 /**
  * class GestionnaireDaoException :<br/>
- * .<br/>
+ * Classe utilitaire chargée de typer les Exceptions 
+ * de persistance.<br/>
+ * <ul>
+ * <li>Intercepte toutes les Exceptions provenant 
+ * de la persistance</li>
+ * <li>Rajoute un message circonstancié et relance 
+ * une <b>AbstractDaoException</b>.</li>
+ * <li>Rajoute un message différent pour les 
+ * utilisateurs et les développeurs.</li>
+ * </ul>
  * <br/>
  *
  * - Exemple d'utilisation :<br/>
+ * <code>
+ *  \\ récupère le message pour les utilisateurs.<br/>
+ * abstractDaoExc.getMessageUtilisateur();<br/>
+ *  \\ récupère le message pour les développeurs.<br/>
+ * abstractDaoExc.getMessageTechnique();<br/> 
+ * </code>
  *<br/>
  * 
  * - Mots-clé :<br/>
@@ -40,6 +57,14 @@ public class GestionnaireDaoException {
 	 * " - ".<br/>
 	 */
 	public static final String TIRET_AERE = " - ";
+
+	
+	/**
+	 * CREATION_DOUBLON : String :<br/>
+	 * "TENTATIVE DE CREATION DE DOUBLON - ".<br/>
+	 */
+	public static final String CREATION_DOUBLON 
+		= "TENTATIVE DE CREATION DE DOUBLON - ";
 	
 	
 	/**
@@ -68,8 +93,10 @@ public class GestionnaireDaoException {
 	/**
 	 * method gererException(
 	 * Exception pE) :<br/>
-	 * .<br/>
-	 * <br/>
+	 * Intercepte l'Exception de persistence pE et retourne 
+	 * une  AbstractDaoException commentée.<br/>
+	 * <ul>
+	 * </ul>
 	 *
 	 * @param pE : Exception.<br/>
 	 * 
@@ -101,7 +128,7 @@ public class GestionnaireDaoException {
 	
 
 	/**
-	 * method gererDoublonPostgres(
+	 * method gererDoublon(
 	 * Exception pE
 	 * , Throwable pCauseMere
 	 * , Throwable pCauseGrandMere) :<br/>
@@ -122,15 +149,41 @@ public class GestionnaireDaoException {
 				
 		if (pCauseGrandMere != null) {
 			
+			/* POSTGRESQL. */
 			if (pCauseGrandMere instanceof PSQLException) {
 				
 				final String messageUtilisateur 
-					= "TENTATIVE DE CREATION DE DOUBLON - " 
+					= CREATION_DOUBLON 
 							+ this.getDetailpostgresqlException(
 									pCauseGrandMere.getMessage());
 				
 				final String messageTechnique 
-					= "TENTATIVE DE CREATION DE DOUBLON - "
+					= CREATION_DOUBLON
+						+ pCauseGrandMere.getMessage() 
+						+ TIRET_AERE 
+						+ pCauseGrandMere.getClass().getName();
+				
+				
+				final DaoDoublonException daoDoublonExc 
+				= new DaoDoublonException(
+						pCauseGrandMere.getMessage(), pCauseGrandMere);
+				
+				daoDoublonExc.setMessageUtilisateur(messageUtilisateur);
+				daoDoublonExc.setMessageTechnique(messageTechnique);
+				
+				throw daoDoublonExc;
+				
+			}
+			/* HSQLDB. */
+			if (pCauseGrandMere instanceof SQLIntegrityConstraintViolationException) {
+				
+				final String messageUtilisateur 
+				= CREATION_DOUBLON 
+						+ this.getDetailpostgresqlException(
+								pCauseGrandMere.getMessage());
+			
+				final String messageTechnique 
+					= CREATION_DOUBLON
 						+ pCauseGrandMere.getMessage() 
 						+ TIRET_AERE 
 						+ pCauseGrandMere.getClass().getName();
@@ -195,7 +248,7 @@ public class GestionnaireDaoException {
 			throw daoDoublonExc;			
 		}
 				
-	} // Fin de gererDoublonPostgres(...)._________________________________
+	} // Fin de gererDoublon(...)._________________________________________
 	
 
 	

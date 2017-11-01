@@ -1,6 +1,7 @@
 package levy.daniel.application.model.metier.course.impl;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -27,6 +28,10 @@ import levy.daniel.application.model.metier.course.AbstractCourse;
  *<br/>
  * 
  * - Mots-clé :<br/>
+ * Entity, javax.persistence.Entity, nommer Entity,<br/>
+ * Table, nommer table, nom table, <br/>
+ * PrimaryKeyJoinColumn, jointure de clé primaire,<br/>
+ * Nommer une jointure de clé primaire, ForeignKey name, <br/>
  * <br/>
  *
  * - Dépendances :<br/>
@@ -40,7 +45,8 @@ import levy.daniel.application.model.metier.course.AbstractCourse;
  */
 @Entity(name="Course")
 @Table(name="COURSES", schema="PUBLIC")
-@PrimaryKeyJoinColumn(name="ID_COURSE")
+@PrimaryKeyJoinColumn(name="ID_COURSE"
+, foreignKey=@ForeignKey(name="FK_ABSTRACT_COURSES_COURSES"))
 public class Course extends AbstractCourse {
 
 	// ************************ATTRIBUTS************************************/

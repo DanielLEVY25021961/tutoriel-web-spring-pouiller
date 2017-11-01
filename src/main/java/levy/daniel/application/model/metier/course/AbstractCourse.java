@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -34,6 +35,10 @@ import org.apache.commons.logging.LogFactory;
  *<br/>
  * 
  * - Mots-clé :<br/>
+ * Entity, javax.persistence.Entity, nommer Entity,<br/>
+ * Table, nommer table, nom table, <br/>
+ * Contrainte d'unicité, nommer contrainte d'unicité,<br/>
+ * nom contrainte d'unicité, schéma, public, stratégie héritage, <br/>
  * <br/>
  *
  * - Dépendances :<br/>
@@ -46,7 +51,9 @@ import org.apache.commons.logging.LogFactory;
  *
  */
 @Entity(name="AbstractCourse")
-@Table(name="ABSTRACT_COURSES", schema="PUBLIC")
+@Table(name="ABSTRACT_COURSES", schema="PUBLIC"
+, uniqueConstraints=@UniqueConstraint(name="UNICITE_LIBELLE_QUANTITE"
+, columnNames={"LIBELLE", "QUANTITE"}))
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class AbstractCourse implements ICourse, Serializable {
 
@@ -73,7 +80,9 @@ public abstract class AbstractCourse implements ICourse, Serializable {
 	 * libelle : String :<br/>
 	 * Libellé du produit acheté.<br/>
 	 */
-	@Column(name="LIBELLE")
+	@Column(name="LIBELLE"
+			, unique = false, updatable = true
+			, insertable = true, nullable = false)
 	protected String libelle;
 	
 	
@@ -81,7 +90,9 @@ public abstract class AbstractCourse implements ICourse, Serializable {
 	 * quantite : Integer :<br/>
 	 * Quantité de produit acheté.<br/>
 	 */
-	@Column(name="QUANTITE")
+	@Column(name="QUANTITE"
+			, unique = false, updatable = true
+			, insertable = true, nullable = false)
 	protected Integer quantite;
 	
 
