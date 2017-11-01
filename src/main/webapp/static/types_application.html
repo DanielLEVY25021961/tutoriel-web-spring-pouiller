@@ -26,7 +26,7 @@
 		
 		
 		<!-- Titre s'affichant dans l'onglet. -->
-		<title>indexStatic.html sous ${context}/static</title>
+		<title>types_application.html sous ${context}/static/</title>
 		
 		<!-- REDIRECTION VERS /app AU BOUT DE 0 SECONDES -->
 		<!-- 		<meta http-equiv="refresh" content="0; URL=./app/"> -->
@@ -75,11 +75,11 @@
 					</td>
 					<td>
 						<!-- LIEN (URL) -->
-						<a href="types_application.html" 
-						title="vers types_application.html sous le contexte/static/">
-							Vers la page types_application.html
+						<a href="indexStatic.html" 
+						title="vers indexStatic.html sous le contexte/static/">
+							Vers la page indexStatic.html
 						</a>   
-					</td>			
+					</td>					
 				</tr>												
 				
 				<tr>
@@ -152,86 +152,162 @@
 		
 			<!-- TITRE 1 HTML -->
 			<h1 class="centre" id="objectif">
-				indexStatic.html sous ${context}/static				
+				types_application.html sous ${context}/static/
 			</h1>
 	
 			<!-- CONTENU DU TITRE 1 HTML -->			
 			<p class="centre-encadre">
-				<span class="souligne">OBJECTIF</span> : Vérifier que le 
-				Serveur Tomcat est bien démarré et que l'application a 
-				bien été déployée sous TOMCAT.
+				<span class="souligne">OBJECTIF</span> : 
+				Montrer les différents types d'application 
+				et le rôle des divers fichiers XML.
 			</p>
 						
-			<div>
+			<div class="presentation">
 								
 				<p>
-					Cette page HTML <b>${context}/static/indexStatic.html</b> située <b>
+					Cette page HTML <b>${context}/static/types_application.html</b> située <b>
 					sous le répertoire static sous le contexte (webapp)</b> ne sert 
 					qu'a vérifier le fait que les ressources 
 					<i>hors WEB-INF</i> sont <i>accessibles</i> pour les
 					navigateurs (css, images, ...).
 				</p>
 		
-				<div>
-					Cette page HTML "static/indexStatic.html" est accessible en tapant 
-					dans l'URL du navigateur soit :
-					<ul>
-						<li><b>http://host:8080:/${context}</b> si le 
-							welcome-file est <b>activé</b> dans le 
-							/WEB-INF/web.xml</li>
-						<li><b>http://host:8080:/${context}/static/indexStatic.html</b> 
-							si le welcome-file est <b>désactivé</b> dans 
-							le /WEB-INF/web.xml</li>
-					</ul>
+				<div class="">
+				
+					<p>
+						Nous formons l'hypothèse que tous les projets 
+						seront désormais développés avec MAVEN 3.5.0 
+						(le 01/11/2017).<br/>
+						Nous formons également l'hypothèse que tous 
+						les projets seront désormais développés avec 
+						JPA 2.1 (le 01/11/2017) si il y a persistance 
+						des données.<br/>
+						Même si l'ORM (Object-Relational-Mapping) utilisé 
+						au Ministère est Hibernate 5.2.11.Final 
+						(le 01/11/2017), nous utiliserons Java Persistence 
+						API (JPA) plutôt qu'une connexion directe via Hibernate.
+					</p>
+					<p>
+						Les principaux types d'application qui nous intéressent sont :						
+					</p>
+					
+					<ol>
+						<li>
+							Les applications <b>STANDALONE</b> 
+							(aussi appelées <i>Desktop</i> ou <i>lourdes</i>) 
+							<b>SANS</b> SPRING.<br/> 
+							Il s'agit d'applications développées en pur Java 
+							(JSE 1.8.144 le 01/11/2017) SANS conteneur SPRING.<br/>
+							Les vues sont soit une console, soit développées 
+							avec AWT, SWING ou encore JavaFx.
+						</li>
+						<li>
+							Les applications <b>STANDALONE</b> 
+							(aussi appelées <i>Desktop</i> ou <i>lourdes</i>) 
+							<b>AVEC</b> SPRING.<br/> 
+							Il s'agit d'applications développées en pur Java 
+							(JSE 1.8.144 le 01/11/2017) mais AVEC un conteneur 
+							SPRING MVC (5.0.1 le 01/11/2017).<br/>
+							Les vues sont soit une console, soit développées 
+							avec AWT, SWING ou encore JavaFx.<br/>
+							La structure applicative suit (du fait de SPRING) le modèle 
+							MVC2 : Vue - Modèle - Controller.<br/>
+							La couche modèle comprend des SERVICES - METIER - DAO.
+						</li>
+						<li>
+							Les applications <b>WEB</b> 
+							(aussi appelées <i>Client léger</i> ou <i>légères</i>)
+							<b>SANS</b> SPRING.<br/>
+							Il s'agit d'applications développées en pur J2EE 
+							(J2EE 1.8.144 le 01/11/2017) SANS conteneur SPRING.<br/>
+							Les Controllers sont des <b>SERVLETS</b> déclarées 
+							dans un descripteur de déploiement web.xml.<br/>
+							Les vues sont pour nos applications des JSP 
+							(Java Server Pages).<br/>
+							Nous avons tendance à abandonner cette technologie 
+							au profit des applications WEB AVEC SPRING.
+						</li>
+						<li>
+							Les applications <b>WEB</b> 
+							(aussi appelées <i>Client léger</i> ou <i>légères</i>)
+							<b>AVEC</b> SPRING WEB MVC (5.0.1 le 01/11/2017).<br/>
+							Il s'agit d'applications développées en J2EE 
+							(J2EE 1.8.144 le 01/11/2017) AVEC conteneur SPRING.<br/>
+							Le Controller unique du MVC2 implémenté par SPRING 
+							est une <b>SERVLET DispatcherServlet</b> paramétré 
+							dans un fichier applicationContext.xml.<br/>
+							Le descripteur de déploiement web.xml existe 
+							toujours et sert à déclarer le Controller MVC2 unique 
+							SPRING DispatcherServlet et à préciser quelles URL 
+							il doit intercepter.<br/>
+							Les vues sont pour nos applications des JSP 
+							(Java Server Pages).						
+						</li>
+					</ol>
+				
 				</div>
-		
-				<p>[http://localhost:8080/contexte_appli_web/] n'est donc
-					équivalent à [http://localhost:8080/contexte_appli_web/
-					static/indexStatic.html]
-					que si le welcome-file vers static/indexStatic.html est activé 
-					dans le web.xml.
-				</p>
-		
-				<p>
-					Le welcome-file exécute une <b>redirection</b> vers 
-					la première ressource valable 
-					(citée dans le &lt;welcome-file-list&gt; et
-					présente sous le contexte) qu'il trouve.
-				</p>
-		
-				<p>
-					<span class="gras-souligne">Remarque</span> : 
-					Les ressources statiques devant être servies en tapant 
-					leur URL directement dans le navigateur sont en réalité 
-					regroupées sous <b>${context}/static/</b> dans nos
-					applications.
-				</p>
-		
+				
 			</div>
 		
-			<div class="position_ressource">				
-				<figure class="centre">				
+			<div class="types_application">	
+
+				<div class="applications_existantes">
+				
+					<h2>Applications existantes à moderniser : </h2>
+					
+					<figure class="centre">				
 					<!-- IMAGE CENTREE -->
-					<img class="image_centree" src="images/static_indexStatic_html.png" 
-					alt="position de /static/indexStatic.html" border="1" align="middle" 
-					title="position de static/indexStatic.html par rapport au contexte webapp"/>
+					<img class="image_centree" src="images/applications_existantes.png" 
+					alt="Structure des applications STANDALONE et WEB existantes à moderniser" border="1" align="middle" 
+					title="Structure des applications STANDALONE et WEB existantes à moderniser"/>
 					<figcaption>
 						<p>
-							position de static/indexStatic.html par rapport au contexte webapp
+							Structure des applications STANDALONE et WEB existantes à moderniser
 						</p>						
 					</figcaption>			
-				</figure>
+					</figure>
+					
+					<!--Image clickable flèche retour vers le haut -->
+					<span class="a_droite">
+						<a href="#sommet">
+						<img 
+						alt="retour vers le haut" 
+						title="retour vers le haut" 
+						src="images/fleche_vers-haut-icone-5723-16x16.png"/>
+						</a>
+					</span>
 				
-				<!--Image clickable flèche retour vers le haut -->
-				<span class="a_droite">
-					<a href="#sommet">
-					<img 
-					alt="retour vers le haut" 
-					title="retour vers le haut" 
-					src="images/fleche_vers-haut-icone-5723-16x16.png"/>
-					</a>
-				</span>
-								
+				</div>
+			
+				<div class="applications_cible">
+				
+					<h2>Applications cibles : </h2>
+										
+					<figure class="centre">				
+					<!-- IMAGE CENTREE -->
+					<img class="image_centree" src="images/applications_cible.png" 
+					alt="Structure des applications STANDALONE et WEB à développer à l'avenir" border="1" align="middle" 
+					title="Structure des applications STANDALONE et WEB à développer à l'avenir"/>
+					<figcaption>
+						<p>
+							Structure des applications STANDALONE et WEB à développer à l'avenir
+						</p>						
+					</figcaption>			
+					</figure>
+					
+					<!--Image clickable flèche retour vers le haut -->
+					<span class="a_droite">
+						<a href="#sommet">
+						<img 
+						alt="retour vers le haut" 
+						title="retour vers le haut" 
+						src="images/fleche_vers-haut-icone-5723-16x16.png"/>
+						</a>
+					</span>
+				
+				</div>
+							
+
 			</div>
 			
 		</div>

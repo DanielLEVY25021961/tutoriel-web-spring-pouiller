@@ -98,6 +98,13 @@
 						</a>   
 					</td>
 					<td>
+						<!-- LIEN (URL) -->
+						<a href="<c:url value="/static/types_application.html" />" 
+						title="vers types_application.html sous le contexte/static/">
+							Vers la page static/types_application.html
+						</a>   
+					</td>					
+					<td>
 						<%-- LIEN (URL) --%>
 						<a href="<c:url value="/indexTest.html" />" 
 						title="vers indexTest.html sous le contexte/">
