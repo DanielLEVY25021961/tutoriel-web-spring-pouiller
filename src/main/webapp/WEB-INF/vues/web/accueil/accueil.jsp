@@ -87,28 +87,28 @@
 						<%-- LIEN (URL) --%>
 						<a href="<c:url value="/index.html" />" 
 						title="vers index.html sous le contexte (redirigé vers accueil.jsp)">
-							Vers la page index.html (redirigé vers accueil.jsp)
+							Vers index.html (redirigé vers accueil.jsp)
 						</a>   
 					</td>
 					<td>
 						<%-- LIEN (URL) --%>
 						<a href="<c:url value="/static/indexStatic.html" />" 
 						title="vers indexStatic.html sous static/">
-							Vers la page static/indexStatic.html
+							Vers static/indexStatic.html
 						</a>   
 					</td>
 					<td>
 						<!-- LIEN (URL) -->
 						<a href="<c:url value="/static/types_application.html" />" 
 						title="vers types_application.html sous le contexte/static/">
-							Vers la page static/types_application.html
+							Vers static/types_application.html
 						</a>   
 					</td>					
 					<td>
 						<%-- LIEN (URL) --%>
 						<a href="<c:url value="/indexTest.html" />" 
 						title="vers indexTest.html sous le contexte/">
-							Vers la page indexTest.html
+							Vers indexTest.html
 						</a>   
 					</td>
 				</tr>
@@ -143,7 +143,7 @@
 						<%-- target="_blank" force l'ouverture dans un nouvel onglet --%>
 						<a href="https://openclassrooms.com/courses/apprenez-a-creer-votre-site-web-avec-html5-et-css3" 
 						target="_blank">
-							Vers la page du tutoriel OpenClassrooms
+							Vers OpenClassrooms
 						</a>   					
 					</td>
 					<td>
@@ -152,7 +152,7 @@
 						<a href="http://resizeimage.net/" 
 						title="site de redimensionnement d'images resizeimage.net" 
 						target="_blank">
-							Vers le site de redimensionnement d'images resizeimage.net
+							Vers resizeimage.net
 						</a> 					
 					</td>
 					<td>
@@ -161,9 +161,18 @@
 						<a href="https://www.caniuse.com/" 
 						title="site de vérification des fonctionnalités des navigateurs caniuse.com" 
 						target="_blank">
-							Vers le site de vérification des fonctionnalités des navigateurs caniuse.com
+							Vers caniuse.com
 						</a> 										
-					</td>									
+					</td>
+					<td>
+						<!-- LIEN (URL) -->
+						<!-- target="_blank" force l'ouverture dans un nouvel onglet -->
+						<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html" 
+						title="Documentation de référence de SPRING 5.0.1" 
+						target="_blank">
+							Vers DOC SPRING 5.0.1
+						</a> 										
+					</td>																													
 				</tr>								
 			</table>													
         </nav>

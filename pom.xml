@@ -648,7 +648,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 					</execution>
 				</executions>
 				<configuration>
-					<warSourceDirectory>WebContent</warSourceDirectory>
+					<!-- ATTENTION : CHEMIN DES RESSOURCES WEB DE L'APPLICATION -->
+					<warSourceDirectory>${project.basedir}/src/main/webapp</warSourceDirectory>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>

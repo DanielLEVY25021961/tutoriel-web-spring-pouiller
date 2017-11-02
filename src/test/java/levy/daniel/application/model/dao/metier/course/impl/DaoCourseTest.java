@@ -146,7 +146,7 @@ public class DaoCourseTest {
 	@Transactional(
 			readOnly = false
 			, isolation=Isolation.DEFAULT
-			, propagation=Propagation.NESTED
+			, propagation=Propagation.REQUIRES_NEW
 			, rollbackFor={DaoDoublonException.class}
 			, noRollbackFor={JpaSystemException.class, PersistenceException.class, TransactionException.class})
 //	@Transactional(rollbackFor={

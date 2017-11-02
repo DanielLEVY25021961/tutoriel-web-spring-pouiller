@@ -121,7 +121,7 @@
 						<a href="http://resizeimage.net/" 
 						title="site de redimensionnement d'images resizeimage.net" 
 						target="_blank">
-							Vers le site de redimensionnement d'images resizeimage.net
+							resizeimage.net
 						</a> 					
 					</td>
 					<td>
@@ -130,21 +130,36 @@
 						<a href="https://www.caniuse.com/" 
 						title="site de vérification des fonctionnalités des navigateurs caniuse.com" 
 						target="_blank">
-							Vers le site de vérification des fonctionnalités des navigateurs caniuse.com
+							caniuse.com
 						</a> 										
-					</td>									
+					</td>
+					<td>
+						<!-- LIEN (URL) -->
+						<!-- target="_blank" force l'ouverture dans un nouvel onglet -->
+						<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html" 
+						title="Documentation de référence de SPRING 5.0.1" 
+						target="_blank">
+							Vers DOC SPRING 5.0.1
+						</a> 										
+					</td>											
 				</tr>								
 			</table>													
         </nav>
 
 		<!-- ANCRES -->
 		<div class="ancres">
-		    <p class="souligne">Aller directement à la partie traitant de (ancres) :</p>
 		
-		    <a href="#objectif">l'objectif</a><br />	
-		    <a href="#utilisation">Utilisation de cette page</a><br />		
-		    <a href="#references">Références des ressources dans la page HTML</a><br />
-		    <a href="#miniature">photo miniature</a><br />		
+		    <p class="souligne">Aller directement à la partie traitant de (ancres) :</p>
+
+			<table class="ancres">
+		    	<tr>
+					<td><a href="#objectif" title="vers l'objectif">l'objectif</a></td>	
+			    	<td><a href="#applications_existantes" title="vers Applications existantes à moderniser">Applications existantes à moderniser</a></td>
+			    	<td><a href="#applications_cible" title="vers Applications cible">Applications cible</a></td>
+			    	<td><a href="#miniature" title="vers photo miniature">photo miniature</a></td>
+				</tr>
+		    </table>
+		    
 		</div>
 		
 		
@@ -172,7 +187,7 @@
 					navigateurs (css, images, ...).
 				</p>
 		
-				<div class="">
+				<div class="principaux_types_application">
 				
 					<p>
 						- Nous formons l'hypothèse que tous les projets 
@@ -253,7 +268,9 @@
 
 				<div class="applications_existantes">
 				
-					<h2>Applications existantes à moderniser : </h2>
+					<h2 id="applications_existantes">
+						Applications existantes à moderniser : 
+					</h2>
 					
 					<figure class="centre">				
 					<!-- IMAGE CENTREE -->
@@ -281,7 +298,9 @@
 			
 				<div class="applications_cible">
 				
-					<h2>Applications cibles : </h2>
+					<h2 id="applications_cible">
+					Applications cibles : 
+					</h2>
 										
 					<figure class="centre">				
 					<!-- IMAGE CENTREE -->
@@ -307,7 +326,6 @@
 				
 				</div>
 							
-
 			</div>
 			
 		</div>
@@ -334,6 +352,92 @@
 					par les nouvelles technologies.
 				</p>
 			
+			</div>
+			
+			<div class="role_fichiers_xml">
+			
+				<h3 id="role_fichiers_xml">
+					Rôle des fichiers XML dans une application WEB sous SPRING
+				
+					<!--Image clickable flèche retour vers le haut -->
+					<span class="a_droite">
+						<a href="#sommet">
+						<img 
+						alt="retour vers le haut" 
+						title="retour vers le haut" 
+						src="images/fleche_vers-haut-icone-5723-16x16.png"/>
+						</a>
+					</span>
+					
+				
+				</h3>
+			
+					<figure class="centre">				
+					<!-- IMAGE CENTREE -->
+					<img class="image_centree" src="images/role_fichiers_xml.png" 
+					alt="Rôle des fichiers XML dans une application WEB sous SPRING" border="1" align="middle" 
+					title="Rôle des fichiers XML dans une application WEB sous SPRING"/>
+					<figcaption>
+						<p>
+							Rôle des fichiers XML dans une application WEB sous SPRING
+						</p>						
+					</figcaption>			
+					</figure>
+					
+					<p>
+						SPRING apporte donc des fichiers xml en plus 
+						(par rapport à une application J2EE pur qui comporte un simple web.xml).<br/>
+						<b>Néanmoins, SPRING est réellement rentable</b>.					
+					</p>
+					
+					<ul>
+						<li>
+							Le descripteur de déploiement d'application web 
+							<b>web.xml</b> est considérablement <i>allégé</i> par rapport 
+							au web.xml d'une application en J2EE pur dans laquelle 
+							on y déclarait tous les Controllers SERVLET.<br/>
+							Il ne comporte plus que la déclaration du Controller 
+							<b>unique</b> MVC2 SPRING <b>DispatcherServlet</b> qui est 
+							paramétré par le contenu du fichier applicationContext.xml.
+						</li>
+						<li>
+							Le <b>web.xml</b> précise quelles URL sont <i>interceptées</i> 
+							par le Controller MVC2 SPRING. 
+						</li>
+						<li> Le <b>web.xml</b> se charge également de la <i>redirection</i> 
+							(dans les welcome-files) vers une ressource statique 
+							du type index.html directement sous le webapp.<br/>
+							Cette index.html possède une redirection HTML vers 
+							la page d'accueil de l'application (en passant par le Controller Spring).<br/>
+							On peut ainsi accéder à la page d'accueil de l'application 
+							dès que l'on a tapé l'URL du contexte du site dans un navigateur.
+						</li>
+						<li>
+							Le descripteur de SPRING <b>applicationContext.xml</b> définit tous 
+							les beans et comportements de SPRING.<br/>
+							En particulier : 
+							<ul>
+								<li>
+									InternalResourceViewResolver se charge 
+									de l'aiguillage vers les vues (jsp).
+								</li>
+								<li>
+									&lt;context:component-scan 
+									base-package="levy.daniel.application"/&gt; 
+									permet l'auto-detection par SPRING de toutes 
+									les classes annotées dans le package indiqué.
+								</li>
+								<li>
+									&lt;mvc:annotation-driven&gt; permet la configuration 
+									par défaut de SPRING WEB MVC.
+								</li>
+							</ul>
+						</li>
+						<li>
+						</li>
+						<li>
+						</li>
+					</ul>			
 			</div>
 	
 			
