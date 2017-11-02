@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
@@ -53,7 +54,8 @@ import org.apache.commons.logging.LogFactory;
 @Entity(name="AbstractCourse")
 @Table(name="ABSTRACT_COURSES", schema="PUBLIC"
 , uniqueConstraints=@UniqueConstraint(name="UNICITE_LIBELLE_QUANTITE"
-, columnNames={"LIBELLE", "QUANTITE"}))
+, columnNames={"LIBELLE", "QUANTITE"})
+, indexes={@Index(name="INDEX_LIBELLE_QUANTITE", columnList="LIBELLE, QUANTITE")})
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class AbstractCourse implements ICourse, Serializable {
 
