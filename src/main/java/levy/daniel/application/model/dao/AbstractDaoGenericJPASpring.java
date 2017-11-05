@@ -61,6 +61,7 @@ public abstract class AbstractDaoGenericJPASpring<T, ID extends Serializable>
 	 */
 	public static final String CLASSE_ABSTRACTDAOGENERIC 
 		= "Classe AbstractDaoGenericJPASpring";
+
 	
 	/**
 	 * SEPARATEUR_MOINS_AERE : String :<br/>
@@ -156,6 +157,12 @@ public abstract class AbstractDaoGenericJPASpring<T, ID extends Serializable>
 		if (pObject == null) {
 			return null;
 		}
+		
+		if (exists(pObject)) {
+			System.out.println("DOUBLON : " + pObject.toString());
+			return pObject;
+		}
+		
 		
 		T persistentObject = null;
 		

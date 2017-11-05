@@ -431,6 +431,22 @@
 									&lt;mvc:annotation-driven&gt; permet la configuration 
 									par défaut de SPRING WEB MVC.
 								</li>
+								<li>
+									LocalContainerEntityManagerFactoryBean se charge 
+									de l'instanciation de la Factory d'EntityManager 
+									chargés de gérer la persistance des données.
+								</li>
+								<li>
+									TransactionManager se charge de la gestion des 
+									transactions de persistance.
+								</li>
+								<li>
+									Le bean d'id= dataSource permet de définir 
+									ou de référencer la source des données 
+									(définition directe si on ne passe pas par un 
+									serveur web, référencement en utilisant un annuaire JNDI si 
+									la dataSource est gérée par un serveur WEB comme TOMCAT).
+								</li>
 							</ul>
 						</li>
 						<li>

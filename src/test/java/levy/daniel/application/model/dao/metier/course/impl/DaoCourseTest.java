@@ -5,8 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 
 import org.apache.commons.logging.Log;
@@ -97,13 +95,6 @@ public class DaoCourseTest {
 	public transient DaoCourse daoCourse = new DaoCourse();
 
 	
-	/**
-	 * entityManager : EntityManager :<br/>
-	 * .<br/>
-	 */
-	@PersistenceContext
-	public transient EntityManager entityManager;
-	
 	
 	/**
 	 * LOG : Log : 
@@ -168,9 +159,9 @@ public class DaoCourseTest {
 		AbstractCourse course2Persistante = null;
 		
 		final AbstractCourse courseNull = null;
-		final AbstractCourse course1 = new Course(null, "Bouteilles de Vichy", 3);
-		final AbstractCourse course1Doublon = new Course(null, "Bouteilles de Vichy", 3);
-		final AbstractCourse course2 = new Course(null, "Saucisses", 13);
+		final AbstractCourse course1 = new Course("Bouteilles de Vichy", 3);
+		final AbstractCourse course1Doublon = new Course("Bouteilles de Vichy", 3);
+		final AbstractCourse course2 = new Course("Saucisses", 13);
 		
 		/* AFFICHAGE A LA CONSOLE. */
 		if (AFFICHAGE_GENERAL && affichage) {			
@@ -202,8 +193,6 @@ public class DaoCourseTest {
 			/* PERSISTANCE. **************/
 			/* CREATION DE LA COURSE1. */
 			course1Persistante = this.daoCourse.create(course1);
-			
-			this.entityManager.flush();
 			
 			/* AFFICHAGE A LA CONSOLE. */
 			if (AFFICHAGE_GENERAL && affichage) {								
@@ -270,8 +259,6 @@ public class DaoCourseTest {
 			/* CREATION DE LA COURSE2. */
 			course2Persistante = this.daoCourse.create(course2);
 			
-			this.entityManager.flush();
-			
 			final Long nombreEnregistrementsFinal = this.daoCourse.count();
 			
 			
@@ -299,6 +286,9 @@ public class DaoCourseTest {
 				System.out.println();
 								
 			} // Fin de AFFICHAGE A LA CONSOLE.______________________
+			
+			/* Vide la table. */
+			this.daoCourse.deleteAll();
 			
 		}
 		catch (TransactionException transactionExc) {
@@ -372,10 +362,7 @@ public class DaoCourseTest {
 				
 			}
 		}
-		finally {
-			this.entityManager.getTransaction().commit();
-		}
-				
+						
 	} // Fin de testCreate().______________________________________________
 
 	
@@ -398,7 +385,7 @@ public class DaoCourseTest {
 
 		AbstractCourse course1Persistante = null;
 		
-		final AbstractCourse course1 = new Course(null, "Bouteilles de Vichy", 3);
+		final AbstractCourse course1 = new Course("Bouteilles de Vichy", 3);
 		
 		/* AFFICHAGE A LA CONSOLE. */
 		if (AFFICHAGE_GENERAL && affichage) {			
