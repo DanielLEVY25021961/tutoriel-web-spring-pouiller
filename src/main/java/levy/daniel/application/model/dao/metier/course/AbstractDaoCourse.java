@@ -389,4 +389,16 @@ public abstract class AbstractDaoCourse
 	
 
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void renseignerClassObjetMetier() {
+
+		this.setClassObjetMetier(AbstractCourse.class);
+		
+	} // Fin de renseignerClassObjetMetier().______________________________
+
+
+
 } // FIN DE LA CLASSE AbstractDaoCourse.-------------------------------------

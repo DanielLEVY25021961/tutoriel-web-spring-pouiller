@@ -5,7 +5,6 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Repository;
 
 import levy.daniel.application.model.dao.metier.course.AbstractDaoCourse;
-import levy.daniel.application.model.metier.course.AbstractCourse;
 
 /**
  * class DaoCourse :<br/>
@@ -50,19 +49,6 @@ public class DaoCourse extends AbstractDaoCourse {
 	public DaoCourse() {
 		super();
 	} // Fin de CONSTRUCTEUR D'ARITE NULLE.________________________________
-	
-	
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void renseignerClassObjetMetier() {
-
-		this.setClassObjetMetier(AbstractCourse.class);
 		
-	} // Fin de renseignerClassObjetMetier().______________________________
-
-	
 	
 } // FIN DE LA CLASSE DaoCourse.---------------------------------------------

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 							<!-- ================= -->
-							<!--    SPRING 5.0.0   -->
+							<!--    SPRING 5.0.1   -->
 							<!-- ================= -->
 
 <!-- ====================================================================================== -->
-<!-- Déclaration des espaces de Nommage de Spring 5.0.0										-->
+<!-- Déclaration des espaces de Nommage de Spring 5.0.1										-->
 <!-- * mvc pour utiliser Spring MVC 														-->
 <!-- * context pour utiliser applicationContext.xml et détecter automatiquement les beans 	-->
 <!-- * aop pour utiliser Spring AOP			 												-->
@@ -35,7 +35,7 @@
 	<!-- ================================================================== -->
     <!-- active la config par annotations des validations de formulaire	 	-->
     <!-- par Spring.													 	-->
-	<!-- Informe Spring que l'on utilise les annotations					-->
+	<!-- Informe Spring que l'on utilise les annotations.					-->
 	<mvc:annotation-driven />
 
 
