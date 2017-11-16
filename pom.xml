@@ -76,6 +76,20 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		<!-- ========================================================== -->
 		<!-- 				Version de SPRING 							-->
 		<spring.version>5.0.1.RELEASE</spring.version>
+		<!-- 				Version de SPRING-SECURITY 					-->
+		<spring.security.version>4.2.3.RELEASE</spring.security.version>
+		
+		<!-- 				Version de aspectjrt					    -->
+		<aspectjrt.version>1.8.12</aspectjrt.version>
+		<!-- 				Version jackson-databind				    -->
+		<jackson-databind.version>2.9.2</jackson-databind.version>
+		<!-- 				Version de dwr							    -->
+		<dwr.version>3.0.2-RELEASE</dwr.version>
+		<!-- 				Version de easymock		 					-->
+		<easymock.version>3.5</easymock.version>
+		<!-- 				Version de rome 							-->
+		<rome.version>1.8.0</rome.version>
+				
 		<!-- 				Version d'HIBERNATE 						-->
 		<hibernate.version>5.2.11.Final</hibernate.version>
 		<!-- 			Version hibernate-jpa-2.1-api				    -->
@@ -96,6 +110,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		<javax.servlet.jsp-api.version>2.3.2-b02</javax.servlet.jsp-api.version>
 		<!--				Version de JSP							    -->
 		<jsp.version>2.2.1-b03</jsp.version>
+		<!-- 				Version de javax.mail 						-->
+		<javax.mail.version>1.5.0-b01</javax.mail.version>
 		<!-- 				Version Driver BD Postgresql			    -->
 		<postgresql.version>42.1.4</postgresql.version>
 		<!-- 				Version Driver BD MySQL						-->
@@ -108,6 +124,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		<commons-lang3.version>3.6</commons-lang3.version>
 		<!-- 				Version de commons-logging				    -->
 		<commons-logging.version>1.2</commons-logging.version>
+		<!-- 				Version de commons-io					    -->
+		<commons-io.version>2.6</commons-io.version>
+		<!-- 				Version de commons-fileupload			    -->
+		<commons-fileupload.version>1.3.3</commons-fileupload.version>
 		<!-- 				Version de log4j						    -->
 		<log4j.version>1.2.17</log4j.version>
 		<!-- 				Version de log4j-core					    -->
@@ -124,6 +144,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		<usertype.core.version>6.0.1.GA</usertype.core.version>
 		<!-- 		Version de usertype.jodatime (joda-time Hibernate)  -->
 		<usertype.jodatime.version>2.0.1</usertype.jodatime.version>
+		<!-- 				Version de jdom							    -->
+		<jdom.version>2.0.2</jdom.version>
+		<!-- 				Version de jdom2						    -->
+		<jdom2.version>2.0.6</jdom2.version>
 		
 		<!--  		Version de maven-antrun-plugin 						-->
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
@@ -176,6 +200,30 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			    <!-- Indispensable de préciser scope = import -->
 			    <scope>import</scope>
 			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+			<dependency>
+			    <groupId>org.springframework.security</groupId>
+			    <artifactId>spring-security-core</artifactId>
+			    <version>${spring.security.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+			<dependency>
+			    <groupId>org.springframework.security</groupId>
+			    <artifactId>spring-security-config</artifactId>
+			    <version>${spring.security.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+			<dependency>
+			    <groupId>org.springframework.security</groupId>
+			    <artifactId>spring-security-web</artifactId>
+			    <version>${spring.security.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+			<dependency>
+			    <groupId>org.springframework.security</groupId>
+			    <artifactId>spring-security-taglibs</artifactId>
+			    <version>${spring.security.version}</version>
+			</dependency>
 	    </dependencies>
 	</dependencyManagement>
 
@@ -210,6 +258,21 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			<version>${commons-logging.version}</version>
 			<scope>compile</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>${commons-io.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>${commons-fileupload.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		
 
 
 		<!-- ================================ -->
@@ -363,6 +426,41 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		</dependency>		
 
 
+		<!-- ================================= -->
+		<!--    dépendances pour MAILS       -->
+		<!-- ================================= -->
+		<!-- JAVAX-MAIL -->		
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>${javax.mail.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+
+
+		<!-- ================================= -->
+		<!--    dépendances pour XML       	   -->
+		<!-- ================================= -->
+		<!-- JDOM -->
+		<!-- https://mvnrepository.com/artifact/org.jdom/jdom -->
+		<dependency>
+		    <groupId>org.jdom</groupId>
+		    <artifactId>jdom</artifactId>
+		    <version>${jdom.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
+		<dependency>
+		    <groupId>org.jdom</groupId>
+		    <artifactId>jdom2</artifactId>
+		    <version>${jdom2.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		
+				
+
 		<!-- ================================ -->
 		<!--    dépendances pour SPRING       -->
 		<!-- ================================ -->
@@ -383,13 +481,19 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-aop</artifactId>
 		    <scope>compile</scope>
-		</dependency>		
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-webmvc</artifactId>
+		    <artifactId>spring-beans</artifactId>
 		    <scope>compile</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <scope>compile</scope>
+		</dependency>				
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
@@ -401,6 +505,24 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-tx</artifactId>
 		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <scope>compile</scope>
 		</dependency>		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
 		<dependency>
@@ -408,6 +530,80 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		    <artifactId>spring-test</artifactId>
 		    <scope>test</scope>
 		</dependency>
+
+		<!-- 			SPRING SECURITY 					-->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-taglibs</artifactId>
+		    <scope>compile</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.easymock/easymock -->
+		<dependency>
+		    <groupId>org.easymock</groupId>
+		    <artifactId>easymock</artifactId>
+		    <version>${easymock.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjrt</artifactId>
+		    <version>${aspectjrt.version}</version>
+		    <scope>runtime</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson-databind.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		<!-- ================================ -->
+		<!--      dépendances pour AJAX       -->
+		<!-- ================================ -->		
+		<!-- https://mvnrepository.com/artifact/org.directwebremoting/dwr -->
+		<dependency>
+		    <groupId>org.directwebremoting</groupId>
+		    <artifactId>dwr</artifactId>
+		    <version>${dwr.version}</version>
+		    <type>pom</type>
+		</dependency>
+
+		<!-- ================================ -->
+		<!--      dépendances ATOM/RSS        -->
+		<!-- ================================ -->				
+		<!-- https://mvnrepository.com/artifact/com.rometools/rome -->
+		<dependency>
+		    <groupId>com.rometools</groupId>
+		    <artifactId>rome</artifactId>
+		    <version>${rome.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+
+
 
 
 		<!-- ================================ -->
