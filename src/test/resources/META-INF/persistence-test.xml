@@ -70,7 +70,7 @@
 					<!-- DRIVER DE BASE DE DONNEES -->
 					<!-- ************************* -->
 		<!-- ========================================================= -->
-		<!--    postgresql 9.6.4 - port : 5432 - [postgres, postgres]  -->
+		<!--    postgresql 9.6.4 - port : 5433 - [postgres, postgres]  -->
 		<!-- ========================================================= -->
 		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			      
@@ -182,7 +182,7 @@
 <!--  			<property name="hibernate.hbm2ddl.auto" value="update" /> -->
 		
 			<!-- VALIDE LE SCHEMA ET CONSERVE LES DONNEES. POUR LA PROD. -->
-			<property name="hibernate.hbm2ddl.auto" value="validate" />
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="validate" /> -->
 
 			<!-- Permet de démarrer l'application sans connexion à la BD -->
 			<!-- ATTENTION : ne fonctionne qu'avec une connexion JNDI (gérée par TOMCAT). -->

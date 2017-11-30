@@ -95,7 +95,8 @@ public class CourseDaoTest {
 	 * <br/>
 	 * :  :  .<br/>
 	 */
-	@Transactional(rollbackFor={AbstractDaoException.class})
+//	@Transactional(rollbackFor={AbstractDaoException.class})
+	@Transactional
 	@Commit
 	@Test
 	public void testCreateUnSeulObjet() {
