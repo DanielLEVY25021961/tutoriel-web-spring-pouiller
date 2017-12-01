@@ -30,9 +30,14 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-	<!-- Activates various annotations to be detected in bean classes -->
-	<!-- http://yannart.developpez.com/java/spring/tutoriel/ -->
-	<!-- ANNOTATIONS POUR L'INJECTION DE DEPENDANCES -->
+
+	<!-- ================================================================== -->
+	<!--           ACTIVATION CONFIGURATION ANNOTATION SPRING               -->
+	<!-- ================================================================== -->		
+	<!-- active la configuration par annotations de Spring (plus de XML)    -->
+	<!-- Activates various annotations to be detected in bean classes 		-->
+	<!-- http://yannart.developpez.com/java/spring/tutoriel/ 				-->
+	<!-- ANNOTATIONS POUR L'INJECTION DE DEPENDANCES 						-->
     <context:annotation-config/>
     
 	<!-- ================================================================== -->
@@ -45,12 +50,13 @@
 
 
 	<!-- ===================================================================-->
-    <!--    ACTIVATION CONFIGURATION ANNOTATIONS VALIDATION FORMULAIRE   	-->
+    <!--    ACTIVATION SPRING WEB MVC ANNOTATIONS VALIDATION FORMULAIRE   	-->
 	<!-- ================================================================== -->
+	<!-- ACTIVE SPRING WEB MVC ET SON PILOTAGE PAR ANNOTATIONS 				-->
+	<!-- à RETIRER pour les applications STANDALONE 						-->
     <!-- active la config par annotations des validations de formulaire	 	-->
     <!-- par Spring.													 	-->
-	<!-- Informe Spring que l'on utilise les annotations					-->
-	
+	<!-- Informe Spring Web MVCque l'on utilise les annotations				-->	
 	<!-- https://stackoverflow.com/questions/27676817/entitymanagerfactory-and-applicationcontext-usage -->
 	<!-- Configures the annotation-driven Spring MVC Controller programming model.
     Note that, with Spring 3.0, this tag works in Servlet MVC only!  -->
@@ -121,8 +127,8 @@
         <!-- Fait le lien avec le persistence unit défini dans persistence.xml -->
         <property name="persistenceUnitName" value="persistence_unit_base-tutoriel-web-spring-pouiller-test" />
         
-        <!-- Localisation du fichier paramétrant l'ORM (META-INF/persistence.xml) -->
-        <property name="persistenceXmlLocation" value="META-INF/persistence-test.xml"/>
+        <!-- Localisation du fichier paramétrant l'ORM (classpath:META-INF/persistence.xml) -->
+        <property name="persistenceXmlLocation" value="classpath:META-INF/persistence-test.xml"/>
         
     </bean>
 
