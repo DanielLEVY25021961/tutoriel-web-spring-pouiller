@@ -81,20 +81,20 @@
 		<%-- MENU EN HAUT --%>	
         <nav class="bordure_fond_bleu">
         
-			<table>			
+			<table border="1">			
 				<tr>
 					<td>
 						<%-- LIEN (URL) --%>
 						<a href="<c:url value="/index.html" />" 
 						title="vers index.html sous le contexte (redirigé vers accueil.jsp)">
-							Vers index.html (redirigé vers accueil.jsp)
+							Vers la page index.html (redirigé vers accueil.jsp)
 						</a>   
 					</td>
 					<td>
 						<%-- LIEN (URL) --%>
 						<a href="<c:url value="/static/indexStatic.html" />" 
 						title="vers indexStatic.html sous static/">
-							Vers static/indexStatic.html
+							Vers la page static/indexStatic.html
 						</a>   
 					</td>
 					<td>
@@ -108,7 +108,7 @@
 						<%-- LIEN (URL) --%>
 						<a href="<c:url value="/indexTest.html" />" 
 						title="vers indexTest.html sous le contexte/">
-							Vers indexTest.html
+							Vers la page indexTest.html
 						</a>   
 					</td>
 				</tr>
@@ -143,7 +143,7 @@
 						<%-- target="_blank" force l'ouverture dans un nouvel onglet --%>
 						<a href="https://openclassrooms.com/courses/apprenez-a-creer-votre-site-web-avec-html5-et-css3" 
 						target="_blank">
-							Vers OpenClassrooms
+							Vers la page du tutoriel OpenClassrooms
 						</a>   					
 					</td>
 					<td>
@@ -152,7 +152,7 @@
 						<a href="http://resizeimage.net/" 
 						title="site de redimensionnement d'images resizeimage.net" 
 						target="_blank">
-							Vers resizeimage.net
+							Vers le site de redimensionnement d'images resizeimage.net
 						</a> 					
 					</td>
 					<td>
@@ -161,7 +161,7 @@
 						<a href="https://www.caniuse.com/" 
 						title="site de vérification des fonctionnalités des navigateurs caniuse.com" 
 						target="_blank">
-							Vers caniuse.com
+							Vers le site de vérification des fonctionnalités des navigateurs caniuse.com
 						</a> 										
 					</td>
 					<td>
